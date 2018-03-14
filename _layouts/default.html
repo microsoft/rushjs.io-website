@@ -2,70 +2,19 @@
 <html lang="en">
 
   <head>
+    {% include base/meta.html %}
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Rush JS - {{ page.title }}</title>
 
-    <title>Rush JS - a monorepo manager</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template -->
-    <link href={{ "styles.css" | absolute_url }}  rel="stylesheet">
-
+    {% include base/styles.html %}
   </head>
 
   <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-light bg-light static-top">
-      <div class="container">
-        <a class="navbar-brand" href="{{ site.baseurl }}/">
-          <img src={{ "/images/android-chrome-192x192.png" | absolute_url }}
-               style="height: 100px" />
-          Rush, a mono-repo manager
-        </a>
-        <div>
-          {% for link in site.data.navigation %}
-            <a class="btn {% if link.primary %} btn-primary {% endif %}" href={{ link.url | absolute_url }}>
-              {{ link.text }}
-            </a>
-          {% endfor %}
-        </div>
-      </div>
-    </nav>
+    {% include base/navbar.html %}
 
     {{ content }}
 
-    <!-- Footer -->
-    <footer class="footer bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-            <ul class="list-inline mb-2">
-              {% for link in site.data.navigation %}
-                <li class="list-inline-item">
-                  <a href={{ link.url | absolute_url }}>{{ link.text }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-            <p class="text-muted small mb-4 mb-lg-0">&copy; Microsoft 2018. All Rights Reserved.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"></script>
-
+    {% include base/footer.html %}
+    {% include base/scripts.html %}
   </body>
 </html>

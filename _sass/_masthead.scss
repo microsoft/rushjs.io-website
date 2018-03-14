@@ -1,7 +1,6 @@
 header.masthead {
   position: relative;
   background-color: $gray-800;
-  background: url('{{ site.baseurl }}/images/bg-masthead.jpg') no-repeat center center;
   @include background-cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
