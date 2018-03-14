@@ -1,51 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
   <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
-    {% include meta.html %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <title>Landing Page - Start Bootstrap Theme</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+    <!-- Bootstrap core CSS -->
+    <link href="http://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet">
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    <!-- Custom fonts for this template -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ site.baseurl }}/styles.css" rel="stylesheet">
+
   </head>
 
   <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="{{ site.baseurl }}/">
+          <img src="{{ site.baseurl }}/images/android-chrome-192x192.png"
+               style="height: 100px" />
+          Rush, a monorepo manager
+        </a>
+        <div>
+          <a class="btn" href="{{ site.baseurl }}/about">About</a>
+          <a class="btn" href="https://github.com/Microsoft/web-build-tools">Code</a>
+          <a class="btn" href="https://gitter.im/web-build-tools/web-build-tools">Gitter</a>
+          <a class="btn btn-primary" href="https://github.com/Microsoft/web-build-tools/wiki/Rush-~-Setting-up-your-repo">Get Started</a>
+        </div>
+      </div>
+    </nav>
+
+    {{ content }}
+
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="{{ site.baseurl }}/about">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/Microsoft/web-build-tools/wiki/Rush-~-Setting-up-your-repo">Getting Started</a>
+              </li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; Microsoft 2018. All Rights Reserved.</p>
           </div>
-
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
+        </div>
       </div>
-    </div>
+    </footer>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"></script>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
-    {% include analytics.html %}
   </body>
+
 </html>
