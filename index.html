@@ -2,17 +2,165 @@
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
-
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.excerpt }}
+<!-- Masthead -->
+<header class="masthead text-white text-center"
+        style="background: url('{{ site.baseurl }}/images/bg-masthead.jpg') no-repeat center center;">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h1 class="mb-5">Rush is a fast, professional solution for managing your NPM mono-repo</h1>
       </div>
+      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <div class="form-row">
+          <div class="col-6">
+            <button type="submit" class="btn btn-block btn-lg btn-primary">Get Started!</button>
+          </div>
+          <div class="col-6">
+            <form action="{{ site.baseurl }}/about">
+              <button type="submit" class="btn btn-block btn-lg btn-secondary">Learn More</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+<!-- Icons Grid -->
+<section class="features-icons bg-light text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex">
+            <i class="icon-globe m-auto text-primary"></i>
+          </div>
+          <h3>A single NPM install</h3>
+          <p class="lead mb-0">In one step, Rush installs all the dependencies for all your projects into a common folder.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex">
+            <i class="icon-vector m-auto text-primary"></i>
+          </div>
+          <h3>Automatic local linking</h3>
+          <p class="lead mb-0">Inside a Rush repo, all your projects are automatically symlinked to each other.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+          <div class="features-icons-icon d-flex">
+            <i class="icon-rocket m-auto text-primary"></i>
+          </div>
+          <h3>Fast builds</h3>
+          <p class="lead mb-0">Rush detects your dependency graph and builds your projects in the right order.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Image Showcases -->
+<section class="showcase">
+  <div class="container-fluid p-0">
+    <div class="row no-gutters">
+
+      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('{{ site.baseurl }}/images/bg-showcase-1.jpg');"></div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <h2>Subset and incremental builds</h2>
+        <p class="lead mb-0">Rush build delivers a powerful cross-project incremental build. Also, if you only want to work with a few projects, you can build only the subset of packages you are interested in.</p>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-lg-6 text-white showcase-img" style="background-image: url('{{ site.baseurl }}/images/bg-showcase-2.jpg');"></div>
+      <div class="col-lg-6 my-auto showcase-text">
+        <h2>Release and Changelog Management</h2>
+        <p class="lead mb-0">When it's time to do a release, Rush can detect which packages have changes, automatically bump all the appropriate version numbers, and run npm publish in each folder. If you like, configure your server to automatically run rush publish every hour.</p>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('{{ site.baseurl }}/images/bg-showcase-3.jpg');"></div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <h2>Professional Usage</h2>
+        <p class="lead mb-0">Rush was created by the platform team for Microsoft SharePoint. We build hundreds of production NPM packages every day, from internal and public Git repositories, for third party SDKs and live services with millions of users. If there's an important package management problem that needs solvin', it's likely to end up as a feature for Rush.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials text-center bg-light">
+  <div class="container">
+    <h2 class="mb-5">Who is using Rush...</h2>
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded mb-3" style="height: 270" src="{{ site.baseurl }}/images/onedrive.png" alt="">
+          <h5>OneDrive</h5>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded mb-3" src="{{ site.baseurl }}/images/sharepoint.png" alt="">
+          <h5>SharePoint</h5>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded mb-3" src="{{ site.baseurl }}/images/o365.png" alt="">
+          <h5>Office 365 Small Business</h5>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <img class="img-fluid rounded mb-3" src="{{ site.baseurl }}/images/windows_store.png" alt="">
+            <h5>Windows Store</h5>
+          </div>
+        </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <img class="img-fluid rounded mb-3" src="{{ site.baseurl }}/images/o365.png" alt="">
+          <h5>Office Web Apps</h5>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <a href="https://github.com/SimplrJS/ts-docs-gen">
+            <img class="img-fluid rounded mb-3" src="{{ site.baseurl }}/images/simplrjs.png" alt="">
+            <h5>SimplrJS ts-docs-gen </h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <a href="https://github.com/SimplrJS/react-forms">
+            <img class="img-fluid rounded mb-3" src="{{ site.baseurl }}/images/simplrjs.png" alt="">
+            <h5>SimplrJS react-forms</h5>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <a href="https://github.com/OfficeDev/office-ui-fabric-react">
+            <img class="img-fluid rounded mb-3" src="{{ site.baseurl }}/images/o365.png" alt="">
+            <h5>Office UI Fabric</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="call-to-action text-white text-center">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h2 class="mb-4">Ready to get started?</h2>
+      </div>
+    </div>
+  </div>
+</section>
