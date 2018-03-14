@@ -1,0 +1,15 @@
+- text: About
+  url: /about
+
+- text: News
+  url: /news
+
+- text: API
+  url: https://microsoft.github.io/web-build-tools/api/rush-lib.html
+
+- text: Gitter
+  url: https://gitter.im/web-build-tools/web-build-tools
+
+- text: Get Started
+  url: https://github.com/Microsoft/web-build-tools/wiki/Rush-~-Setting-up-your-repo
+  primary: true

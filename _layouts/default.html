@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="{{ site.baseurl }}/styles.css" rel="stylesheet">
+    <link href={{ "styles.css" | absolute_url }}  rel="stylesheet">
 
   </head>
 
@@ -29,16 +29,16 @@
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="{{ site.baseurl }}/">
-          <img src="{{ site.baseurl }}/images/android-chrome-192x192.png"
+          <img src={{ "/images/android-chrome-192x192.png" | absolute_url }}
                style="height: 100px" />
           Rush, a mono-repo manager
         </a>
         <div>
-          <a class="btn" href="{{ site.baseurl }}/about">About</a>
-          <a class="btn" href="{{ site.baseurl }}/news">News</a>
-          <a class="btn" href="https://microsoft.github.io/web-build-tools/api/rush-lib.html">Docs</a>
-          <a class="btn" href="https://gitter.im/web-build-tools/web-build-tools">Gitter</a>
-          <a class="btn btn-primary" href="https://github.com/Microsoft/web-build-tools/wiki/Rush-~-Setting-up-your-repo">Get Started</a>
+          {% for link in site.data.navigation %}
+            <a class="btn {% if link.primary %} btn-primary {% endif %}" href={{ link.url | absolute_url }}>
+              {{ link.text }}
+            </a>
+          {% endfor %}
         </div>
       </div>
     </nav>
@@ -51,21 +51,11 @@
         <div class="row">
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2">
-              <li class="list-inline-item">
-                <a href="{{ site.baseurl }}/about">About</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="{{ site.baseurl }}/news">News</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://microsoft.github.io/web-build-tools/api/rush-lib.html">Docs</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://gitter.im/web-build-tools/web-build-tools">Gitter</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://github.com/Microsoft/web-build-tools/wiki/Rush-~-Setting-up-your-repo">Getting Started</a>
-              </li>
+              {% for link in site.data.navigation %}
+                <li class="list-inline-item">
+                  <a href={{ link.url | absolute_url }}>{{ link.text }}</a>
+                </li>
+              {% endfor %}
             </ul>
             <p class="text-muted small mb-4 mb-lg-0">&copy; Microsoft 2018. All Rights Reserved.</p>
           </div>
@@ -78,5 +68,4 @@
     <script src="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"></script>
 
   </body>
-
 </html>
