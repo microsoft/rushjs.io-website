@@ -2,12 +2,14 @@
 layout: page
 ---
 
+{% assign author = site.data.authors[page.author] %}
+
 <article class="post">
 
   <div class="date">
     <strong><i>
       Published {{ page.date | date: "%B %e, %Y" }}
-      by <a href="{{ page.authorLink }}" >{{ page.author }}</a>
+      by <a href="{{ author.url }}" >{{ author.name }}</a>
     </i></strong>
   </div>
 

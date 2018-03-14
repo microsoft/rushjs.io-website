@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Changes requiring action in Rush 3.0.15
-author: Pete Gonzalez del Solar
-authorLink: https://github.com/pgonzal
+author: pete
 ---
 
 Rush 3.0.15 changes some behavior in the temp modules folder to be compatible with [NPM 5](https://github.com/npm/npm/pull/15900) and [PNPM](https://github.com/pnpm/pnpm/issues/772). You will likely see the following error during installation:

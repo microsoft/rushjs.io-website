@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Rush 3 released!
-author: Pete Gonzalez del Solar
-authorLink: https://github.com/pgonzal
+author: pete
 ---
 
 _**This is a breaking change.  In order to upgrade, you must migrate your repo.**_  In the past, Rush upgrades have always been backwards compatible, but this time we made some structural changes that would be expensive to support.  (We're planning a future feature that will allow Rush to emulate old versions of itself, but it's not ready yet.)

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Rush 4 released!
-author: Pete Gonzalez del Solar
-authorLink: https://github.com/pgonzal
+author: pete
 ---
 
 We’re excited to announce Rush version 4!  First things first...

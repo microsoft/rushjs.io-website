@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Rush now has preliminary support for PNPM
-author: Nick Pape
-authorLink: https://github.com/nickpape-msft
+author: nick
 ---
 
 We have added support in Rush for the [PNPM package manager](https://github.com/pnpm/pnpm). PNPM has several advantages over NPM, including performance, disk efficiency, rigor and simplicity. The primary idea behind PNPM is to install packages a single time, and construct your node_modules folder using only symlinks. By comparison, NPM imposes a tree of physical folders that often requires excessive duplication of the exact same contents.
