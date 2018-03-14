@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rush now has preliminary support for PNPM
-date: 2018-01-08 17:10:12 -8
+date: 2018-01-08 17:10:12 -0800
 author: Nick Pape
 authorLink: https://github.com/nickpape-msft
 ---
