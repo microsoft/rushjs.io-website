@@ -8,7 +8,7 @@ theme: jekyll-theme-minimal
 name: Rush
 
 # Short bio or description (displayed in the header)
-description: Enterprise-grade Mono-repo Management
+description: Enterprise-grade Monorepo Management
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/Microsoft/web-build-tools/master/common/wiki-images/rush-logo.png
