@@ -106,7 +106,7 @@ permalink: /
               <a href={{ project.url }}>
             {% endif %}
 
-              <img class="img-fluid rounded mb-3" style="height: 270" src={{ "/images/" | append: project.image | absolute_url }} alt="">
+              <img class="img-fluid rounded mb-3" style="height: 270" src={{ "/images/" | append: project.image | absolute_url }} alt="{{ project.text }} logo">
               <h5>{{ project.text }}</h5>
 
             {% if project.url %}
