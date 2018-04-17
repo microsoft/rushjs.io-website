@@ -3,12 +3,12 @@
   <div class="container">
     <a class="navbar-brand" href="{{ site.baseurl }}/">
       <img src={{ "/images/android-chrome-192x192.png" | absolute_url }}
-            style="height: 100px" />
+            style="height: 100px" alt="Rush logo" />
       Rush, a monorepo manager
     </a>
     <div>
       {% for link in site.data.navigation %}
-        <a class="btn {% if link.primary %} btn-primary {% endif %}" href={{ link.url | absolute_url }}>
+        <a class="btn {% if link.primary %} btn-primary {% endif %}" href="{{ link.url | absolute_url }}">
           {{ link.text }}
         </a>
       {% endfor %}
