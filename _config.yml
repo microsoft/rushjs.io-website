@@ -83,6 +83,7 @@ sass:
 algolia:
   application_id: 'MMJOXTLRT5'
   index_name: 'rushjs.io'
+  search_only_api_key: '01b32d3d6bf177d93c0bac0fd71ae7ba'
 
 # Use the following plug-ins
 plugins:

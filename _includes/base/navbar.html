@@ -12,6 +12,35 @@
           {{ link.text }}
         </a>
       {% endfor %}
+
+
+    <!-- SEARCH BOX - BEGIN -->
+    <form action="#" class="form" style="padding-top: 8px;">
+      <input class="form-control" id="search-input" name="search" type="text" placeholder='search docs...' />
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    <script>
+      var client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
+      var index = client.initIndex('{{ site.algolia.index_name }}');
+      autocomplete('#search-input', { hint: false }, [
+        {
+          source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+          displayKey: 'title',
+          templates: {
+            suggestion: function(suggestion) {
+              return suggestion._highlightResult.title.value;
+            }
+          }
+        }
+      ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+        console.log(suggestion.url);
+        window.location.href = suggestion.url;
+      });
+    </script>
+    <!-- SEARCH BOX - END -->
+
     </div>
   </div>
 </nav>
