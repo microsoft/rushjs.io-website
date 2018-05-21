@@ -14,7 +14,7 @@ Once the above dependencies are installed on your local machine, run the followi
 and run the solution locally:
 
 1. Install the site's gem dependencies with `bundle install` at the root of the project.
-2. Start the local web server with `jekyll serve` or for incremental builds run `jekyll serve --incremental`.
+2. Start the local web server with `bundle exec jekyll serve` or for incremental builds run `bundle exec jekyll serve --incremental`.
 3. Once the site has been generated you'll be able to navigate to it at [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
 
 # Contributing
