@@ -1,15 +1,15 @@
-- text: About
-  url: /about
+- text: Docs
+  url: /pages/docs/start
 
 - text: News
-  url: /news
+  url: /pages/news
 
-- text: API
-  url: https://microsoft.github.io/web-build-tools/api/rush-lib.html
+- text: GitHub
+  url: /pages/contributing
 
-- text: Gitter
-  url: https://gitter.im/web-build-tools/web-build-tools
+- text: Help
+  url: /pages/help
 
 - text: Get Started
-  url: https://github.com/Microsoft/web-build-tools/wiki/Rush-~-Setting-up-your-repo
+  url: /pages/docs/start
   primary: true
