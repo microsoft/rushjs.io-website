@@ -14,7 +14,7 @@ permalink: /about/
 
 - **Subset and incremental builds:** If you only plan to work with a few projects from your repo, `rush rebuild --to <project>` does a clean build of just your upstream dependencies.  After you make changes, `rush rebuild --from <project>` does a clean build of only the affected downstream projects.  And if your toolchain is [package-deps-hash](https://www.npmjs.com/package/@microsoft/package-deps-hash) enabled, `rush build` delivers a powerful cross-project incremental build (that also supports subset builds).
 
-- **Cyclic dependencies:** If you have hammers that build hammer-factory-factories, Rush has you covered!  When a package indirectly depends on an older version of itself, projects in the cycle use the last published version, whereas other projects still get the latest bits. 
+- **Cyclic dependencies:** If you have hammers that build hammer-factory-factories, Rush has you covered!  When a package indirectly depends on an older version of itself, projects in the cycle use the last published version, whereas other projects still get the latest bits.
 
 - **Bulk publishing:** When it's time to do a release, Rush can detect which packages have changes, automatically bump all the appropriate version numbers, and run `npm publish` in each folder.  If you like, configure your server to automatically run `rush publish` every hour.
 
@@ -50,4 +50,4 @@ _(If you don't have a GitHub account set up, you can use `rush install --bypass-
 ### Contact
 
 * [Gitter](https://gitter.im/web-build-tools/web-build-tools) - need real-time help?
-* [Issues](https://github.com/Microsoft/web-build-tools/issue) - found a bug? report it here
+* [Issues](https://github.com/Microsoft/web-build-tools/issue) - found a bug? report it here 
