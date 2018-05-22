@@ -1,11 +1,18 @@
 // The "docsite" layout with a sticky header and scripted sidebar
 
+:root {
+  --docsite-header-size: 100px;
+}
+
 .docsite-header {
-  height: 100px;
+  height: var(--docsite-header-size);
 }
 
 .docsite-side-nav {
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 
   div {
     font-weight: 600;
@@ -32,11 +39,17 @@
 
 .docsite-sidebar {
   position: fixed;
-  top: 48px;
+  top: var(--docsite-header-size);
   --scripted-sidebar-nudge: 300px;
-  height: calc(100vh - 48px - var(--scripted-sidebar-nudge));
+  height: calc(100vh - var(--docsite-header-size) - var(--scripted-sidebar-nudge));
   overflow-x: hidden;
   overflow-y: auto; /* show a scrollbar when needed */
+
+  padding: 0;
+  margin: 0;
+
+  flex-basis: unset;
+  width: 200px;
 }
 
 html {
