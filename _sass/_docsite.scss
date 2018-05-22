@@ -5,7 +5,13 @@
 }
 
 .docsite-header {
-  height: var(--docsite-header-size);
+  position: static;
+
+  @include media-breakpoint-up(md) {
+    position: sticky;
+    height: var(--docsite-header-size);
+    padding: 0;
+  }
 }
 
 .docsite-side-nav {
