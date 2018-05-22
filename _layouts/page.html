@@ -2,12 +2,36 @@
 layout: default
 ---
 
-<article class="page">
-  <div class="container" style="padding: 2rem;">
-    <h1>{{ page.title }}</h1>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="scripted-sidebar" class="col-md-2 d-none d-md-block docsite-sidebar">
+      {% include base/side_nav.html %}
+    </nav>
 
-    <div class="entry">
-      {{ content }}
-    </div>
+    <article role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="pt-3 pb-2 mb-3 border-bottom">
+        <h1>{{ page.title }}</h1>
+        <div class="entry">
+          {{ content }}
+        </div>
+      </div>
+    </article>
   </div>
-</article>
+</div>
+
+<script>
+function updateScriptedSidebar() {
+  let sidebar = document.getElementById('scripted-sidebar');
+  let mainFooter = document.getElementById('scripted-footer');
+  if (sidebar && mainFooter) {
+    // When the footer scrolls into view, reduce the sidebar height so that it
+    // doesn't overlap the footer.  Bootstrap 4 removed the "Affix" plugin, so
+    // we need custom script for this.
+    let nudge = Math.max(window.innerHeight - mainFooter.getBoundingClientRect().top, 0);
+    sidebar.style.setProperty('--scripted-sidebar-nudge', nudge + 'px');
+  }
+}
+
+window.addEventListener("scroll", updateScriptedSidebar);
+window.addEventListener("resize", updateScriptedSidebar);
+</script>

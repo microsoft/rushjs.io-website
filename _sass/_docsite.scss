@@ -1,0 +1,52 @@
+// The "docsite" layout with a sticky header and scripted sidebar
+
+.docsite-header {
+  height: 100px;
+}
+
+.docsite-side-nav {
+  margin: 2rem;
+
+  div {
+    font-weight: 600;
+    padding-bottom: 1rem;
+  }
+  a {
+    color: $dark;
+  }
+
+  ul {
+    @extend .list-unstyled;
+    font-weight: 400;
+  }
+
+  li {
+    font-size: 90%;
+  }
+}
+
+.docsite-side-nav-selection {
+  font-weight: 600;
+  color: $primary;
+}
+
+.docsite-sidebar {
+  position: fixed;
+  top: 48px;
+  --scripted-sidebar-nudge: 300px;
+  height: calc(100vh - 48px - var(--scripted-sidebar-nudge));
+  overflow-x: hidden;
+  overflow-y: auto; /* show a scrollbar when needed */
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0;
+}
