@@ -1,11 +1,11 @@
 <!-- Footer -->
-<footer id="scripted-footer" class="footer p-3 bg-light">
+<footer id="scripted-footer" class="docsite-footer p-3 bg-light">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-3">
+      <div class="col-12 col-md-3">
         <p class="text-muted small">&copy; {{ site.time | date: '%Y' }} Microsoft</p>
       </div>
-      <div class="col-9 text-right">
+      <div class="col-9 d-none d-md-block text-right">
         <ul class="list-inline">
           {% for link in site.data.navigation %}
             <li class="list-inline-item">

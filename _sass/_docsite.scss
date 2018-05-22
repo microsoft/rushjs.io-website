@@ -2,6 +2,7 @@
 
 :root {
   --docsite-header-size: 100px;
+  --docsite-footer-size: 70px;
 }
 
 .docsite-header {
@@ -11,6 +12,19 @@
     position: sticky;
     height: var(--docsite-header-size);
     padding: 0;
+  }
+}
+
+.docsite-footer {
+  @include media-breakpoint-up(md) {
+    height: var(--docsite-footer-size);
+  }
+}
+
+.docsite-main {
+  @include media-breakpoint-up(md) {
+    // Stretch the footer to the bottom
+    min-height: calc(100vh - var(--docsite-header-size) - var(--docsite-footer-size));
   }
 }
 
