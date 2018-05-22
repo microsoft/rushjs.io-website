@@ -2,21 +2,29 @@
 layout: default
 ---
 
-<div class="container-fluid">
-  <div class="row">
-    <nav id="scripted-sidebar" class="col-md-2 d-none d-md-block docsite-sidebar">
-      {% include base/side_nav.html %}
-    </nav>
+<div class="row">
+  {% comment %} Only for large displays, appears behind scripted-sidebar to reserve its space {% endcomment %}
+  <div class="docsite-sidebar-placeholder d-none d-md-block col-3"> </div>
 
-    <article role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="pt-3 pb-2 mb-3 border-bottom">
-        <h1>{{ page.title }}</h1>
-        <div class="entry">
-          {{ content }}
-        </div>
+  {% comment %} Only for large displays {% endcomment %}
+  <nav id="scripted-sidebar" class="d-none d-md-block docsite-sidebar">
+    {% include base/side_nav.html %}
+  </nav>
+
+  {% comment %} Used instead for small displays {% endcomment %}
+  <div class="col-1 d-block d-md-none"></div>
+
+  {% comment %} For small displays this takes 10 columns, for large displays 8 columns {% endcomment %}
+  <article role="main" class="col-10 col-md-8 px-4">
+    <div class="pt-3 pb-2 mb-3 border-bottom">
+      <h1>{{ page.title }}</h1>
+      <div class="entry">
+        {{ content }}
       </div>
-    </article>
-  </div>
+    </div>
+  </article>
+
+  <div class="col-1"></div>
 </div>
 
 <script>

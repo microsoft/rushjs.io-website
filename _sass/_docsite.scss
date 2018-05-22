@@ -9,6 +9,9 @@
 }
 
 .docsite-side-nav {
+  float: right;
+  width: auto;
+
   margin-left: 2rem;
   margin-top: 2rem;
   margin-right: 1rem;
@@ -38,7 +41,15 @@
 }
 
 .docsite-sidebar {
+  // The docs-sidebar uses position=fixed so for its vertical scrolling feature.
+  // This means it can't participate in the grid, so instead we create a separate
+  // docsite-sidebar-placeholder with z-index=-1000 to hold its space in the grid.
   position: fixed;
+
+  // The docsite-sidebar-placeholder div is "col-3" in the grid, which corresponds
+  // to 25% width.
+  width: 25%;
+
   top: var(--docsite-header-size);
   --scripted-sidebar-nudge: 300px;
   height: calc(100vh - var(--docsite-header-size) - var(--scripted-sidebar-nudge));
@@ -47,9 +58,11 @@
 
   padding: 0;
   margin: 0;
+}
 
-  flex-basis: unset;
-  width: 200px;
+.docsite-sidebar-placeholder {
+  // Ensure this is rendered behind the docsite-sidebar
+  z-index: -1000;
 }
 
 html {
