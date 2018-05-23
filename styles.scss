@@ -6,8 +6,12 @@
 @import "bootstrap/bootstrap";
 
 @import "mixins.scss";
+
+@import "docsite.scss";
+
 // Global CSS
 @import "global.scss";
+
 // Components
 @import "masthead.scss";
 @import "showcase.scss";
@@ -16,5 +20,4 @@
 @import "call_to_action.scss";
 @import "footer.scss";
 @import "algolia.scss";
-
-@import "docsite.scss";
+@import "home.scss";
