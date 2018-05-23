@@ -1,0 +1,8 @@
+
+.home-card {
+  background-color: $light;
+
+  @include media-breakpoint-up(md) {
+    width: 15rem;
+  }
+}
