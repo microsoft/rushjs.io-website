@@ -1,9 +1,9 @@
 <!-- Navigation -->
-<nav class="navbar navbar-light bg-light static-top">
+<nav class="navbar sticky-top navbar-light bg-light flex-md-nowrap docsite-header">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ site.baseurl }}/">
       <img src={{ "/images/rush-horiz.svg" | absolute_url }}
-            style="height: 40px" alt="Rush logo" />
+            style="height: 40px" alt="rushjs.io" title="rushjs.io" />
     </a>
     <div>
 
@@ -34,9 +34,9 @@
       </script>
       <!-- SEARCH BOX - END -->
 
-      {% for link in site.data.navigation %}
+      {% for link in site.data.navigation.top_nav %}
         <a class="btn {% if link.primary %} btn-primary {% endif %}" href="{{ link.url | absolute_url }}">
-          {{ link.text }}
+          {{ link.title }}
         </a>
       {% endfor %}
 

@@ -1,15 +1,53 @@
-- text: About
-  url: /about
 
-- text: News
-  url: /news
+top_nav:
+  - title: Docs
+    url: https://github.com/Microsoft/web-build-tools/wiki/Rush
+  - title: API
+    url: https://microsoft.github.io/web-build-tools/api/rush-lib.html
+  - title: News
+    url: https://github.com/Microsoft/web-build-tools/wiki
+  - title: Gitter
+    url: https://gitter.im/web-build-tools/web-build-tools
+  - title: Get Started
+    url: https://github.com/Microsoft/web-build-tools/wiki/Rush#3-minute-demo
+    primary: true
 
-- text: API
-  url: https://microsoft.github.io/web-build-tools/api/rush-lib.html
+new_top_nav:
+  - title: Docs
+    url: /pages/docs/start
 
-- text: Gitter
-  url: https://gitter.im/web-build-tools/web-build-tools
+  - title: News
+    url: /pages/news
 
-- text: Get Started
-  url: https://github.com/Microsoft/web-build-tools/wiki/Rush-~-Setting-up-your-repo
-  primary: true
+  - title: GitHub
+    url: /pages/contributing
+
+  - title: Help
+    url: /pages/help
+
+  - title: Get Started
+    url: /pages/docs/start
+    primary: true
+
+docs_nav:
+  - title: Introduction
+    subitems:
+      - title: Getting Started
+        url: /pages/docs/start
+
+  - title: Developer Tutorials
+    subitems:
+      - title: Start
+        url: /pages/docs/developer/new_developer
+  - title: Maintainer Tutorials
+    subitems:
+      - title: Start
+        url: /pages/docs/maintainer/new_maintainer
+  - title: Empty Item
+  - title: Empty Item
+
+other_nav:
+  - title: Maintainer Tutorials
+    subitems:
+      - title: Start
+        url: /pages/docs/maintainer/new_maintainer
