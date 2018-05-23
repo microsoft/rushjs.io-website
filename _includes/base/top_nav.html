@@ -34,9 +34,9 @@
       </script>
       <!-- SEARCH BOX - END -->
 
-      {% for link in site.data.top_nav_nodes %}
+      {% for link in site.data.navigation.top_nav %}
         <a class="btn {% if link.primary %} btn-primary {% endif %}" href="{{ link.url | absolute_url }}">
-          {{ link.text }}
+          {{ link.title }}
         </a>
       {% endfor %}
 

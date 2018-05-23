@@ -7,9 +7,9 @@
       </div>
       <div class="col-9 d-none d-md-block text-right">
         <ul class="list-inline">
-          {% for link in site.data.top_nav_nodes %}
+          {% for link in site.data.navigation.top_nav %}
             <li class="list-inline-item">
-              <a href={{ link.url | absolute_url }}>{{ link.text }}</a>
+              <a href="{{ link.url | absolute_url }}">{{ link.title }}</a>
             </li>
           {% endfor %}
         </ul>

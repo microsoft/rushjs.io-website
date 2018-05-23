@@ -1,0 +1,40 @@
+
+top_nav:
+  - title: Docs
+    url: /pages/docs/start
+
+  - title: News
+    url: /pages/news
+
+  - title: GitHub
+    url: /pages/contributing
+
+  - title: Help
+    url: /pages/help
+
+  - title: Get Started
+    url: /pages/docs/start
+    primary: true
+
+docs_nav:
+  - title: Introduction
+    subitems:
+      - title: Getting Started
+        url: /pages/docs/start
+
+  - title: Developer Tutorials
+    subitems:
+      - title: Start
+        url: /pages/docs/developer/new_developer
+  - title: Maintainer Tutorials
+    subitems:
+      - title: Start
+        url: /pages/docs/maintainer/new_maintainer
+  - title: Empty Item
+  - title: Empty Item
+
+other_nav:
+  - title: Maintainer Tutorials
+    subitems:
+      - title: Start
+        url: /pages/docs/maintainer/new_maintainer

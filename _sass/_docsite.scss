@@ -37,27 +37,29 @@
   margin-right: 1rem;
   margin-bottom: 1rem;
 
-  div {
-    font-weight: 600;
-    padding-bottom: 1rem;
-  }
+  color: $dark;
+  font-weight: bold;
+
   a {
     color: $dark;
   }
 
   ul {
     @extend .list-unstyled;
-    font-weight: 400;
+    font-weight: normal;
   }
 
   li {
-    font-size: 90%;
+    font-size: 85%;
   }
 }
 
 .docsite-side-nav-selection {
-  font-weight: 600;
-  color: $primary;
+  font-weight: bold;
+
+  a {
+    color: $link-hover-color;
+  }
 }
 
 .docsite-sidebar {
