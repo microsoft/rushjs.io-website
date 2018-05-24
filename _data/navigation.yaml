@@ -32,11 +32,13 @@ docs_nav:
         url: /pages/developer/new_developer
       - title: Everyday commands
         url: /pages/developer/everyday_commands
+      - title: Modifying package.json
+        url: /pages/developer/modifying_package_json
+      - title: Other helpful commands
+        url: /pages/developer/other_commands
 
   - title: Maintainer Tutorials
     subitems:
-      - title: Getting started as a maintainer
-        url: /pages/maintainer/new_maintainer
       - title: Setting up a new repo
         url: /pages/maintainer/setup_new_repo
       - title: NPM vs PNPM vs Yarn
