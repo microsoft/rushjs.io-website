@@ -1,7 +1,7 @@
 
 top_nav:
   - title: Docs
-    url: /pages/docs/start
+    url: /pages/intro/welcome
 
   - title: News
     url: /pages/news
@@ -10,31 +10,54 @@ top_nav:
     url: /pages/contributing
 
   - title: Help
-    url: /pages/help
+    url: /pages/help/support
 
   - title: Get Started
-    url: /pages/docs/start
+    url: /pages/intro/get_started
     primary: true
 
 docs_nav:
   - title: Introduction
     subitems:
-      - title: Getting Started
-        url: /pages/docs/start
+      - title: Welcome to Rush!
+        url: /pages/intro/welcome
+      - title: Why one big repo⁈
+        url: /pages/intro/why_mono
+      - title: Getting started
+        url: /pages/intro/get_started
 
   - title: Developer Tutorials
     subitems:
-      - title: Start
-        url: /pages/docs/developer/new_developer
-  - title: Maintainer Tutorials
-    subitems:
-      - title: Start
-        url: /pages/docs/maintainer/new_maintainer
-  - title: Empty Item
-  - title: Empty Item
+      - title: Getting started as a developer
+        url: /pages/developer/new_developer
+      - title: Everyday commands
+        url: /pages/developer/everyday_commands
 
-other_nav:
   - title: Maintainer Tutorials
     subitems:
-      - title: Start
-        url: /pages/docs/maintainer/new_maintainer
+      - title: Getting started as a maintainer
+        url: /pages/maintainer/new_maintainer
+      - title: Setting up a new repo
+        url: /pages/maintainer/setup_new_repo
+      - title: NPM vs PNPM vs Yarn
+        url: /pages/maintainer/package_managers
+      - title: Enabling policies
+        url: /pages/maintainer/setup_policies
+      - title: Custom commands
+        url: /pages/maintainer/custom_commands
+      - title: Publishing Packages
+        url: /pages/maintainer/publishing
+
+  - title: Advanced Topics
+    subitems:
+      - title: Pinned versions
+        url: /pages/advanced/pinned_versions
+      - title: Config file reference
+        url: /pages/advanced/config_files
+
+  - title: Help
+    subitems:
+      - title: Getting Support
+        url: /pages/help/support
+      - title: FAQ
+        url: /pages/help/faq

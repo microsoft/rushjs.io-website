@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Working in a Rush Repo
+title: Getting started as a maintainer
 navigation_source: docs_nav
 ---
 
