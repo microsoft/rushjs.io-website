@@ -1,19 +1,6 @@
 
 top_nav:
   - title: Docs
-    url: https://github.com/Microsoft/web-build-tools/wiki/Rush
-  - title: API
-    url: https://microsoft.github.io/web-build-tools/api/rush-lib.html
-  - title: News
-    url: https://github.com/Microsoft/web-build-tools/wiki
-  - title: Gitter
-    url: https://gitter.im/web-build-tools/web-build-tools
-  - title: Get Started
-    url: https://github.com/Microsoft/web-build-tools/wiki/Rush#3-minute-demo
-    primary: true
-
-new_top_nav:
-  - title: Docs
     url: /pages/docs/start
 
   - title: News
