@@ -27,4 +27,4 @@ navigation_source: docs_nav
 - **Lots more!** Rush was created by the platform team for [Microsoft SharePoint](http://aka.ms/spfx).  We build hundreds of production NPM packages every day, from internal and public Git repositories, for third party SDKs and live services with millions of users.  If there's an important package management problem that needs solvin', it's likely to end up as a feature for Rush.
 
 
-#### [Getting started with Rush]({% link pages/intro/get_started.md %})
+#### Next up: [Getting started with Rush]({% link pages/intro/get_started.md %})

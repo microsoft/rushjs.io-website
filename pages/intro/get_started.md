@@ -6,24 +6,26 @@ navigation_source: docs_nav
 
 ## 3 minute demo
 
-Want to see Rush in action?  The only prerequisite you need is NodeJS.  (We recommend the latest [LTS version](https://nodejs.org/en/download/releases/), and you might consider installing via [nvm-windows](https://github.com/coreybutler/nvm-windows) or [nvm](https://github.com/creationix/nvm) (Mac/Linux) so you can easily switch between NodeJS versions.)
+Want to see Rush in action?  The only prerequisite you need is NodeJS.
 
 **From your shell, install Rush like this:**
-```
+```sh
 $ npm install -g @microsoft/rush
 ```
 
+(Don't type the **"$"** of course.)  :-)
+
 **For command-line help, do this:**
-```
+```sh
 $ rush -h
 ```
 
 **To see Rush build some real projects, try running these commands:**
-```
+```sh
 $ git clone https://github.com/Microsoft/web-build-tools
 $ cd web-build-tools
-$ rush install
-$ rush install  # <-- instantaneous!
+$ rush update
+$ rush update  # <-- instantaneous!
 $ rush rebuild
 $ rush build    # <-- instantaneous!
 ```
