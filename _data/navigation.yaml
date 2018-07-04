@@ -57,6 +57,29 @@ docs_nav:
       - title: Config file reference
         url: /pages/advanced/config_files
 
+  - title: Command Reference
+    subitems:
+      - title: rush change
+        url: /pages/commands/rush_change
+      - title: rush check
+        url: /pages/commands/rush_check
+      - title: rush install
+        url: /pages/commands/rush_install
+      - title: rush link
+        url: /pages/commands/rush_link
+      - title: rush publish
+        url: /pages/commands/rush_publish
+      - title: rush purge
+        url: /pages/commands/rush_purge
+      - title: rush scan
+        url: /pages/commands/rush_scan
+      - title: rush unlink
+        url: /pages/commands/rush_unlink
+      - title: rush update
+        url: /pages/commands/rush_update
+      - title: rush version
+        url: /pages/commands/rush_version
+
   - title: Help
     subitems:
       - title: Getting Support
