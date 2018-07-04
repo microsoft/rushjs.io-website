@@ -53,9 +53,9 @@ Later, Rush's automated publishing workflow will inspect these files to determin
 
 # Common scenarios
 
-That's it!  Those are all the commonly used Rush commands.  Let's look at some typical scenarios:
+That's it!  Those are all the commonly used Rush commands.
 
-### Pulling and building
+Combining everything, a typical daily incantation might look like this:
 
 ```sh
 # Pull the latest changes from Git
@@ -69,31 +69,11 @@ $ rush rebuild
 
 # Work on one project
 $ cd ./my-project
-$ rushx build
+
+# Let's assume there is a "start" script in the package.json.
+# (To see the available commands, type "rushx" by itself.)
+$ rushx start
 ```
 
-### Installing the latest SemVer-compatible version of everything
+#### Next up: [Modifying package.json]({% link pages/developer/modifying_package_json.md %})
 
-Normally `rush update` only makes the minimal incremental changes necessary to satisfy the the project **package.json** files.  If you want to update everything to the latest version, you would do this:
-
-```sh
-# This effectively deletes the old shrinkwrap file and resolves everything
-# using the latest compatible versions
-$ rush update --full
-```
-
-In a large repo, this can introduce unrelated breaks into your PR branch (e.g. if one of the dependencies didn't perfectly follow the SemVer rules).  Instead, a person or CI job would do `rush update --full` periodically as a separate workflow.  For a small repo, it doesn't really matter.
-
-### Subset builds
-
-If you are only working on one project in the middle of a large dependency graph you can skip unrelated projects.  For example:
-
-```sh
-# Build only project1 and project2 and their dependencies;
-# skip everything else
-$ rush rebuild --to project1 --to project2
-
-# After you're done working on these projects, rebuild them and any downstream
-# projects that could potentially be broken by these changes
-$ rush rebuild --from project1 --from project2
-```

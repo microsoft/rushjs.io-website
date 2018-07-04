@@ -22,7 +22,7 @@ To see command line help, you can type:
 $ rush -h
 ```
 
-The full command-line help is also online in the [Command Reference]({% link pages/commands/rush_change.md %}).
+The command-line help is also published online in the [Command Reference]({% link pages/commands/rush_change.md %}).
 
 ## A couple caveats
 
