@@ -6,24 +6,26 @@ navigation_source: docs_nav
 
 ## 3 minute demo
 
-See Rush in action!
+Want to see Rush in action?  The only prerequisite you need is NodeJS.
 
-**From your shell, install the tool like this:**
-```
+**From your shell, install Rush like this:**
+```sh
 $ npm install -g @microsoft/rush
 ```
 
+(Don't type the **"$"** of course.)  :-)
+
 **For command-line help, do this:**
-```
+```sh
 $ rush -h
 ```
 
 **To see Rush build some real projects, try running these commands:**
-```
+```sh
 $ git clone https://github.com/Microsoft/web-build-tools
 $ cd web-build-tools
-$ rush install
-$ rush install  # <-- instantaneous!
+$ rush update
+$ rush update  # <-- instantaneous!
 $ rush rebuild
 $ rush build    # <-- instantaneous!
 ```
