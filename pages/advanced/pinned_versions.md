@@ -37,19 +37,19 @@ Suppose **project-1/package.json** looks like this:
 }
 ```
 
-And let's say **library-b** (from the internet) looks like this:
+And let's say **library-a** (from the internet) looks like this:
 
 ```json
 {
-  "name": "library-b",
-  "version": "2.0.0",
+  "name": "library-a",
+  "version": "1.0.1",
   "dependencies": {
-    "library-a": "^1.0.0"
+    "library-b": "^1.0.0"
   }
 }
 ```
 
-If you ran a normal `npm install` in for **project-1**, you would expect to have a **node_modules** folder which looks like this, even if **library-a@1.4.4** exists in the NPM registry:
+If you ran a normal `npm install` in for **project-1**, you would expect to have a **node_modules** folder which looks like this, even if **library-b@1.4.4** exists in the NPM registry:
 
 ```
 node_modules/
@@ -57,9 +57,9 @@ node_modules/
   library-b/ (1.1.3)
 ```
 
-Even though **library-b@1.4.4** matches the `"^1.0.0"` SemVer pattern, NPM doesn't install it because 1.1.3 already satisfies it.
+Even though **library-b@1.4.4** matches the `"^1.0.0"` SemVer pattern, NPM doesn't install it because 1.1.3 (installed by `project-1`) already satisfies it.
 
-But the **common/temp/package.json** above would not guarantee this.  Instead, depending on the configuration of **project-2**, you could end up with this:
+But the **common/temp/package.json** described above would not guarantee this. Instead, depending on the configuration of **project-2**, you could end up with this:
 
 ```
 node_modules/
