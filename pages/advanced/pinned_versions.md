@@ -31,7 +31,7 @@ Suppose **project-1/package.json** looks like this:
   "name": "project-1",
   "version": "1.0.0",
   "dependencies": {
-    "library-a": "~1.0.0",
+    "library-a": "1.0.1",
     "library-b": "1.1.3"
   }
 }
@@ -59,7 +59,7 @@ node_modules/
 
 Even though **library-b@1.4.4** matches the `"^1.0.0"` SemVer pattern, NPM doesn't install it because 1.1.3 (installed by `project-1`) already satisfies it.
 
-But the **common/temp/package.json** described above would not guarantee this. Instead, depending on the configuration of **project-2**, you could end up with this:
+But the **common/temp/package.json** described above would not guarantee this. Instead, depending on the dependencies of **project-2**, you could end up with this:
 
 ```
 node_modules/
@@ -67,16 +67,6 @@ node_modules/
     library-b/ (1.1.3)
   library-a/ (1.0.1)
   library-b/ (1.4.4)
-```
-
-...or this:
-
-```
-node_modules/
-  project-1/
-  library-a/ (1.0.1)
-    library-b/ (1.4.4)
-  library-b/ (1.1.3)
 ```
 
 ... which are both valid solutions to the SemVer equation.  Similar problems can arise when using Rush with NPM's [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/).
