@@ -69,7 +69,7 @@ node_modules/
   library-b/ (1.4.4)
 ```
 
-... which are both valid solutions to the SemVer equation.  Similar problems can arise when using Rush with NPM's [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/).
+... which is also a valid solution to the SemVer equation.  Similar problems can arise when using Rush with NPM's [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/).
 
 # Pinned Versions
 
