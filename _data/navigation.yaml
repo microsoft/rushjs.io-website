@@ -1,20 +1,7 @@
 
 top_nav:
   - title: Docs
-    url: https://github.com/Microsoft/web-build-tools/wiki/Rush
-  - title: API
-    url: https://microsoft.github.io/web-build-tools/api/rush-lib.html
-  - title: News
-    url: https://github.com/Microsoft/web-build-tools/wiki
-  - title: Gitter
-    url: https://gitter.im/web-build-tools/web-build-tools
-  - title: Get Started
-    url: https://github.com/Microsoft/web-build-tools/wiki/Rush#3-minute-demo
-    primary: true
-
-new_top_nav:
-  - title: Docs
-    url: /pages/docs/start
+    url: /pages/intro/welcome
 
   - title: News
     url: /pages/news
@@ -23,31 +10,79 @@ new_top_nav:
     url: /pages/contributing
 
   - title: Help
-    url: /pages/help
+    url: /pages/help/support
 
   - title: Get Started
-    url: /pages/docs/start
+    url: /pages/intro/get_started
     primary: true
 
 docs_nav:
   - title: Introduction
     subitems:
-      - title: Getting Started
-        url: /pages/docs/start
+      - title: Welcome to Rush!
+        url: /pages/intro/welcome
+      - title: Why one big repo⁈
+        url: /pages/intro/why_mono
+      - title: Getting started
+        url: /pages/intro/get_started
 
   - title: Developer Tutorials
     subitems:
-      - title: Start
-        url: /pages/docs/developer/new_developer
-  - title: Maintainer Tutorials
-    subitems:
-      - title: Start
-        url: /pages/docs/maintainer/new_maintainer
-  - title: Empty Item
-  - title: Empty Item
+      - title: Getting started as a developer
+        url: /pages/developer/new_developer
+      - title: Everyday commands
+        url: /pages/developer/everyday_commands
+      - title: Modifying package.json
+        url: /pages/developer/modifying_package_json
+      - title: Other helpful commands
+        url: /pages/developer/other_commands
 
-other_nav:
   - title: Maintainer Tutorials
     subitems:
-      - title: Start
-        url: /pages/docs/maintainer/new_maintainer
+      - title: Setting up a new repo
+        url: /pages/maintainer/setup_new_repo
+      - title: NPM vs PNPM vs Yarn
+        url: /pages/maintainer/package_managers
+      - title: Enabling policies
+        url: /pages/maintainer/setup_policies
+      - title: Custom commands
+        url: /pages/maintainer/custom_commands
+      - title: Publishing Packages
+        url: /pages/maintainer/publishing
+
+  - title: Advanced Topics
+    subitems:
+      - title: Pinned versions
+        url: /pages/advanced/pinned_versions
+      - title: Config file reference
+        url: /pages/advanced/config_files
+
+  - title: Command Reference
+    subitems:
+      - title: rush change
+        url: /pages/commands/rush_change
+      - title: rush check
+        url: /pages/commands/rush_check
+      - title: rush install
+        url: /pages/commands/rush_install
+      - title: rush link
+        url: /pages/commands/rush_link
+      - title: rush publish
+        url: /pages/commands/rush_publish
+      - title: rush purge
+        url: /pages/commands/rush_purge
+      - title: rush scan
+        url: /pages/commands/rush_scan
+      - title: rush unlink
+        url: /pages/commands/rush_unlink
+      - title: rush update
+        url: /pages/commands/rush_update
+      - title: rush version
+        url: /pages/commands/rush_version
+
+  - title: Help
+    subitems:
+      - title: Getting Support
+        url: /pages/help/support
+      - title: FAQ
+        url: /pages/help/faq

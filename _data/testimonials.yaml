@@ -14,10 +14,6 @@
   text: Office Web Apps
 
 - image: simplrjs.png
-  text: SimplrJS ts-docs-gen
-  url: https://github.com/SimplrJS/ts-docs-gen
-
-- image: simplrjs.png
   text: SimplrJS react-forms
   url: https://github.com/SimplrJS/react-forms
 

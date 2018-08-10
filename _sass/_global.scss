@@ -10,4 +10,34 @@ h5,
 h6 {
   @include body-font;
   font-weight: 700;
+  padding-top: 3rem;
+}
+
+h1 {
+  padding-top: 4rem;
+}
+
+blockquote {
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+
+  border-color: $primary;
+  border-style: solid;
+  border-top-width: 2pt;
+  border-right-width: 2pt;
+  border-bottom-width: 2pt;
+  border-left-width: 10pt;
+  border-radius: 4pt;
+}
+
+:not(pre) > code {
+  background-color: $light;
+  color: $black;
+  border-radius: 2pt;
+  border: 1px solid #ccc;
+  padding: 1pt;
 }
