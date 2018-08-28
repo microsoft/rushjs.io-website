@@ -59,6 +59,8 @@ docs_nav:
 
   - title: Command Reference
     subitems:
+      - title: rush build
+        url: /pages/commands/rush_build
       - title: rush change
         url: /pages/commands/rush_change
       - title: rush check
@@ -71,6 +73,8 @@ docs_nav:
         url: /pages/commands/rush_publish
       - title: rush purge
         url: /pages/commands/rush_purge
+      - title: rush rebuild
+        url: /pages/commands/rush_rebuild
       - title: rush scan
         url: /pages/commands/rush_scan
       - title: rush unlink
