@@ -8,10 +8,9 @@
   color: #999;
 }
 .algolia-autocomplete .aa-dropdown-menu {
-  width: 100%;
+  width: 200%;
   background-color: #fff;
   border: 1px solid #999;
-  border-top: none;
 }
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
   cursor: pointer;
@@ -21,6 +20,6 @@
   background-color: #B2D7FF;
 }
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-  font-weight: bold;
   font-style: normal;
+  background-color: #ffdb99;
 }

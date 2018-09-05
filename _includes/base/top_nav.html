@@ -17,13 +17,24 @@
       <script>
         var client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
         var index = client.initIndex('{{ site.algolia.index_name }}');
+
         autocomplete('#search-input', { hint: false }, [
           {
             source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
             displayKey: 'title',
             templates: {
               suggestion: function(suggestion) {
-                return suggestion._highlightResult.title.value;
+                let result = '<b>' + suggestion.title + '</b>';
+
+                if (suggestion._highlightResult && suggestion._highlightResult.title) {
+                  result = '<b>' + suggestion._highlightResult.title.value + '</b>';
+                }
+
+                if (suggestion._snippetResult && suggestion._snippetResult.content) {
+                  result += '<br />' + suggestion._snippetResult.content.value;
+                }
+
+                return '<p>' + result + '</p>';
               }
             }
           }
