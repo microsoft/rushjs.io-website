@@ -81,9 +81,9 @@ sass:
 # Settings for https://github.com/algolia/jekyll-algolia
 # Our login account is: @rushbot (GitHub alias)
 algolia:
-  application_id: 'MMJOXTLRT5'
+  application_id: 'W2G1E3U5T0'
   index_name: 'rushjs.io'
-  search_only_api_key: '01b32d3d6bf177d93c0bac0fd71ae7ba'
+  search_only_api_key: 'a0ab6dfc3db0c301b0ca8e725af85641'
 
 # Use the following plug-ins
 plugins:
