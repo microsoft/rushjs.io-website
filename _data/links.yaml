@@ -3,3 +3,5 @@ masthead_learn_more: /pages/intro/welcome
 masthead_get_started: /pages/intro/get_started
 
 why_mono: /pages/intro/why_mono
+
+edit_this_page_base_url: https://github.com/Microsoft/rushjs.io-website/edit/master/
