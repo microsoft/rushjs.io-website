@@ -8,7 +8,9 @@ navigation_source: docs_nav
 
 **Rush** makes life easier for JavaScript developers who build and publish many NPM packages at once.  If you're looking to consolidate all your projects into a single repo, you came to the right place!  Rush is a fast, professional solution for managing this scenario.  It gives you:
 
-- **A single NPM install:** In one step, Rush installs all the dependencies for all your projects into a common folder.  This is not just a "package.json" file at the root of your repo (which might set you up to accidentally `require()` a sibling's dependencies).  Instead, Rush uses symlinks to reconstruct an accurate "node_modules" folder for each project, without any of the limitations or glitches that seem to plague other approaches.  We support both [PNPM and NPM]({% link pages/maintainer/package_managers.md %}) package managers.
+- **A single NPM install:** In one step, Rush installs all the dependencies for all your projects into a common folder.  This is not just a "package.json" file at the root of your repo (which might set you up to accidentally `require()` a sibling's dependencies).  Instead, Rush uses symlinks to reconstruct an accurate "node_modules" folder for each project, without any of the limitations or glitches that seem to plague other approaches.
+
+  ⏵ **This algorithm supports the [PNPM, NPM, and Yarn]({% link pages/maintainer/package_managers.md %}) package managers.**
 
 - **Automatic local linking:** Inside a Rush repo, all your projects are automatically symlinked to each other. When you make a change, you can see the downstream effects without publishing anything, and without any `npm link` headaches.  If you don't want certain projects to get linked, that's supported, too.
 

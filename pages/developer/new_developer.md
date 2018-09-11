@@ -32,7 +32,7 @@ Before we get started, a couple important points to keep in mind:
 
 Rush optimizes by installing all of your dependency packages in a central folder, and then uses [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to create the "node_modules" folder for each of your projects.
 
-**Avoid using package manager commands that install/link dependencies.**  For example, `npm run` will work fine, but these commands will get confused by Rush's symlinks: `npm install`, `npm update`, `npm link`, `npm dedupe`, etc.  If you want to use those commands, first run `rush unlink` to delete the symlinks created by Rush.
+**Avoid using package manager commands that install/link dependencies.**  For example, `npm run` will work fine, but these commands will get confused by Rush's symlinks: `npm install`, `npm update`, `npm link`, `npm dedupe`, etc.  (The same goes for other package managers: Avoid commands such as `pnpm install` or `yarn install`.)  If you want to use those commands, first run `rush unlink` to delete the symlinks created by Rush.
 
 If you use `git clean -dfx` to clean up your folder, be aware that it handles symlinks poorly.  To avoid trouble, always run `rush unlink` before using `git clean -dfx`.
 
