@@ -50,13 +50,6 @@ docs_nav:
       - title: Publishing Packages
         url: /pages/maintainer/publishing
 
-  - title: Advanced Topics
-    subitems:
-      - title: Pinned versions
-        url: /pages/advanced/pinned_versions
-      - title: Config file reference
-        url: /pages/advanced/config_files
-
   - title: Command Reference
     subitems:
       - title: rush build
@@ -83,6 +76,18 @@ docs_nav:
         url: /pages/commands/rush_update
       - title: rush version
         url: /pages/commands/rush_version
+
+  - title: Best Practices
+    subitems:
+      - title: Authoring change logs
+        url: /pages/best_practices/change_logs
+
+  - title: Advanced Topics
+    subitems:
+      - title: Pinned versions
+        url: /pages/advanced/pinned_versions
+      - title: Config file reference
+        url: /pages/advanced/config_files
 
   - title: Help
     subitems:

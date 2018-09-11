@@ -34,3 +34,7 @@ Optional arguments:
                         parameter is not specified, the current branch is
                         compared against the "master" branch.
 ```
+
+### See Also
+
+- [Authoring change logs]({% link pages/best_practices/change_logs.md %})
