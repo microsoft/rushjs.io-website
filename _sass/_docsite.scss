@@ -68,10 +68,6 @@
   // docsite-sidebar-placeholder with z-index=-1000 to hold its space in the grid.
   position: fixed;
 
-  // The docsite-sidebar-placeholder div is "col-3" in the grid, which corresponds
-  // to 25% width.
-  width: 25%;
-
   top: var(--docsite-header-size);
   --scripted-sidebar-nudge: 300px;
   height: calc(100vh - var(--docsite-header-size) - var(--scripted-sidebar-nudge));
