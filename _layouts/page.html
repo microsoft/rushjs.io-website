@@ -51,7 +51,29 @@ function updateScriptedSidebar() {
   }
 }
 
+function scrollToSelectedNavItem() {
+  // If the current page is highlighted in the side nav,
+  // then scroll that item into view
+  let navSelection = document.getElementById('docsite-side-nav-selection');
+  if (navSelection && navSelection.scrollIntoView) {
+
+    // Is it in already in view?
+    let bounding = navSelection.getBoundingClientRect();
+    let isInView =
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth);
+
+    if (!isInView) {
+      navSelection.scrollIntoView( { block: "center" });
+    }
+  }
+}
+
 window.addEventListener("scroll", updateScriptedSidebar);
 window.addEventListener("resize", updateScriptedSidebar);
 window.addEventListener("load", updateScriptedSidebar);
+
+window.addEventListener("load", scrollToSelectedNavItem);
 </script>
