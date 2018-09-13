@@ -58,6 +58,8 @@ docs_nav:
         url: /pages/commands/rush_change
       - title: rush check
         url: /pages/commands/rush_check
+      - title: rush init
+        url: /pages/commands/rush_init
       - title: rush install
         url: /pages/commands/rush_install
       - title: rush link

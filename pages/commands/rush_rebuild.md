@@ -1,6 +1,6 @@
 ---
 layout: page
-title: rush version
+title: rush rebuild
 navigation_source: docs_nav
 ---
 
