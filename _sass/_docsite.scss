@@ -94,3 +94,26 @@ body {
   flex-wrap: nowrap;
   margin: 0;
 }
+
+table {
+  font-size: 93%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: $gray-400;
+}
+
+th {
+  padding: 0.5rem;
+}
+
+td {
+  padding: 0.5rem;
+
+  border-top-style: solid;
+  border-width: 1px;
+  border-color: $gray-400;
+  vertical-align: top;
+}
