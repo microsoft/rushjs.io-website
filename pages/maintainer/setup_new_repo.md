@@ -4,168 +4,85 @@ title: Setting up a new repo
 navigation_source: docs_nav
 ---
 
-Let's suppose we have 3 project folders, like this:
+This tutorial walks through the process of consolidating several projects into a new Rush monorepo.  (If you'd like to see a fully worked out sample based on these steps, take a look at the [rush-example](https://github.com/Microsoft/rush-example) repo on GitHub.)
 
-- **~/demo/application**:  your application, which depends on **lib1** and **lib2**
-- **~/demo/lib1**: a library which depends on **lib2**
-- **~/demo/lib2**: another library
+For this example, suppose we have 3 project folders, like this:
 
-We'll assume that each of these libraries builds using [gulp](http://gulpjs.com/).  (In principle Rush can work with any build system, since it only looks at your package.json file, but we don't test that very thoroughly. Feel free to open a GitHub issue if you find any problems.)  Let's say that you build your application by invoking these commands:
+- **my-app**:  a web application
+- **my-controls**: a control library used by the application
+- **my-toolchain**: a NodeJS build tool used to compile the other projects
 
-```
-$ cd ~/demo/application
-$ npm install
-$ gulp clean
-$ gulp
-```
-
-## Step 1: Create rush.json
-The first step is to create a config file "**~/demo/rush.json**".  It should conform to [rush.schema.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/rush-lib/src/schemas/rush.schema.json).  Your config file would look like this:
-
-```javascript
-// Comments are allowed in all Rush config files :-)
-{
-  // Don't forget to update these versions periodically:
-  "rushVersion": "4.0.0",
-  "npmVersion": "5.5.1",
-  "nodeSupportedVersionRange": ">=8.9.0 <9.0.0",
-
-  "projects": [
-    {
-      "packageName": "application",
-      "projectFolder": "application"
-    },
-    {
-      "packageName": "lib1",
-      "projectFolder": "lib1",
-      "shouldPublish": true
-    },
-    {
-      "packageName": "lib2",
-      "projectFolder": "lib2"
-    }
-  ]
-}
-```
-
-Notes about options:
-
-| JSON Field                 | Notes                                                                 |
-| :------------------------- | :-------------------------------------------------------------------- |
-| rushVersion         | Set this to the current release of Rush.  As the repo maintainer, you will need to upgrade this periodically. (See below.) |
-| npmVersion                 | Set this to the current release of [NPM](https://www.npmjs.com/package/npm).  Rush will install and use this specific version of the NPM tool inside your repo. This ensures deterministic build behavior, since NPM has unpredictable quirks depending on its version. |
-| nodeSupportedVersionRange  | This field tells developers which versions of the NodeJS engine to use for your repo, to minimize the time you waste investigating bugs that turn out to be NodeJS regressions.  We suggest to disallow NodeJS releases that are not [LTS](https://nodejs.org/en/download/releases/), since they frequently seem to have problems. [(More details here.)](https://github.com/nodejs/Release) |
-| packageName                | For informational purposes, this must match the "name" field in the **package.json** file for the project. |
-| projectFolder              | The folder for the project, relative to the repo root.  Typically this is the same as packageName, but if you use scopes (e.g. "**\@microsoft**") you should omit the scope. |
-| shouldPublish              | If true, then this package will be published when running "**rush publish**", and changes will be detected for it when running "**rush change**". |
-
-## Step 2: Run the first "rush generate"
-
-From anywhere under **~/demo**, run this command:
+Initially each of these projects is in its own folder.  They are built using a cumbersome procedure like this:
 
 ```
-$ rush generate
+~/$ cd my-toolchain
+~/my-toolchain$ npm run build
+~/my-toolchain$ npm link
+~/my-toolchain$ cd ../my-controls
+~/my-controls$ npm link my-toolchain
+~/my-controls$ npm run build
+~/my-controls$ npm link
+~/my-app$ cd ../my-app
+~/my-app$ npm link
+~/my-app$ npm run build
 ```
 
-The `rush generate` command is used to generate the common shrinkwrap file, which in this example will be "**~demo/common/config/rush/npm-shrinkwrap.json**".  Generally you need to add all files in this folder to Git.
+Let's Rushify these projects!
 
-## Step 3: Update your .gitignore file
+## Step 1: Check your Rush version
 
-The npm will be used to install the "common package", which is a fake project that is never built; it is merely used to install all the dependencies.  It will go in **~demo/common/temp/** folder.  This entire folder should be ignored.  You can safely delete this folder; it will be regenerated whenever you run `rush install`.
-
-Make sure your [.gitignore](https://git-scm.com/docs/gitignore) file contains something equivalent to this:
-
-```sh
-# Ignore NPM package folders
-node_modules
-
-# Ignore Rush temporary files
-/common/temp/**
-```
-
-Note: When using Rush, we recommend to avoid project-specific **.gitignore** files (e.g. don't create **~/demo/lib1/.gitignore**), except for certain rules that are very unique to a particular project.  When you are managing a large number of NPM packages, copying+pasting boilerplate into each project increases your maintenance costs whenever global changes are needed.
-
-## Step 4: Verify that it builds
-
-In order to build your projects, Rush will look for a `"build"` script in the `"scripts"` section of your **package.json** file. (Prior to Rush 4, it also looked for `"clean"` and `"test"` scripts, but that is no longer the case.)  For example:
+Before we get started, make sure you have the latest Rush release installed globally:
 
 ```
-{
-  ...
-  "scripts": {
-    "build": "gulp --clean"
-  }
-   ...
-}
+~/$ npm install -g @microsoft/rush
 ```
 
-There are a few things to keep in mind when creating these scripts:
+*NOTE: If this command fails because your user account does not have permissions to access NPM's global folder, you may need to [fix your NPM configuration](https://docs.npmjs.com/getting-started/fixing-npm-permissions).*
 
-* Rush will normally use your system PATH environment variable to find the script commands.  However, if you specify a single-word command like "gulp" or "make", Rush will first look for the program in the `common\temp\node_modules\.bin` folder.
+## Step 2: Use "rush init" to initialize your repo folder
 
-
-* If the process returns a non-zero exit status, Rush will assume there was a failure and will block downstream builds.
-
-* If the command writes anything to the `stderr` stream, Rush will interpret this to mean that at least one error or warning was reported.  This will break the build.  (This is by design -- if you allow people to merge PRs that "cry wolf", pretty soon you will find that so many warnings have accumulated that nobody even reads them any more.)  Some tooling libraries (e.g. Jest) write to `stderr` as part of their normal operation; you will need to [redirect their output](https://github.com/Microsoft/web-build-tools/blob/master/core-build/gulp-core-build/src/tasks/JestReporter.ts).
-
-* If certain projects don't need to be processed by `rush build`, you still need a `build` entry.  Set the value to an empty string ("") and Rush will ignore it.
-
-Now let's try building your project:
-
-From anywhere under **~/demo**, run this command:
+Let's assume you already created an empty GitHub repo that we will copy these projects into.  Clone your repo somewhere and then run `rush init` to generate Rush's config files:
 
 ```
-$ rush rebuild
+~/$ git clone https://github.com/my-team/my-repo
+~/$ cd my-repo
+~/my-repo$ rush init
 ```
 
-If it worked, great! Proceed to Step 5.
+It will generate these files (see [Config file reference]({% link pages/advanced/config_files.md %}) for more info):
 
-If something failed, you may need to investigate.  Important points to keep in mind:
-- **DO NOT USE NPM COMMANDS**.  While your **node_modules** folder is Rush-linked, you must NOT use commands like `npm link` or `npm install` inside a project folder.  (If you need to do that, first do `rush unlink`.)
-- It is safe to run Gulp commands in any project folder (e.g. `gulp clean` or `gulp build`).  You don't need to do `rush rebuild` every time.
-- If you edit any **package.json** files, you must run `rush install` afterwards.
+| File | What it does |
+| :-------- | :-------- |
+| **rush.json** | The main configuration file for Rush |
+| **.gitattributes** | *(Delete this file if you're not using Git.)* <br/>Git file handling configuration, e.g. prevent Git from unsafely merging shrinkwrap files. |
+| **.gitignore** | *(Delete this file if you're not using Git.)* <br/>Tells Git not to track temporary files created by Rush. |
+| **.travis.yml** | *(Delete this file if you're not using Git.)* <br/>Tells Git not to track temporary files created by Rush. |
+| **.gitignore** | *(Delete this file if you're not using Travis.)* <br/>Configures the [Travis CI](https://travis-ci.org/) system to perform PR builds using Rush. |
+| **common/config/rush/.npmrc** | Rush uses this file to configure the package registry, regardless of whether the package manager is PNPM, NPM, or Yarn. |
+| **common/config/rush/command-line.json** | You can use this to add custom commands/parameters to the Rush command-line. |
+| **common/config/rush/common-versions.json** | Used to specify NPM dependency version selections that affect all projects in a Rush repo. |
+| **common/config/rush/pnpmfile.js** | *(Delete this file if you've chosen to use NPM or Yarn instead of PNPM.)* <br/>Used to workaround problems with dependencies that have mistakes in their package.json file. |
+| **common/config/rush/version-policies.json** | Used to define advanced publishing configurations. |
 
-Once you get a successful `rush rebuild`, proceed to the next step.
+If any of these files already exists in your branch, `rush init` will issue a warning and will NOT overwrite the existing files.
 
-## Step 5: Committing the output from "rush generate"
-Commit the generated files to Git.  Something like this:
+Add the generated files to Git and commit them to your branch:
 
 ```
-$ cd ~/demo
-$ git add ./common/config/...
-$ git add ./.gitignore
-$ git commit -m "Hello, Rush!"
+~/my-repo$ git add .
+~/my-repo$ git commit -m "Initialize Rush repo"
 ```
 
-(Recall that nothing under **/common/temp** should get committed.)
+## Step 3: Customize your configuration
 
-## Step 6: Enabling automated builds
+The template files have lots of documentation and commented example snippets.  We suggest you look over them to familiarize yourself with the basic options and features.
 
-When you set up a PR build definition for continuous integration, the automated script can run essentially the same commands that a developer invokes manually.  But there are some additional options that you may find useful.  A typical script might be more like this sequence:
+You can change your options at any time, but there are a few settings in **rush.json** that you should think about in advance:
 
-```sh
-# Fetch the master branch
-$ git fetch origin master:refs/remotes/origin/master -a
+- **Choose a package manager**: The template defaults to using PNPM, but you can also use NPM or Yarn.  See [NPM vs PNPM vs Yarn]({% link pages/maintainer/package_managers.md %}) for more info.
+- **Check your Rush version**: Check the [NPM registry](https://www.npmjs.com/package/@microsoft/rush) to confirm that your `rushVersion` setting is the latest version
+- **Check other version fields**: Also check that you're using recent stable releases for other fields such as `pnpmVersion`, `pnpmVersion`, `yarnVersion`, `nodeSupportedVersionRange`
+- **Decide whether to use the "category folders" model**: See the comments in **rush.json** regarding `projectFolderMinDepth` and `projectFolderMaxDepth`, and make a plan for how project folders will be organized in the monorepo
 
-# (optional) Fail if the developer didn't create a required change log.
-# By "fail", we mean that the script will stop because Rush returned
-# a nonzero exit code.
-$ rush change -v
 
-# (optional) Fail if the developer introduced an inconsistent version
-$ rush check
-
-# Install NPM packages in the common folder, but don't automatically do "rush link"
-$ rush install --no-link
-
-# Run "rush link" explicitly, so your CI system can measure it as a separate step
-$ rush link
-
-# Do a full "ship" build, showing detailed logs in realtime
-# (We assume "--ship" was defined in common/config/rush/command-line.json)
-$ rush rebuild --ship --verbose
-```
-
-Your script will also need to install the right version of the Rush tool somehow.  We maintain a script [InstallRushOnlyIfNeeded.js](https://github.com/Microsoft/web-build-tools/blob/master/common/scripts/InstallRushOnlyIfNeeded.js) that you might find useful.
-
-For a simple real world example, take a look at the [Travis script](https://github.com/Microsoft/web-build-tools/blob/master/.travis.yml) for **web-build-tools**.
+#### Next up: [Adding projects to a repo]({% link pages/maintainer/add_to_repo.md %})

@@ -14,9 +14,9 @@ You also need to install the Rush tool itself.  It's pretty easy.  From your she
 $ npm install -g @microsoft/rush
 ```
 
-(Don't type the **"$"** of course.)  :-)
+*NOTE: If this command fails because your user account does not have permissions to access NPM's global folder, you may need to [fix your NPM configuration](https://docs.npmjs.com/getting-started/fixing-npm-permissions).*
 
-To see command line help, you can type:
+To see Rush's command line help, you can type:
 
 ```sh
 $ rush -h

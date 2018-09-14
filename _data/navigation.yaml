@@ -41,6 +41,10 @@ docs_nav:
     subitems:
       - title: Setting up a new repo
         url: /pages/maintainer/setup_new_repo
+      - title: Adding projects to a repo
+        url: /pages/maintainer/add_to_repo
+      - title: Enabling CI builds
+        url: /pages/maintainer/enabling_ci_builds
       - title: NPM vs PNPM vs Yarn
         url: /pages/maintainer/package_managers
       - title: Enabling policies
