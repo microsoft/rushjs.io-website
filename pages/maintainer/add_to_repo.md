@@ -8,7 +8,7 @@ navigation_source: docs_nav
 
 ## Step 4: Add your first project
 
-Rather than trying to add all your projects to **rush.json** all at once, we recommend adding and validating each project one at a time.  If you encounter any issues, this approach makes it easier to understand and investigate them.  If you commit each project individually, it will also make your Git history more understandable to others.  Recall that your projects form a dependency graph, so start with the "leaf" projects (that don't depend on anything else in the repo), and then work your way outwards.
+Rather than trying to add all your projects to **rush.json** all at once, we recommend adding and validating each project one at a time.  Recall that your projects form a [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph), so start with the "leaf" projects (that don't depend on anything else in the repo), and then work your way backwards.  If you encounter any errors, this approach makes it easier to understand and investigate them.  If you commit each added project individually, this will also make your Git history more understandable to others.
 
 For this example, let's start by adding our hypothetical **my-toolchain** project, which is needed to build everything else.  Since we'll be conforming to the "category folders" model (described in the **rush.json** comments), we'll move this project under a "tools" category folder.  Eventually we'll plan for other NodeJS tooling packages to go in the "tools" folder:
 
@@ -19,18 +19,26 @@ For this example, let's start by adding our hypothetical **my-toolchain** projec
 ~/my-repo/tools$ cd my-toolchain
 ```
 
-Since Rush will be invoking the package manager, we should delete the old shrinkwrap file.  Since this project originally used NPM, we'll delete that file:
+Next we need to delete project-specific files that are centrally coordinated in a monorepo:
+
+- Delete the local shrinkwrap file, since it's superseded by Rush's common shrinkwrap file.
+- Consider deleting the project's **.npmrc** file, since Rush operations always use **common/config/rush/.npmrc**
+- Consider deleting the project's Git config files unless they contain rules that are really specific to that project
+
 
 ```
-~/my-repo/tools/my-toolchain$ rm package-lock.json
+~/my-repo/tools/my-toolchain$ rm -f shrinkwrap.yaml npm-shrinkwrap.json package-lock.json yarn.lock
+~/my-repo/tools/my-toolchain$ rm -f .npmrc          # (if it makes sense)
+~/my-repo/tools/my-toolchain$ rm -f .gitattributes  # (if it makes sense)
+~/my-repo/tools/my-toolchain$ rm -f .gitignore      # (if it makes sense)
 ```
 
-> **About the "shrinkwrap file"**
+> **More about the "shrinkwrap file"**
 >
 > Depending on your package manager, the shrinkwrap file may be called **shrinkwrap.yaml**,
 > **npm-shrinkwrap.json**, **package-lock.json**, or **yarn.lock**.  (Some package managers use the
 > term "lock file", although it has nothing to do with file locking.  In this documentation we will
-> use the term "shrinkwrap file" generically since we support multiple package managers.)
+> generically refer to it as a "shrinkwrap file" since we don't know which package manager you will choose.)
 >
 > Normally the package manager creates a shrinkwrap file in each project folder, but in a Rush repo
 > there is a single "common" shrinkwrap file that describes the entire repo.  It will be stored in
@@ -42,8 +50,8 @@ Commit the new project files to Git:
 
 ```
 ~/my-repo/tools/my-toolchain$ cd ../..
-~/my-repo/$ git add .
-~/my-repo/$ git commit -m "Adding my-toolchain"
+~/my-repo$ git add .
+~/my-repo$ git commit -m "Adding my-toolchain"
 ```
 
 ## Step 5: Running your first "rush update"
@@ -61,18 +69,22 @@ After copying over the project files, we need to edit **rush.json** and add an e
 
 This tells Rush that it should manage this project.
 
-> Rush does not automatically scan for projects using wildcards, for a few reasons:
+> **Why can't Rush automatically detect my projects?**
+>
+> Rush does not automatically discover projects using wildcards.  We have a few motivations for this
+> design decision:
 > 1. Depth-first scans are expensive, particularly when tools need to repeatedly collect the list.
 > 2. On a caching CI machine, scans can accidentally pick up files left behind from a previous build.
 > 3. It's useful to have a centralized inventory of all projects and their important metadata.
+>    For example, this makes the approval/policy features more intuitive.
 
 Next, run `rush update` to install the dependencies of **my-toolchain**.  This command can be run in
 any subfolder of the repo folder that contains rush.json:
 
 ```
-~/my-repo/$ rush update
-~/my-repo/$ git add .
-~/my-repo/$ git commit -m "rush update"
+~/my-repo$ rush update
+~/my-repo$ git add .
+~/my-repo$ git commit -m "rush update"
 ```
 Since this is the first project for the repo, you'll notice that `rush update` creates several new files:
 
@@ -129,7 +141,7 @@ Rush provides a lot of command-line switches for building projects.  See [rush b
 
 ## Step 7: Adding more projects
 
-You can add more projects by following the same operations from Step 4.  In our example, we would add **my-controls** next (because it depends on **my-toolchain**), and then **my-application** last (because it depends on everything).  We chose to organize our projects ito categories "libraries" and "apps" which generally work pretty well. The final `"projects"` section might look like this:
+You can add more projects by following the same operations from Step 4.  In our example, we would add **my-controls** next (because it depends on **my-toolchain**), and then **my-application** last (because it depends on everything).  We proactively added a couple more category folders ("libraries" and "apps") since we expect more of these types of things in our scenario. The filled out `"projects"` section looks like this:
 
 ```jsonc
   "projects": [
@@ -152,6 +164,6 @@ You can add more projects by following the same operations from Step 4.  In our 
   ]
 ```
 
-Once you have all your projects added and building without errors, you can consider enabling other optional features of Rush by uncommenting snippets in the config files. The [rush-example](https://github.com/Microsoft/rush-example) repo illustrates many of these.
+Once you have all your projects added and building without errors, you may consider enabling other optional features.  The config files contain lots of snippets that you can uncomment to get started.  The [rush-example](https://github.com/Microsoft/rush-example) repo uses some of these snippets.
 
 #### Next up: [Enabling CI builds]({% link pages/maintainer/enabling_ci_builds.md %})
