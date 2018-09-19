@@ -31,46 +31,60 @@ $ rush link
 $ rush rebuild --ship --verbose
 ```
 
-## Bootstrapping commands
-
 But there's one hitch -- what if your CI environment doesn't come with Rush preinstalled?
-You might consider sticking a **package.json** at the root of your repo, and installing Rush
-using `npm install`.  Unfortunately this would introduce a phantom **node_modules** folder
-which defeats Rush's protection against phantom dependencies.
+You might consider sticking a **package.json** at the root of your repo, and then invoking
+`npm install` to install Rush.  Unfortunately this would introduce a phantom **node_modules**
+folder, which defeats Rush's protection against phantom dependencies.
 
-Fortunately there's a more elegant solution:  If your script can instead invoke
-`node common/scripts/install-run-rush.js`, which will:
+## install-run-rush.js for bootstrapping Rush
+
+
+Fortunately there's a more elegant solution for getting Rush installed on a CI machine:
+All Rush repos come with a script `common/scripts/install-run-rush.js` that will:
 
 - find your **rush.json** file
 - read the `rushVersion` that's specified there
-- install that version of Rush under the **common/temp/install-run** folder
-- ...and then invoke the Rush tool with any command-line parameters that you provided.
+- bring over appropriate settings from your repo's .npmrc file
+- automatically install that version of Rush under the **common/temp/install-run** folder
+- ...and then invoke the Rush tool, passing along any command-line parameters that you provided
 
-The installation is cached, so it's not any slower than invoking Rush normally.  In fact,
-for CI systems that preserve files from previous runs, **install-run-rush.js** faster than
-`npm install` because it can cache different versions of Rush depending on the Git branch
-being build.
+The installation is cached, so this is not any slower than invoking Rush normally.  In fact,
+for CI systems that preserve files from previous runs, **install-run-rush.js** is faster
+than `npm install` because it can cache different versions of Rush depending on the Git branch
+being built.
+
+Try executing the script from your shell:
 
 ```
 ~$ cd my-repo
 ~/my-repo$ node common/scripts/install-run-rush.js --help
+~/my-repo$ node common/scripts/install-run-rush.js install
 ```
 
-The **install-run.js** script allows you to use this same technology for arbitrary NPM
-packages.  For example, this command prints a QR code for the Rush web site:  :-)
+Below we'll show how to incorporate this into a Travis build definition.
+
+## install-run.js for other commands
+
+By the way, Rush provides a second script **install-run.js** that allows you to use this same
+technology with arbitrary NPM packages.  For example, here's a command that prints a QR code
+for the Rush web site:  :-)
 
 ```
 ~/my-repo$ node common/scripts/install-run.js qrcode@1.2.2 qrcode https://rushjs.io
 ```
 
-Note that with **install-run.js**, your command-line includes the package name and version
-(which can be a SemVer range, although its best to avoid nondeterminism).  It also has a
-second parameter that specifies the name of the executable binary (even though it's often
-the same as the package name).  In the above example, we're invoking the `qrcode` binary
-and its command-line parameter is `https://rushjs.io`.  The **install-run.js** command is
-mainly useful for commands cannot get installed by `rush install`, for example because
-they're part of a lightweight CI job that doesn't need a full install.
+Note that the **install-run.js** command line is a little different:  It must include the
+package name and version (which can be a SemVer range, although its best to avoid nondeterminism).
+It also needs a second parameter that specifies the name of the executable binary (even though
+the binary name is often the same as the package name).  In the above example, we're invoking the
+`qrcode` binary and its command-line parameter is `https://rushjs.io`.
 
+Of course, a more straightforward approach would be to specify **qrcode** as an ordinary dependency
+of a **package.json** file somewhere, for example a **tools/scripts** project.  That way it can
+part of your normal installation, and tracked by your repo's shrinkwrap file.  But in some cases
+that is undesirable.  For example, scripts that are only used by a lightweight CI job that doesn't
+require a `rush install`.  Or for Git hooks that need to work correctly even when `rush install`
+is broken or outdated.
 
 ## Travis example from "rush init"
 
