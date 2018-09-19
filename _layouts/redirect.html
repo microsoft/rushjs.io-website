@@ -1,0 +1,13 @@
+---
+layout: redirect
+---
+
+<html>
+  <head>
+  <meta http-equiv="refresh" content="3; url={{page.redirect_url | absolute_url}}" />
+  </head>
+  <body>
+    <b>This page has moved to:</b>
+    <a href="{{page.redirect_url | absolute_url}}">{{page.redirect_url | absolute_url}}</a>
+  </body>
+</html>
