@@ -21,35 +21,36 @@ traversing edges of this graph, although the packages themselves are normally in
 a central store that's shared by different projects.
 
 For historical reasons, NodeJS and NPM took a different approach of representing
-this graph physically on disk, where graph nodes are package folder copies, and edges are subfolder
-relationships, but with a [special rule](https://nodejs.org/api/modules.html#modules_all_together)
-that effectively adds a graph edge pointing to the immediate children of every (recursive) parent.
-In computer science this rule generalizes the
+this graph physically on disk.  With this approach, the graph's nodes are package folder copies,
+and its edges are subfolder relationships, but with
+a [special rule](https://nodejs.org/api/modules.html#modules_all_together)
+whose effect is to add extra graph edges pointing to the immediate children of all parent folders.
+From a computer science perspective, this rule generalizes a
 [tree data structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) such that
-(1) it can now represent some but not all directed acyclic graphs, and (2) it picks up some
-extra ("phantom") edges that do not correspond to any declared dependency.
+(1) it can now represent some (but not all) directed acyclic graphs, and (2) we pick up some
+extra ("phantom") edges that do not correspond to any declared package dependency.
 
-NPM's design has many unique characteristics that differ from traditional package managers:
+NPM's approach has many unique characteristics that differ from traditional package managers:
 
-- Each (root-level) project gets its own **node_modules** tree containing all of its dependencies,
+- Each (root-level) project gets its own **node_modules** tree containing all the dependencies --
   at least one copy of every package's contents.  Even a very small NodeJS project is
   likely to have more than 10,000 files copied under its folder.
 
-- In NPM version 2, the **node_modules** folder tree was very deep and extensively duplicated,
-  in order to minimize extra ("phantom") graph edges.  NPM version 3 improved the installation
+- In NPM 2.x, the **node_modules** folder tree was very deep and duplicated,
+  in order to minimize extra ("phantom") graph edges.  NPM 3.x improved the installation
   algorithm to flatten the tree, based on the realization that duplicate folders are a much worse
-  problem than extra graph edges.  In some cases the algorithm will also select a slightly older
+  problem than extra graph edges.  In some cases the new algorithm will also choose a slightly older
   version of a package (respecting SemVer) to further reduce duplication of package folders.
 
-- The installed **node_modules** tree is not unique -- there are many possible ways to arrange
+- The installed **node_modules** tree is not unique.  There are many possible ways to arrange
   package folders into a tree to approximate the directed acyclic graph, and there is no
   unique "normalized" arrangement.  The tree you get depends on whatever heuristics your
-  package manager algorithm chose to follow.  NPM's own heuristics are even sensitive to
+  package manager chose to follow.  NPM's own heuristics are even sensitive to
   [the order in which you add packages](http://npm.github.io/how-npm-works-docs/npm3/non-determinism.html).
 
 
 The **node_modules** tree is an unusual and mathematically rich data structure.
-But let's focus on three consequences that cause real life trouble, and can be particularly
+But let's focus on three consequences that can cause real trouble, and can be particularly
 difficult to diagnose in a large and very active monorepo.  We'll also show how Rush improves
 things.
 
@@ -78,8 +79,8 @@ But suppose that the code looks like this:
 
 **my-library/lib/index.js**
 ```javascript
-var expand = require("brace-expansion");
-var glob = require("glob")
+var expand = require("brace-expansion");  // ???
+var glob = require("glob")  // ???
 var minimatch = require("minimatch")
 
 // (more code here that uses those libraries)
@@ -88,15 +89,16 @@ var minimatch = require("minimatch")
 Wait a sec -- two of these libraries are not declared as dependencies
 in the **package.json** file.  How is this working at all!?  It turns out that
 **brace-expansion** is a dependency of **minimatch**, and **glob** is a dependency
-of **rimraf**, and during installation NPM has flattened their folders to be under
+of **rimraf**.  During installation, NPM has flattened their folders to be under
 **my-library/node_modules**.  The NodeJS `require()` function finds them there,
 because it probes for folders without considering the **package.json** files at all.
 This is perhaps counterintuitive, but it seems to work just fine.  Maybe it's a
-convenient shorthand?
+feature and not a bug?
 
-Unfortunately it creates a risk of future failures:
+Unfortunately it's a bug in this package.  It can lead to unexpected malfunctions
+or errors:
 
-- **Breaking API changes:**  Although our library's **package.json** declared that
+- **Incompatible versions:**  Although our library's **package.json** declared that
   it needs **minimatch** version 3, we don't have any say about the version
   of **brace-expansion** that we'll get.  The [SemVer rules](https://semver.org/) make
   it perfectly legal for a PATCH release of **minimatch** to incorporate a MAJOR upgrade of
@@ -110,10 +112,10 @@ Unfortunately it creates a risk of future failures:
   means it only gets installed for developers working on the **my-library** project.
   For other consumers, `require("glob")` should fail with an error because **glob**
   won't get installed at all for them.  We should hear about it as soon as we publish
-  the **my-library** package, right?  But no, in practice it's likely that most consumers
+  the **my-library** package, right?  Not exactly.  In practice it's likely that most consumers
   will also depend on some version of **rimraf** themselves, so it may appear to work.
-  Only a small percentage of victims will encounter the error, making it harder to
-  repro and report.
+  Only a small percentage of our consumers will encounter the error, making it seem like
+  they have a weird issue that's difficult to repro.
 
 **How Rush helps:** Rush's symlinking strategy ensures that each project's **node_modules**
 contains only its immediate declared dependencies.  This catches undeclared dependencies
@@ -124,7 +126,7 @@ by using **pnpmfile.js**).
 
 ## Phantom node_modules folders
 
-Suppose we have a monorepo, and someone put a root-level **package.json** there
+Suppose we have a monorepo, and someone adds a root-level **package.json** file
 like this:
 
 **my-monorepo/package.json**:
@@ -142,10 +144,11 @@ like this:
 ```
 
 The idea is that we can tell people to run `npm run deploy-app`, and our script will
-automatically deploy all the monorepo projects.  (Don't do that with Rush! It provides
-[Custom commands]({% link pages/maintainer/custom_commands.md %} for this purpose.)
-But this hypothetical script needs to print colored text, so we also ask people to run
-`npm install` which will install the **colors** library.
+automatically deploy all the projects in the monorepo.  That's why it's at the root.
+(Don't do that with Rush! Instead use its
+[custom commands]({% link pages/maintainer/custom_commands.md %} feature.)
+Since this hypothetical script needs to print colored text, we'll also ask people to run
+`npm install` which will install the **colors** library (from the `devDependencies` above).
 
 The resulting folder tree will look like this:
 
@@ -165,10 +168,10 @@ The resulting folder tree will look like this:
       - ...
 ```
 
-But recall that NodeJS's module resolver can also find dependencies in a parent folder.
+But recall that NodeJS's module resolver can also look for dependencies in a parent folder.
 This means that our **lib/index.js** will be able to call `require("colors")` and find
 this dependency, even if it doesn't appear anywhere under its own **node_modules** subtree.
-This is an even insidious way to pick up accidental phantom dependencies!
+This is an even more insidious way to pick up accidental phantom dependencies!
 
 **How Rush helps:** Rush's got you covered!  The `rush install` command scans all
 potential parent folders and issues a warning if any phantom **node_modules** folders
