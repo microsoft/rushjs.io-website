@@ -11,11 +11,12 @@ Want to learn more about how JavaScript package managers work?
 ## Some history and some theory
 
 First, a little background:  Everyone knows that software **packages** can depend on other
-**packages** according to a [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph),
+**packages**, this network is called the [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph),
 which is a kind of [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
-in computer science.  (Right?  If not, go read those articles!)  For example, library **A**
+in computer science. For example, library **A**
 might import definitions from libraries **B** and **C**, but then **B** and **C** can both
-import from **D**, which creates a "**diamond dependency**" between these four packages.
+import from **D**, which creates a "**diamond dependency**" between these four packages
+(named because that is what the dependency graph looks like when drawn on a whiteboard). 
 Conventionally the programming language's **module resolver** looks up imported packages by
 traversing edges of this graph, although the packages themselves are normally installed in
 a central store that's shared by different projects.
@@ -40,7 +41,7 @@ NPM's approach has many unique characteristics that differ from traditional pack
   in order to minimize extra ("phantom") graph edges.  NPM 3.x improved the installation
   algorithm to flatten the tree, based on the realization that duplicate folders are a much worse
   problem than extra graph edges.  In some cases the new algorithm will also choose a slightly older
-  version of a package (respecting SemVer) to further reduce duplication of package folders.
+  version of a package (while still satisfying SemVer) to further reduce duplication of package folders.
 
 - The installed **node_modules** tree is not unique.  There are many possible ways to arrange
   package folders into a tree to approximate the directed acyclic graph, and there is no
@@ -106,7 +107,7 @@ It can lead to unexpected malfunctions or errors:
   for **minimatch**.  In practice we'll probably never encounter this as developers of
   **my-library** -- instead, it will be found by a poor victim who installs our published
   library later in some very different **node_modules** arrangement that has newer (or older)
-  version constraints that what we regularly test.
+  version constraints than what we regularly test.
 
 - **Missing dependencies:**  The **glob** package is coming from our `devDependencies`, which
   means it only gets installed for developers who work on the **my-library** project.
