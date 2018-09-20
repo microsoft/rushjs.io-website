@@ -90,8 +90,8 @@ docs_nav:
 
   - title: Advanced Topics
     subitems:
-      - title: Pinned versions
-        url: /pages/advanced/pinned_versions
+      - title: Preferred versions
+        url: /pages/advanced/preferred_versions
       - title: Config file reference
         url: /pages/advanced/config_files
 

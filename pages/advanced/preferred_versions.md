@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Pinned versions
+title: Preferred versions
 navigation_source: docs_nav
 ---
 
@@ -22,7 +22,7 @@ Rush performs a single install for all your projects by creating a fake **rush-c
 }
 ```
 
-NPM considers each of these "**@rush-temp**" scoped projects to be a direct dependency for the **rush-common** project. In general NPM installs a project's direct dependencies first (at the root of the **node_modules** tree), and only then proceed to download the indirect dependencies.  But since your real project's direct dependencies are now indirect dependencies for the **rush-common** project, the `npm install` behavior could be different.
+The package manager considers each of these "**@rush-temp**" scoped projects to be a direct dependency for the **rush-common** project. In general NPM installs a project's direct dependencies first (at the root of the **node_modules** tree), and only then proceed to download the indirect dependencies.  But since your real project's direct dependencies are now indirect dependencies for the **rush-common** project, the `npm install` behavior could be different.
 
 Suppose **project-1/package.json** looks like this:
 
@@ -71,16 +71,19 @@ node_modules/
 
 ... which is also a valid solution to the SemVer equation.  Similar problems can arise when using Rush with NPM's [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/).
 
-# Pinned Versions
+# Preferred Versions
 
-To control these effects Rush introduces a concept of "pinned versions", which are dependencies that get explicitly added to the top-level **common/temp/package.json**.
+To control these effects Rush introduces a concept of "preferred versions", which are dependencies that get explicitly added to the top-level **common/temp/package.json**.
 
-You can "pin" a version by adding it to the config file **pinned-versions.json**.  For example:
+You can "pin" a version by adding it to the config file **common-versions.json**.  For example:
 
-**common/config/rush/pinned-versions.json**
+**common/config/rush/common-versions.json**
 ```json
 {
-  "css-loader": "1.2.3"
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/common-versions.schema.json",
+  "preferredVersions": {
+    "css-loader": "1.2.3"
+  }
 }
 ```
 
@@ -100,11 +103,11 @@ This will cause **css-loader** to be added to the **common/temp/package.json** f
 }
 ```
 
-*Note: If you are publishing packages, you should be careful about pinning versions in a way that would produce a different result than a person who installs your library normally using NPM.*
+*Note: If you are publishing packages, you should be careful about adding preferred versions in a way that would produce a different result than a person who installs your library normally using NPM.*
 
-# Implicitly Pinned Versions
+# Implicitly Preferred Versions
 
-In general, *you don't need to pin versions explicitly*.  In our original example, Rush would probably automatically solve the problem for you using "implicitly pinned versions".  Most likely your **common/temp/package.json** will already look like this:
+In general, *you don't need to specify preferred versions explicitly*.  In our original example, Rush would probably automatically solve the problem for you using "implicitly preferred versions".  Most likely your **common/temp/package.json** will already look like this:
 
 ```json
 {
@@ -121,4 +124,4 @@ In general, *you don't need to pin versions explicitly*.  In our original exampl
 }
 ```
 
-As long as two projects don't request incompatible versions of a library, Rush will implicitly pin their versions.  But if **project1** and **project2** were requesting different versions of **library-b**, then you might need to get involved, and maybe use **pinned-versions.json** to resolve your issue.
+As long as two projects don't request incompatible versions of a library, Rush will implicitly add a preferred version.  But if **project1** and **project2** were requesting different versions of **library-b**, then you might need to get involved, and maybe use **common-versions.json** to resolve your issue.

@@ -17,7 +17,7 @@ navigation_source: docs_nav
 | common/config/rush/command-line.json  | Used to define [Custom commands]({% link pages/maintainer/custom_commands.md %}) |
 | common/config/rush/browser-approved-packages.json   | Used by the **approvedPackagesPolicy** setting from rush.json |
 | common/config/rush/nonbrowser-approved-packages.json   | Used by the **approvedPackagesPolicy** setting from rush.json |
-| common/config/rush/pinned-versions.json  | Used to control versions for indirect dependencies. |
+| common/config/rush/common-versions.json  | Used to specify versions that affect all projects in a repo. |
 | common/config/rush/version-policies.json  | Controls how `rush publish` works. |
 
 
