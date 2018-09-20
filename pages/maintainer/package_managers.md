@@ -4,7 +4,7 @@ title: NPM vs PNPM vs Yarn
 navigation_source: docs_nav
 ---
 
-Before you can start installing JavaScript library, you need to choose which package manager you will use.  (Our community loves flexibility and choices, so of course there's not just one!)  Rush supports the three most popular package managers.  In chronological order:
+Before you can start installing a JavaScript library, you need to choose which package manager you will use.  (Our community loves flexibility and choices, so of course there's not just one!)  Rush supports the three most popular package managers.  In chronological order:
 
 - [NPM](https://docs.npmjs.com/getting-started/what-is-npm): the tool that pioneered the packaging standard and registry protocol used by most JavaScript package managers today.  The tool's developers also maintain the npmjs.com registry, which is currently the most popular place to distribute open source JavaScript libraries.
 
