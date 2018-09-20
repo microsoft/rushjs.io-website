@@ -9,7 +9,7 @@ navigation_source: docs_nav
 ## How NPM doppelgangers arise
 
 Sometimes the **node_modules** data structure is forced to install two copies
-of ***the same version of*** the same package.  Really?  How can that arise?
+of ***the same version of*** the same package.  Really?  How can that happen?
 
 Suppose we have a main project **A** like this:
 
@@ -131,12 +131,13 @@ scale monorepo.  Here's some potential problems that can result:
 
 - **Slower installs:**  Disk space isn't too expensive these days, but imagine
   you have 20 libraries that depend on **F1**, leading to 20 duplicated copies.
-  And suppose there's a post-install script that downloads a large binary file
-  20 times.  That could impact your install time significantly.
+  Or suppose there's a post-install script that downloads and unzips large archive
+  (e.g. PhantomJS) and this happens separately for each doppelganger.  That could
+  impact your install time significantly.
 
 - **Exploding bundle sizes:**  Web projects commonly use a bundler such as
   [webpack](https://webpack.js.org/) that statically analyzes `require()` statements
-  and collects code into a single bundle file.  This file should be kept as small as
+  and collects code into a single bundle file for deployment.  This file should be kept as small as
   possible, because it directly affects the load time for your web application.
   When a doppelganger appears unexpectedly (e.g. due to an `npm install` operation that
   rebalances the **node_modules** tree), this can cause two copies of a library to be embedded
@@ -145,17 +146,18 @@ scale monorepo.  Here's some potential problems that can result:
 - **Non-single singletons:**  Suppose **library-f** has an API which exposes a cache object
   that is intended to be a singleton instance shared by all consumers of the library.
   When two different components call `require("library-f")` they may get two different
-  instantiations, and there will suddenly be two instances of the singleton
-  (because the underlying "global" variable will be allocated in two different closures).
+  library instantiations, which means there will suddenly be two instances of the singleton
+  (i.e. the underlying "global" variable gets allocated in two different closures).
   This can lead to very strange behavior that is difficult to debug.
 
 - **Duplicate types:** Suppose **library-f** is a TypeScript library.  The compiler will
   encounter duplicate copies of all the \*.d.ts files for that library.  For example,
   each class will have two copies of its declaration, which cannot be deduplicated by
   following symlink targets, since they are separate physical files.  In general identical
-  class declarations are not considered interchangeable and will cause compile errors.
-  Typescript 2.x introduced a heuristic for detecting and equating these duplicates, but it
-  involves additional complexity and processing.  Other build tools may not be so sophisticated.
+  class declarations are not considered interchangeable by TypeScript and will cause
+  compile errors when mixed.  Typescript 2.x introduced a heuristic for detecting and
+  equating these duplicates, but it involves additional complexity and processing.
+  Other build tasks may not be so sophisticated.
 
 - **Semantically different doppelgangers:**  Suppose **F** has a dependency **G** that
   is also consumed by other packages in the tree.  In the tree, the first copy of **F1**
@@ -170,5 +172,5 @@ scale monorepo.  Here's some potential problems that can result:
 **How Rush helps:** Rush's symlinking strategy eliminates duplication for all
 direct dependencies that are local projects in the monorepo.  Unfortunately
 doppelgangers are still possible for any indirect dependencies of your projects
-if your Rush repo is configured for NPM or Yarn.  If you're using PNPM,
+if your Rush repo is configured for NPM or Yarn.  But if you're using PNPM,
 the doppelganger problem is completely eliminated.

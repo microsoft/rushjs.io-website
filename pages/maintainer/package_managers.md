@@ -10,32 +10,34 @@ Before you can start installing JavaScript library, you need to choose which pac
 
 - [Yarn](https://yarnpkg.com/en/): a complete rewrite of the NPM tool that preserves the same installation model, but promises faster installations, better reliability, and some cool new features (e.g. Yarn workspaces) that facilitate large scale development.
 
-- [PNPM](https://pnpm.js.org/): A fundamentally new installation model that eliminates the "[NPM doppelganger]({% link pages/advanced/npm_doppelgangers.md %})" and "[phantom dependency]({% link pages/advanced/phantom_deps.md %})" issues, while cleverly making use of [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to remain 100% compatible with the NodeJS module resolution standard.
+- [PNPM](https://pnpm.js.org/): A fundamentally new installation model that solves the ["phantom dependency" and "NPM doppelganger"]({% link pages/advanced/phantom_deps.md %})" problems, while cleverly making use of [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to remain 100% compatible with the NodeJS module resolution standard.
 
 
 ## Which one should I use with Rush?
 
 The answer depends on your needs.  The Rush developers don't endorse a particular package manager, but here are some observations based on our experience from managing our own monorepos:
 
-#### NPM pros and cons
+#### Considerations for NPM
 
-- NPM is the most compatible choice, and the most forgiving choice for dealing with "bad" packages.
+- NPM is the most compatible choice, and the most forgiving for dealing with "bad" packages.
 
 - If you choose NPM, you will need to do trial+error to find a version that works correctly with Rush.  NPM 5.x and 6.x are both known to have unresolved regressions that cause trouble in Rush repos.  NPM **4.5.0** is the most recent version that's known to work very reliably, but unfortunately it's pretty old.  (We'd greatly appreciate community help improving this situation; look for the ["external issue" label](https://github.com/Microsoft/web-build-tools/issues?q=is%3Aissue+is%3Aopen+label%3A%22external+issue%22).)
 
   *Before reporting a Rush bug involving the NPM package manager, first try downgrading to `"npmVersion": "4.5.0"`.  If that eliminates the repro, then your issue is likely an NPM regression and may not be fixable in the Rush code base.  We still accept these issues, but we track them differently.*
 
-#### PNPM pros and cons
+#### Considerations for PNPM
 
-- PNPM is the only option that eliminates the NPM doppelgangers problem.  In a complex monorepo, doppelgangers sometimes cause nontrivial build failures that can be difficult to diagnose.
+- PNPM is the only option that solves the [NPM doppelgangers]({% link pages/advanced/npm_doppelgangers.md %}) issue.  In a complex monorepo, doppelgangers sometimes cause a lot of trouble, so PNPM has an important advantage in this regard.
 
-- Although PNPM's strategy conforms to the modern NodeJS module resolution standard, many legacy packages do not, which causes compatibility problems.  Teams who migrate existing projects from Yarn or NPM to PNPM often encounter "bad packages" that need workarounds or fixes.  The incompatibilities are generally actual problems: (1) importing packages not listed in their **package.json** file, or (2) attempting to implement their own module resolution without handling symlinks according to the standard.  In most cases the fixes are straightforward, but it can be daunting for a small team.  (The [PNPM Gitter chat room](https://gitter.im/pnpm/pnpm) is a great resource for help, though.)
+- Although PNPM's symlinking strategy conforms to the modern NodeJS module resolution standard, many legacy packages do not, which causes compatibility problems.  Teams who migrate existing projects from Yarn/NPM to PNPM often encounter "bad packages" that need workarounds or fixes.  The incompatibilities generally reflect real problems with those packages: (1) forgetting to list dependencies in the **package.json** file, or (2) implementing homebrew module resolution without handling symlinks according to the standard.  Most "bad" packages have straightforward fixes, but it can be daunting for a small team.  (The [PNPM Gitter chat room](https://gitter.im/pnpm/pnpm) is a great resource for help, though.)
 
-- PNPM is newer and less widely used than NPM or Yarn, but it is a solid piece of software.   Microsoft uses PNPM in Rush repos with hundreds of projects and hundreds of PRs per day, and we've found it to be very fast and reliable.
+- PNPM is newer and less widely used than NPM or Yarn, but it's a solid piece of software.   Microsoft uses PNPM in Rush repos with hundreds of projects and hundreds of PRs per day, and we've found it to be very fast and reliable.
 
-#### Yarn pros and cons
+- PNPM is currently the only option that supports the `--strict-peer-dependencies` protection (see `"strictPeerDependencies"` in **rush.json**).
 
-- Rush's support for Yarn is relatively new and unproven, so we're eager to hear about issues and get them fixed.  If you can't use PNPM, this is your best bet for support from the Rush developers.
+#### Considerations for Yarn
+
+- Rush's support for Yarn is relatively new and unproven, so we're eager to hear about issues and get them fixed.  If you can't use PNPM, Yarn is your best bet for support from the Rush developers.
 
 - Yarn installs faster than NPM (although somewhat slower than PNPM).
 

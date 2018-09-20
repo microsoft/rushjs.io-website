@@ -15,7 +15,7 @@ First, a little background:  Everyone knows that software **packages** can depen
 which is a kind of [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
 in computer science.  (Right?  If not, go read those articles!)  For example, library **A**
 might import definitions from libraries **B** and **C**, but then **B** and **C** can both
-import from **D**, which creates "**diamond dependency**" between these four packages.
+import from **D**, which creates a "**diamond dependency**" between these four packages.
 Conventionally the programming language's **module resolver** looks up imported packages by
 traversing edges of this graph, although the packages themselves are normally installed in
 a central store that's shared by different projects.
@@ -24,8 +24,8 @@ For historical reasons, NodeJS and NPM took a different approach of representing
 this graph physically on disk.  With this approach, the graph's nodes are package folder copies,
 and its edges are subfolder relationships, but with
 a [special rule](https://nodejs.org/api/modules.html#modules_all_together)
-whose effect is to add extra graph edges pointing to the immediate children of all parent folders.
-From a computer science perspective, this rule generalizes a
+whose effect is to introduce extra graph edges (pointing to the immediate children of all parent folders).
+From a computer science perspective, this rule relaxes the
 [tree data structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) such that
 (1) it can now represent some (but not all) directed acyclic graphs, and (2) we pick up some
 extra ("phantom") edges that do not correspond to any declared package dependency.
@@ -52,12 +52,12 @@ NPM's approach has many unique characteristics that differ from traditional pack
 The **node_modules** tree is an unusual and mathematically rich data structure.
 But let's focus on three consequences that can cause real trouble, and can be particularly
 difficult to diagnose in a large and very active monorepo.  We'll also show how Rush improves
-things.
+things -- mitigating these problems was one of the original motivations for creating the Rush tool!
 
 
 ## Phantom dependencies
 
-A "phantom dependency" occurs when a project requires a package that is not defined
+A "phantom dependency" occurs when a project uses a package that is not defined
 in its **package.json** file.  Consider this example:
 
 **my-library/package.json**
@@ -95,12 +95,12 @@ because it probes for folders without considering the **package.json** files at 
 This is perhaps counterintuitive, but it seems to work just fine.  Maybe it's a
 feature and not a bug?
 
-Unfortunately it's a bug in this package.  It can lead to unexpected malfunctions
-or errors:
+Unfortunately this project's missing declarations are best considered a bug.
+It can lead to unexpected malfunctions or errors:
 
 - **Incompatible versions:**  Although our library's **package.json** declared that
   it needs **minimatch** version 3, we don't have any say about the version
-  of **brace-expansion** that we'll get.  The [SemVer rules](https://semver.org/) make
+  of **brace-expansion** that we'll get.  The [SemVer system](https://semver.org/) makes
   it perfectly legal for a PATCH release of **minimatch** to incorporate a MAJOR upgrade of
   the **brace-expansion** library, as long as it doesn't affect the API signature
   for **minimatch**.  In practice we'll probably never encounter this as developers of
@@ -108,19 +108,19 @@ or errors:
   library later in some very different **node_modules** arrangement that has newer (or older)
   version constraints that what we regularly test.
 
-- **Missing dependencies:**  The **glob** is coming from our `devDependencies`, which
-  means it only gets installed for developers working on the **my-library** project.
-  For other consumers, `require("glob")` should fail with an error because **glob**
+- **Missing dependencies:**  The **glob** package is coming from our `devDependencies`, which
+  means it only gets installed for developers who work on the **my-library** project.
+  For other consumers, `require("glob")` should fail immediately with an error because **glob**
   won't get installed at all for them.  We should hear about it as soon as we publish
   the **my-library** package, right?  Not exactly.  In practice it's likely that most consumers
-  will also depend on some version of **rimraf** themselves, so it may appear to work.
-  Only a small percentage of our consumers will encounter the error, making it seem like
-  they have a weird issue that's difficult to repro.
+  will also have **glob** for some reason (e.g. using **rimraf** themselves),
+  so it may appear to work.  Only a small percentage of our consumers will encounter the
+  failed import error, making it seem like they're reporting a weird issue that's difficult to repro.
 
 **How Rush helps:** Rush's symlinking strategy ensures that each project's **node_modules**
-contains only its immediate declared dependencies.  This catches undeclared dependencies
+contains only its declared direct dependencies.  This catches phantom dependencies
 immediately at build time.  If you're using the PNPM package manager, the same protections
-are applied to all indirect dependencies (with the ability to workaround any "bad" packages
+are also applied to all indirect dependencies (with the ability to workaround any "bad" packages
 by using **pnpmfile.js**).
 
 
@@ -143,14 +143,15 @@ like this:
 }
 ```
 
-The idea is that we can tell people to run `npm run deploy-app`, and our script will
-automatically deploy all the projects in the monorepo.  That's why it's at the root.
-(Don't do that with Rush! Instead use its
+The intent is that we'll tell people to run `npm run deploy-app`, and our script will
+automatically deploy all the projects in the monorepo.  That's why it's in the repo
+root folder.  (Don't do that with Rush! Instead use its
 [custom commands]({% link pages/maintainer/custom_commands.md %} feature.)
-Since this hypothetical script needs to print colored text, we'll also ask people to run
-`npm install` which will install the **colors** library (from the `devDependencies` above).
+Since this hypothetical script needs to print colored text, we'll first ask people to run
+`npm install` in the repo root folder, which will install the **colors** library
+from the `devDependencies` above.
 
-The resulting folder tree will look like this:
+The resulting folder tree would look like this:
 
 ```
 - my-monorepo/
@@ -170,10 +171,11 @@ The resulting folder tree will look like this:
 
 But recall that NodeJS's module resolver can also look for dependencies in a parent folder.
 This means that our **lib/index.js** will be able to call `require("colors")` and find
-this dependency, even if it doesn't appear anywhere under its own **node_modules** subtree.
-This is an even more insidious way to pick up accidental phantom dependencies!
+the **colors** package, even if it doesn't appear anywhere under **my-library/node_modules**.
+This is an even more insidious way to pick up accidental phantom dependencies -- it can
+find **node_modules** folders that aren't even under your Git working directory!
 
-**How Rush helps:** Rush's got you covered!  The `rush install` command scans all
+**How Rush helps:** Rush's got you covered.  The `rush install` command scans all
 potential parent folders and issues a warning if any phantom **node_modules** folders
 are found.
 
