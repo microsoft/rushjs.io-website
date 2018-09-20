@@ -11,23 +11,22 @@ Want to learn more about how JavaScript package managers work?
 ## Some history and some theory
 
 First, a little background:  Everyone knows that software **packages** can depend on other
-**packages**, this network is called the [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph),
-which is a kind of [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
-in computer science. For example, library **A**
-might import definitions from libraries **B** and **C**, but then **B** and **C** can both
-import from **D**, which creates a "**diamond dependency**" between these four packages
-(named because that is what the dependency graph looks like when drawn on a whiteboard). 
-Conventionally the programming language's **module resolver** looks up imported packages by
-traversing edges of this graph, although the packages themselves are normally installed in
-a central store that's shared by different projects.
+**packages**.  This [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph)
+is a kind of [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+in computer science.  Unlike a tree data structure, a directed acyclic graph can have
+diamond-shaped branches that rejoin.  For example, library **A** might import definitions from
+libraries **B** and **C**, but then **B** and **C** can both import from **D**, which creates
+a "**diamond dependency**" between these four packages.  Conventionally the programming language's
+**module resolver** looks up imported packages by traversing edges of this graph, although
+the packages themselves are normally installed in a central store to be shared by different projects.
 
 For historical reasons, NodeJS and NPM took a different approach of representing
-this graph physically on disk.  With this approach, the graph's nodes are package folder copies,
+the graph physically on disk:  With this approach, the graph's vertexes are package folder copies,
 and its edges are subfolder relationships, but with
 a [special rule](https://nodejs.org/api/modules.html#modules_all_together)
 whose effect is to introduce extra graph edges (pointing to the immediate children of all parent folders).
 From a computer science perspective, this rule relaxes the
-[tree data structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) such that
+[tree data structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) so that
 (1) it can now represent some (but not all) directed acyclic graphs, and (2) we pick up some
 extra ("phantom") edges that do not correspond to any declared package dependency.
 
