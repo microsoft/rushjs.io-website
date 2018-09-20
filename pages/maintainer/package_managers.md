@@ -10,7 +10,7 @@ Before you can start installing JavaScript library, you need to choose which pac
 
 - [Yarn](https://yarnpkg.com/en/): a complete rewrite of the NPM tool that preserves the same installation model, but promises faster installations, better reliability, and some cool new features (e.g. Yarn workspaces) that facilitate large scale development.
 
-- [PNPM](https://pnpm.js.org/): A fundamentally new installation model that eliminates the "NPM doppelganger" and "phantom dependency" problems, while cleverly making use of [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to remain 100% compatible with the NodeJS module resolution standard.
+- [PNPM](https://pnpm.js.org/): A fundamentally new installation model that eliminates the "[NPM doppelganger]({% link pages/advanced/npm_doppelgangers.md %})" and "[phantom dependency]({% link pages/advanced/phantom_deps.md %})" issues, while cleverly making use of [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to remain 100% compatible with the NodeJS module resolution standard.
 
 
 ## Which one should I use with Rush?

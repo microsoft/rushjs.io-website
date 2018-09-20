@@ -90,10 +90,14 @@ docs_nav:
 
   - title: Advanced Topics
     subitems:
-      - title: Preferred versions
-        url: /pages/advanced/preferred_versions
       - title: Config file reference
         url: /pages/advanced/config_files
+      - title: Phantom dependencies
+        url: /pages/advanced/phantom_deps
+      - title: NPM doppelgangers
+        url: /pages/advanced/npm_doppelgangers
+      - title: Preferred versions
+        url: /pages/advanced/preferred_versions
 
   - title: Help
     subitems:
