@@ -4,42 +4,44 @@ title: NPM vs PNPM vs Yarn
 navigation_source: docs_nav
 ---
 
-In order to install a JavaScript library, you need to choose one of several different package manager tools, that all do the same thing, but in slightly different ways.  (Our community loves flexibility and choices!)  Rush supports the three most popular package managers.  In chronological order:
+Before you can start installing JavaScript library, you need to choose which package manager you will use.  (Our community loves flexibility and choices, so of course there's not just one!)  Rush supports the three most popular package managers.  In chronological order:
 
-- [NPM](https://docs.npmjs.com/getting-started/what-is-npm): The tool that pioneered the packaging standard and registry protocol used by most JavaScript package managers today.  The tool's developers also maintain the NPM package registry, which is currently the most popular place to distribute open source JavaScript libraries.
+- [NPM](https://docs.npmjs.com/getting-started/what-is-npm): the tool that pioneered the packaging standard and registry protocol used by most JavaScript package managers today.  The tool's developers also maintain the npmjs.com registry, which is currently the most popular place to distribute open source JavaScript libraries.
 
-- [Yarn](https://yarnpkg.com/en/): A complete rewrite of the NPM tool that preserves the same installation model, but promises faster installations, fewer bugs, and some cool new features (e.g. Yarn workspaces) that facilitate large scale development.
+- [Yarn](https://yarnpkg.com/en/): a complete rewrite of the NPM tool that preserves the same installation model, but promises faster installations, better reliability, and some cool new features (e.g. Yarn workspaces) that facilitate large scale development.
 
 - [PNPM](https://pnpm.js.org/): A fundamentally new installation model that eliminates the "NPM doppelganger" and "phantom dependency" problems, while cleverly making use of [symlinks](https://en.wikipedia.org/wiki/Symbolic_link) to remain 100% compatible with the NodeJS module resolution standard.
 
 
 ## Which one should I use with Rush?
 
-The answer depends on your needs.  The Rush developers don't endorse a particular package manager, but here are some observations based on our experience with managing very large monorepos.
+The answer depends on your needs.  The Rush developers don't endorse a particular package manager, but here are some observations based on our experience from managing our own monorepos:
 
 #### NPM pros and cons
 
-- NPM is the most compatible choice, and is most likely to work with legacy packages.
+- NPM is the most compatible choice, and the most forgiving choice for dealing with "bad" packages.
 
-- If you choose NPM, you will need to do trial+error to find a version number that works correctly with Rush.  NPM 5.x and 6.x are both known to have unfixed regressions that cause trouble in Rush repos.  Unfortunately **4.5.0** is the most recent version that is known to be very reliable.  (We'd greatly appreciate community help fixing the NPM issues that were reported but remain unfixed.)
+- If you choose NPM, you will need to do trial+error to find a version that works correctly with Rush.  NPM 5.x and 6.x are both known to have unresolved regressions that cause trouble in Rush repos.  NPM **4.5.0** is the most recent version that's known to work very reliably, but unfortunately it's pretty old.  (We'd greatly appreciate community help improving this situation; look for the ["external issue" label](https://github.com/Microsoft/web-build-tools/issues?q=is%3Aissue+is%3Aopen+label%3A%22external+issue%22).)
 
-> Before reporting a Rush bug involving the NPM package manager, first try downgrading to `"npmVersion": "4.5.0"`.  If that eliminates the repro, then your issue is likely an NPM regression and may not be fixable in the Rush code base.  We still accept these issues, but we track them differently.
+  *Before reporting a Rush bug involving the NPM package manager, first try downgrading to `"npmVersion": "4.5.0"`.  If that eliminates the repro, then your issue is likely an NPM regression and may not be fixable in the Rush code base.  We still accept these issues, but we track them differently.*
 
 #### PNPM pros and cons
 
-- NPM doppelgangers are not merely a performance issue. They lead to actual semantic problems (e.g. build tools have a hard time dealing with two copies of the same version of the same library).  In a large monorepo, these problems are more likely to occur and more difficult to diagnose.  PNPM is the only supported package manager that eliminates these problems.
+- PNPM is the only option that eliminates the NPM doppelgangers problem.  In a complex monorepo, doppelgangers sometimes cause nontrivial build failures that can be difficult to diagnose.
 
-- Although PNPM adheres to the modern NodeJS module resolution standard, many legacy packages do not, which causes compatibility problems that only affect PNPM.  Thus, most teams that migrate existing projects to PNPM encounter various "bad packages" that need fixes.  The typical symptoms are (1) importing packages not listed in their **package.json** file, or (2) implementing their own module resolution that doesn't handle symlinks according to the standard.  This can often seem daunting for a small team.  (The [PNPM Gitter chat room](https://gitter.im/pnpm/pnpm) can be helpful, though.)
+- Although PNPM's strategy conforms to the modern NodeJS module resolution standard, many legacy packages do not, which causes compatibility problems.  Teams who migrate existing projects from Yarn or NPM to PNPM often encounter "bad packages" that need workarounds or fixes.  The incompatibilities are generally actual problems: (1) importing packages not listed in their **package.json** file, or (2) attempting to implement their own module resolution without handling symlinks according to the standard.  In most cases the fixes are straightforward, but it can be daunting for a small team.  (The [PNPM Gitter chat room](https://gitter.im/pnpm/pnpm) is a great resource for help, though.)
 
-- PNPM is newer and less widely used than NPM or Yarn, but it's an industrial strength tool.  At Microsoft, we use PNPM in repos with hundreds of projects and hundreds of PRs per day, and have found it to be very fast and reliable.
+- PNPM is newer and less widely used than NPM or Yarn, but it is a solid piece of software.   Microsoft uses PNPM in Rush repos with hundreds of projects and hundreds of PRs per day, and we've found it to be very fast and reliable.
 
 #### Yarn pros and cons
 
-- Rush recently implemented Yarn support.  It's not yet heavily tested, so we will happily try to fix any issues that are reported.  If you can't use PNPM, this is your best bet for support from the Rush developers.
+- Rush's support for Yarn is relatively new and unproven, so we're eager to hear about issues and get them fixed.  If you can't use PNPM, this is your best bet for support from the Rush developers.
+
+- Yarn installs faster than NPM (although somewhat slower than PNPM).
 
 - Yarn's "resolutions" feature is not yet compatible with Rush.  (See [Rush issue #831](https://github.com/Microsoft/web-build-tools/issues/831).)
 
-- Yarn's "workspaces" are not supported because they rely on an installation model that does not protect against phantom dependencies.  Rush's linking strategy is mostly equivalent to workspaces.
+- Yarn's "workspaces" are not used in a Rush repo, since they rely on an installation model that doesn't protect against phantom dependencies.  Rush's linking strategy is mostly equivalent to workspaces, however.
 
 ## Specifying your package manager
 
@@ -61,4 +63,4 @@ To change your package manager, edit the **rush.json** file and uncomment one of
 // "yarnVersion": "1.9.4",
 ```
 
-After changing the setting, delete your old shrinkwrap file and other package manager specific files from the **common/config/rush** folder.  Then run `rush update --full`.
+After changing the setting, delete your old shrinkwrap file and other package manager specific files from the **common/config/rush** folder.  (Otherwise Rush will complain about unsupported config files.)  Then run `rush update --full --purge`.  That's it!

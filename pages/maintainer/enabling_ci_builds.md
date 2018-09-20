@@ -44,8 +44,8 @@ All Rush repos come with a script `common/scripts/install-run-rush.js` that will
 
 - find your **rush.json** file
 - read the `rushVersion` that's specified there
-- bring over appropriate settings from your repo's .npmrc file
 - automatically install that version of Rush under the **common/temp/install-run** folder
+- using the appropriate settings from your repo's .npmrc file
 - ...and then invoke the Rush tool, passing along any command-line parameters that you provided
 
 The installation is cached, so this is not any slower than invoking Rush normally.  In fact,
@@ -74,16 +74,16 @@ for the Rush web site:  :-)
 ```
 
 Note that the **install-run.js** command line is a little different:  It must include the
-package name and version (which can be a SemVer range, although its best to avoid nondeterminism).
+package name and version (which can be a SemVer range, although it's best to avoid nondeterminism).
 It also needs a second parameter that specifies the name of the executable binary (even though
 the binary name is often the same as the package name).  In the above example, we're invoking the
 `qrcode` binary and its command-line parameter is `https://rushjs.io`.
 
 Of course, a more straightforward approach would be to specify **qrcode** as an ordinary dependency
-of a **package.json** file somewhere, for example a **tools/scripts** project.  That way it can
+of a **package.json** file somewhere, for example a **tools/repo-scripts** project.  That way it can
 part of your normal installation, and tracked by your repo's shrinkwrap file.  But in some cases
-that is undesirable.  For example, scripts that are only used by a lightweight CI job that doesn't
-require a `rush install`.  Or for Git hooks that need to work correctly even when `rush install`
+that is undesirable, for example scripts that are only used by a lightweight CI job that doesn't
+require a `rush install`. or Git hooks that need to work correctly even when the `rush install` state
 is broken or outdated.
 
 ## Travis example from "rush init"
