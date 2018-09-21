@@ -83,6 +83,16 @@
   z-index: -1000;
 }
 
+// Add a little icon next to hyperlinks that point to an external page.
+// We only do this inside an <article>.  An external page has "://" in its
+// URL and does not include to "rushjs.io" or "localhost".
+article a[href*="://"]:not([href*="rushjs.io"]):not([href*="localhost"]) {
+  background-position: center right;
+  background-repeat: no-repeat;
+  padding-right: 13px;
+  background-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg width%3D%2211%22 height%3D%2211%22 version%3D%221.1%22 viewBox%3D%220 0 14.364 15.028%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg transform%3D%22translate%28-82.14 -158.93%29%22 fill%3D%22%23c95228%22%3E%3Cpath d%3D%22m83.4 161.53c-0.80824-0.0237-1.3558 0.80437-1.2464 1.5543 0.0038 3.237-0.0077 6.4743 0.0058 9.711 0.0539 0.73242 0.77982 1.2548 1.4899 1.151 3.2712-5e-3 6.543 0.01 9.8138-7e-3 0.75077-0.0663 1.2005-0.84784 1.1068-1.5494v-4.0444h-2.1993v3.4019h-8.0176v-8.0176h1.6784v-2.1994h-2.6314z%22 %2F%3E%3Cpath d%3D%22m96.504 158.93c-2.5996 0.45395-5.1993 0.90791-7.7989 1.3619 0.56868 0.56868 1.1374 1.1374 1.706 1.706-1.0392 1.0392-2.0785 2.0785-3.1177 3.1177 1.0083 1.0083 2.0166 2.0166 3.025 3.025 1.0392-1.0392 2.0785-2.0785 3.1177-3.1177 0.56868 0.56868 1.1374 1.1374 1.706 1.706 0.45396-2.5996 0.90792-5.1993 1.3619-7.7989z%22 %2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+
 html {
   height: 100%;
 }
