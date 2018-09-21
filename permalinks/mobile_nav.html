@@ -1,0 +1,42 @@
+---
+layout: default
+title: Navigation Menu
+permalink: /mobile_nav.html
+navigation_source: docs_nav
+---
+
+<div class="container-fluid docsite-main px-4" style="max-width: 80rem;">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+
+      <h5>{{ page.title }}</h5>
+
+      {% assign side_nav_items = site.data.navigation[page.navigation_source] %}
+
+      {% comment %} This is based on side_nav.html {% endcomment %}
+
+      {% if side_nav_items[0] %}
+
+        {% for item in side_nav_items %}
+          <div>
+            {% if item.subitems[0] %}
+              <a href="{{ item.subitems[0].url | absolute_url }}">{{ item.title }}</a>
+              <ul>
+                {% for subitem in item.subitems %}
+                  {% assign temp = subitem.url | append: '/' %}
+                  <li><a href="{{ subitem.url }}">{{ subitem.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              {{ item.title }}
+            {% endif %}
+          </div>
+        {% endfor %}
+
+      {% endif %}
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

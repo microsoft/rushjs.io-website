@@ -18,9 +18,12 @@ layout: default
     {% comment %} For small displays this takes 10 columns, for large displays 8 columns {% endcomment %}
     <article role="main" class="col-10 col-md-8 px-4">
       <div class="pt-3 pb-2 mb-3">
+
+        {% comment %} "Improve this" floating button, shown only on large displays {% endcomment %}
         {% if site.data.links.edit_this_page_base_url %}
           {% if page.navigation_source == "docs_nav" %}
-            <a class="btn btn-outline-secondary btn-sm" style="float: right; margin-top: 3rem; position: relative;"
+            <a class="btn btn-outline-secondary btn-sm d-none d-md-block"
+              style="float: right; margin-top: 3rem; position: relative;"
               href="{{ site.data.links.edit_this_page_base_url }}{{ page.path }}">
               Improve this page
             </a>
@@ -28,6 +31,14 @@ layout: default
         {% endif %}
 
         <h1>{{ page.title }}</h1>
+
+        {% comment %} Menu bar used only on small displays {% endcomment %}
+        <div class="d-md-none pb-2">
+            <a class="btn btn-outline-secondary btn-sm" href="/mobile_nav">
+              << Docs Index
+            </a>
+        </div>
+
         <div class="entry">
           {{ content }}
         </div>
