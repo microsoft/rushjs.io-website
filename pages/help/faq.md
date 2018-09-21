@@ -22,10 +22,6 @@ Nope!  Rush works within the existing systems and standards.  It just does thing
 - It's still possible to build any project without Rush; just do `npm install` and `gulp` as usual
 - A project can be moved to a separate repo at any time, without any code changes; no commitment!
 
-### Have you heard of Yarn or pnpm?
-
-Yes, we're very interested in these tools!  They both promise to make `npm install` go a lot faster.  **Yarn** is a faster implementation of NPM's wacky node_modules layout, whereas **[pnpm](https://github.com/pnpm/pnpm)** replaces it with a different layout that greatly simplifies the install algorithm.  Since Rush runs `npm install` behind the scenes, and both of these tools are drop-in replacements for`npm install`, it would be pretty straightforward for Rush to support them.  Unfortunately both tools seem to be not quite production ready -- last we checked, neither is able to successfully install our production repositories.  :-(  As soon as that changes, we'll certainly jump on board.
-
 ### After installing Rush, why am I stilling see the old version?
 
 This problem isn't specific to Rush, but we hear about it a lot because Rush is one of the first tools people need to invoke when starting work in a repo.  The symptoms look like this:
