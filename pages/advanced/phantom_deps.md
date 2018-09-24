@@ -10,22 +10,23 @@ Want to learn more about how JavaScript package managers work?
 
 ## Some history and some theory
 
-First, a little background:  Everyone knows that software **packages** can depend on other
-**packages**.  This [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph)
-is a kind of [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+Everyone knows that software **packages** can depend on other **packages**, and the resulting
+[dependency graph](https://en.wikipedia.org/wiki/Dependency_graph) is a kind of
+[directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
 in computer science.  Unlike a tree data structure, a directed acyclic graph can have
 diamond-shaped branches that rejoin.  For example, library **A** might import definitions from
 libraries **B** and **C**, but then **B** and **C** can both import from **D**, which creates
 a "**diamond dependency**" between these four packages.  Conventionally the programming language's
 **module resolver** looks up imported packages by traversing edges of this graph, although
-the packages themselves are normally installed in a central store to be shared by different projects.
+(in other systems) the packages themselves are normally installed in a central store
+so they can be shared by many projects.
 
 For historical reasons, NodeJS and NPM took a different approach of representing
-the graph physically on disk:  With this approach, the graph's vertexes are package folder copies,
-and its edges are subfolder relationships, but with
-a [special rule](https://nodejs.org/api/modules.html#modules_all_together)
+the graph physically on disk:  With this approach, the graph's vertexes are actual package folder copies,
+and its edges are subfolder relationships.  But a folder tree's branches cannot rejoin to make diamonds,
+so NodeJS added a [special resolution rule](https://nodejs.org/api/modules.html#modules_all_together)
 whose effect is to introduce extra graph edges (pointing to the immediate children of all parent folders).
-From a computer science perspective, this rule relaxes the
+From a computer science perspective, this rule relaxes the file system's
 [tree data structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) so that
 (1) it can now represent some (but not all) directed acyclic graphs, and (2) we pick up some
 extra ("phantom") edges that do not correspond to any declared package dependency.
@@ -44,7 +45,7 @@ NPM's approach has many unique characteristics that differ from traditional pack
 
 - The installed **node_modules** tree is not unique.  There are many possible ways to arrange
   package folders into a tree to approximate the directed acyclic graph, and there is no
-  unique "normalized" arrangement.  The tree you get depends on whatever heuristics your
+  unique "normalized" arrangement.  The tree you get depends on whatever heuristics the
   package manager chose to follow.  NPM's own heuristics are even sensitive to
   [the order in which you add packages](http://npm.github.io/how-npm-works-docs/npm3/non-determinism.html).
 
@@ -145,9 +146,9 @@ like this:
 
 The intent is that we'll tell people to run `npm run deploy-app`, and our script will
 automatically deploy all the projects in the monorepo.  That's why it's in the repo
-root folder.  (Don't do that with Rush! Instead use its
-[custom commands]({% link pages/maintainer/custom_commands.md %} feature.)
-Since this hypothetical script needs to print colored text, we'll first ask people to run
+root folder.  (Don't do that with Rush! Instead define a
+[custom command]({% link pages/maintainer/custom_commands.md %}).)
+Since this hypothetical script needs to print colored text, let's say we first ask people to run
 `npm install` in the repo root folder, which will install the **colors** library
 from the `devDependencies` above.
 
@@ -169,11 +170,11 @@ The resulting folder tree would look like this:
       - ...
 ```
 
-But recall that NodeJS's module resolver can also look for dependencies in a parent folder.
-This means that our **lib/index.js** will be able to call `require("colors")` and find
+But recall that NodeJS's module resolver also looks for dependencies in parent folders.
+This means that our **my-library/lib/index.js** can call `require("colors")` and find
 the **colors** package, even if it doesn't appear anywhere under **my-library/node_modules**.
 This is an even more insidious way to pick up accidental phantom dependencies -- it can
-find **node_modules** folders that aren't even under your Git working directory!
+sometimes find **node_modules** folders that aren't even under your Git working directory!
 
 **How Rush helps:** Rush's got you covered.  The `rush install` command scans all
 potential parent folders and issues a warning if any phantom **node_modules** folders

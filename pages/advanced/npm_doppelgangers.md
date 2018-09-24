@@ -169,8 +169,8 @@ scale monorepo.  Here's some potential problems that can result:
   signatures ***for the same class from the same version of the same package***.  This can
   lead to highly confusing compiler errors.
 
-**How Rush helps:** Rush's symlinking strategy eliminates duplication for all
-direct dependencies that are local projects in the monorepo.  Unfortunately
-doppelgangers are still possible for any indirect dependencies of your projects
-if your Rush repo is configured for NPM or Yarn.  But if you're using PNPM,
-the doppelganger problem is completely eliminated.
+**How Rush helps:** Rush's symlinking strategy eliminates doppelgangers only for dependencies
+that are local projects in the monorepo.  If you're using NPM or Yarn as your package manager,
+unfortunately doppelgangers are still possible for any indirect dependencies.  Whereas if you
+use PNPM with Rush, the doppelganger problem is fully solved (because PNPM's installation model
+accurately simulates a true directed acyclic graph).

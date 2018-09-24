@@ -27,17 +27,17 @@ The answer depends on your needs.  The Rush developers don't endorse a particula
 
 #### Considerations for PNPM
 
-- PNPM is the only option that solves the [NPM doppelgangers]({% link pages/advanced/npm_doppelgangers.md %}) issue.  In a complex monorepo, doppelgangers sometimes cause a lot of trouble, so PNPM has an important advantage in this regard.
+- PNPM is the only option that solves the [NPM doppelgangers]({% link pages/advanced/npm_doppelgangers.md %}) problem.  In a complex monorepo, doppelgangers sometimes cause a lot of trouble, so PNPM has an important advantage in this regard.
 
-- Although PNPM's symlinking strategy conforms to the modern NodeJS module resolution standard, many legacy packages do not, which causes compatibility problems.  Teams who migrate existing projects from Yarn/NPM to PNPM often encounter "bad packages" that need workarounds or fixes.  The incompatibilities generally reflect real problems with those packages: (1) forgetting to list dependencies in the **package.json** file, or (2) implementing homebrew module resolution without handling symlinks according to the standard.  Most "bad" packages have straightforward fixes, but it can be daunting for a small team.  (The [PNPM Gitter chat room](https://gitter.im/pnpm/pnpm) is a great resource for help, though.)
+- Although PNPM's symlinking strategy correctly follows the modern NodeJS module resolution standard, many legacy packages do not, which causes compatibility problems.  Teams who migrate existing projects from Yarn/NPM to PNPM often encounter "bad packages" that need workarounds or fixes.  The incompatibilities generally reflect real problems with those packages: (1) forgetting to list dependencies in the **package.json** file, or (2) implementing homebrew module resolution without handling symlinks according to the standard.  Most "bad" packages have straightforward fixes, but it may seem daunting for a small team.  (The [PNPM Gitter chat room](https://gitter.im/pnpm/pnpm) is a great resource for help, though.)
 
-- PNPM is newer and less widely used than NPM or Yarn, but it's a solid piece of software.   Microsoft uses PNPM in Rush repos with hundreds of projects and hundreds of PRs per day, and we've found it to be very fast and reliable.
+- PNPM is newer and less widely used than NPM or Yarn, but it's a solid piece of software.  Microsoft uses PNPM in Rush repos with hundreds of projects and hundreds of PRs per day, and we've found it to be very fast and reliable.
 
 - PNPM is currently the only option that supports the `--strict-peer-dependencies` protection (see `"strictPeerDependencies"` in **rush.json**).
 
 #### Considerations for Yarn
 
-- Rush's support for Yarn is relatively new and unproven, so we're eager to hear about issues and get them fixed.  If you can't use PNPM, Yarn is your best bet for support from the Rush developers.
+- Rush's support for Yarn is relatively new and unproven, so we're eager to hear about issues and get them fixed.
 
 - Yarn installs faster than NPM (although somewhat slower than PNPM).
 
