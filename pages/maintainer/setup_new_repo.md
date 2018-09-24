@@ -23,7 +23,8 @@ Initially each of these projects is in its own folder.  They are built using a c
 ~/my-controls$ npm run build
 ~/my-controls$ npm link
 ~/my-app$ cd ../my-app
-~/my-app$ npm link
+~/my-app$ npm link my-toolchain
+~/my-app$ npm link my-controls
 ~/my-app$ npm run build
 ```
 
