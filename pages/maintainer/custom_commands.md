@@ -4,30 +4,78 @@ title: Custom commands
 navigation_source: docs_nav
 ---
 
-Starting with Rush 4, if your toolchain has special modes or features, you can expose these as custom options or commands for the Rush tool.
+If your toolchain has special modes or features, you can expose these as custom commands or parameters for the Rush tool.
 
-## Defining custom commands and options
+## Defining custom commands and parameters
 
-These are defined in the config file here **common/config/rush/command-line.json** file.  Your config file should conform to the [command-line.schema.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/rush-lib/src/schemas/command-line.schema.json) schema.  Consider this sample:
+These are defined in the config file **common/config/rush/command-line.json**.  Your config file should conform to the [command-line.schema.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/rush-lib/src/schemas/command-line.schema.json) schema.  Consider this sample:
 
-```json
+```javascript
 {
-  "$schema": "https://dev.office.com/json-schemas/rush/command-line.schema.json",
-  "customCommands": [
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+
+  "commands": [
     {
+      /**
+       * (Required) Determines the type of custom command.
+       * Rush's "bulk" commands are invoked separately for each project.  Rush will look in
+       * each project's package.json file for a "scripts" entry whose name matches the
+       * command name.  By default, the command will run for every project in the repo,
+       * according to the dependency graph (similar to how "rush build" works).
+       * The set of projects can be restricted e.g. using the "--to" or "--from" parameters.
+       */
+      "commandKind": "bulk",
       "name": "import-strings",
       "summary": "Imports translated strings into each project.",
-      "documentation": "Requests translated strings from the translation service and imports them into each project.",
-      "parallelized": true
+      "description": "Requests translated strings from the translation service and imports them into each project.",
+      "enableParallelism": true
+    },
+    {
+      /**
+       * (Required) Determines the type of custom command.
+       * Rush's "global" commands are invoked once for the entire repo.
+       */
+      "commandKind": "global",
+
+      "name": "deploy-app",
+      "summary": "Deploys the application",
+      "description": "Run this command to deploy the application",
+
+      "shellCommand": "node common/scripts/deploy-app.js"
     }
   ],
 
-  "customOptions": {
-    "--locale": {
-      "optionType": "enum",
+  "parameters": [
+    {
+      /**
+       * (Required) Determines the type of custom parameter.
+       * A "flag" is a custom command-line parameter whose presence acts as an on/off switch.
+       */
+      "parameterKind": "flag",
+      "longName": "--ship",
+      "shortName": "-s",
+      "description": "Perform a production build, including minification and localization steps",
+      "associatedCommands": [ "build", "rebuild", "import-strings" ],
+    },
+
+    {
+      "parameterKind": "flag",
+      "longName": "--minimal",
+      "shortName": "-m",
+      "description": "Perform a fast build, which disables certain tasks such as unit tests and linting",
+      "associatedCommands": [ "build", "rebuild" ]
+    },
+    {
+      /**
+       * (Required) Determines the type of custom parameter.
+       * "A "choice" is a custom command-line parameter whose argument must be chosen from a list
+       * of allowable alternatives.
+       */
+      "parameterKind": "choice",
+      "longName": "--locale",
       "description": "Selects a single instead of the default locale (en-us) for non-ship builds or all locales for ship builds.",
       "associatedCommands": [ "build", "rebuild", "import-strings" ],
-      "enumValues": [
+      "alternatives": [
         {
           "name": "en-us",
           "description": "US English"
@@ -45,41 +93,36 @@ These are defined in the config file here **common/config/rush/command-line.json
           "description": "Chinese (China)"
         }
       ]
-    },
-
-    "--ship": {
-      "optionType": "flag",
-      "description": "Perform a production build, including minification and localization steps",
-      "associatedCommands": [ "build", "rebuild", "import-strings" ],
-      "shortName": "-s"
-    },
-
-    "--minimal": {
-      "optionType": "flag",
-      "description": "Perform a fast build, which disables certain tasks such as unit tests and linting",
-      "associatedCommands": [ "build", "rebuild" ],
-      "shortName": "-m"
     }
-  }
+  ]
 }
 ```
 
-You can define your own "commands" that are similar to Rush's built-in command verbs (e.g. `rush build`, `rush check`, etc).  By default, your commands are not parallelized -- they run one at a time.  You can set `"parallelized": true` to change this.  Custom commands normally run for every project in your **rush.json** file, however the `--to` and `--from` command-line parameters can be used to select subsets of projects similar to how `rush rebuild` works.
+**Custom commands:** You can define your own commands that are similar to Rush's built-in command verbs (e.g. `rush build`, `rush check`, etc).  There are two kinds:
 
-You can also define your own command-line "options".  An option can be associated with one or more commands via the `associatedCommands` list.  You can even add your options to Rush's own built-in commands.  Above we add the `--ship` option to `rush build` and `rush rebuild` in addition to `rush import-strings`.
+- **bulk command:** These commands run individually for each project in the repo, similar to how `rush build` works.  If you set `"enableParallelism": true`, projects can be processed in parallel.
+- **global command:** These commands run once for the entire repo, by executing a specified script file.
 
-Currently two kinds of `optionType` are supported:  A "flag" is a simple switch such as `--ship`.  An "enum" requires an additional value which must come from a list of supported values, for example `--locale fr-fr`.  In the future, more options types may be introduced.
+You can also define your own command-line "parameters".  A parameter can be associated with one or more commands via its `associatedCommands` list.  You can even associate your custom parameters with Rush's own built-in `build` and `rebuild` commands.  In the above example, we associate the `--ship` parameter with `rush build`, `rush rebuild`, and our custom `rush import-strings`.
+
+Currently two kinds of `parameterKind` are supported:
+- **flag parameter**: A "flag" is a simple switch such as `--ship`.
+- **choice parameter**:  An "choice" requires an additional argument which must come from a list of supported alternatives, for example `--locale fr-fr`.
+
+More parameter kinds may be supported in the future.  (They are parsed using the [ts-command-line](https://www.npmjs.com/package/@microsoft/ts-command-line) library which supports other parameter kinds that could be exposed.)
+
 
 ## Using custom commands and options
 
-Your custom definitions will appear in Rush's command-line help for `rush import-strings -h`:
+Your custom definitions and their descriptions will be incorporated into Rush's command-line help (when invoked under your repo working folder). Continuing the above example, if we run `rush import-strings --help` we'll now see something like this:
 
 ```
-Rush Multi-Package Build Tool 4.0.0 - http://aka.ms/rush
+Rush Multi-Project Build Tool 5.1.0 - https://rushjs.io
 
-usage: rush import-strings [-h] [-p COUNT] [-t PROJECT1] [-f PROJECT2] [-v]
-                           [--locale {en-us,fr-fr,es-es,zh-cn}] [-s]
-
+usage: rush import-strings [-h] [-p COUNT] [-t PROJECT1]
+                           [--to-version-policy VERSION_POLICY_NAME]
+                           [-f PROJECT2] [-v] [-s]
+                           [--locale {en-us,fr-fr,es-es,zh-cn}]
 
 Requests translated strings from the translation service and imports them
 into each project.
@@ -87,25 +130,31 @@ into each project.
 Optional arguments:
   -h, --help            Show this help message and exit.
   -p COUNT, --parallelism COUNT
-                        Limit the number of simultaneous executions. This
-                        value defaults to the number of CPU cores.
+                        Specify the number of concurrent build processes The
+                        value "max" can be specified to indicate the number
+                        of CPU cores. If this parameter omitted, the default
+                        value depends on the operating system and number of
+                        CPU cores.
   -t PROJECT1, --to PROJECT1
                         Run command in the specified project and all of its
                         dependencies
+  --to-version-policy VERSION_POLICY_NAME
+                        Run command in all projects with the specified
+                        version policy and all of their dependencies
   -f PROJECT2, --from PROJECT2
                         Run command in all projects that directly or
                         indirectly depend on the specified project
   -v, --verbose         Display the logs during the build, rather than just
                         displaying the build status summary
+  -s, --ship            Perform a production build, including minification
+                        and localization steps
   --locale {en-us,fr-fr,es-es,zh-cn}
                         Selects a single instead of the default locale
                         (en-us) for non-ship builds or all locales for ship
                         builds.
-  -s, --ship            Perform a production build, including minification
-                        and localization steps
 ```
 
-But how to implement them?  The commands correspond to script names in your **package.json** file.  Suppose it looks like this:
+How to implement a custom command/parameter?  For global commands, Rush simply invokes their `shellCommand` and passes the parameters along.  For bulk commands, Rush looks for a corresponding script name in your **package.json** file.  Suppose we have something like this:
 
 **example/package.json**
 ```json
@@ -127,10 +176,10 @@ If we run `rush import-strings --locale fr-fr`, then Rush will read the "import-
 ./node_modules/.bin/loc-importer --locale fr-fr
 ```
 
-(Rush directly executes it using your shell; it does not rely on `npm run`.)  Since this enum has a default value, if we run `rush import-strings`, then **loc-importer** is executed like this:
+(Rush directly executes it using your shell; it does not rely on `npm run`.)  Since this choice parameter has a default value, if we run `rush import-strings`, then **loc-importer** is executed like this:
 
 ```
 ./node_modules/.bin/loc-importer --locale en-us
 ```
 
-In other words, Rush's custom options are simply appended to the **package.json** script body.  This means you will run into trouble if you try to use script bodies such as `rimraf ./lib && rimraf ./temp` which don't support these options, or need them to be inserted inside the string.  This is by design:  If you want to provide command-line options for your developers, the NPM tool is inherently going to be a poor experience, because it has no way to check for mistakes or display command-line help.  In the future, we intend for Rush to act as a drop-in replacement for `npm run`, leveraging Rush's command-line validation and documentation model to provide a better experience.  In any case, you need to move your `rimraf` commands into a script that understands Rush's options.  For a large repo with many projects, this is a good practice in general.
+In other words, Rush's custom parameters are simply appended to the **package.json** script body.  This means you may run into trouble if your script body uses shell expressions such as "`rimraf ./lib && rimraf ./temp`" which don't support these parameters, or need them to be inserted in the middle of the string.  This is by design:  We don't recommend writing nontrivial build scripts inside a JSON string.  Instead, it's better to move this operation into a proper script file that can be commented and reviewed.  As your monorepo grows, you'll probably also want to move that script into a reusable library that can be shared across projects.
