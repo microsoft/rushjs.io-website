@@ -5,7 +5,7 @@ navigation_source: docs_nav
 ---
 
 ```
-usage: rush add [-h] -p PACKAGE_NAME [--exact] [--caret] [--dev] [-m] [-s]
+usage: rush add [-h] -p PACKAGE [--exact] [--caret] [--dev] [-m] [-s]
 
 Adds a specified package as a dependency of the current project (as
 determined by the current working directory) and then runs "rush update". If
@@ -19,11 +19,14 @@ dependency.
 
 Optional arguments:
   -h, --help            Show this help message and exit.
-  -p PACKAGE_NAME, --package PACKAGE_NAME
+  -p PACKAGE, --package PACKAGE
                         (Required) The name of the package which should be
-                        added as a dependency. Also, the version specifier
-                        can be appended after an "@" sign (similar to NPM's
-                        semantics).
+                        added as a dependency. A SemVer version specifier can
+                        be appended after an "@" sign. WARNING: Symbol
+                        characters are usually interpreted by your shell, so
+                        it's recommended to use quotes. For example, write
+                        "rush add --project "example@^1.2.3"" instead of
+                        "rush add --project example@^1.2.3".
   --exact               If specified, the SemVer specifier added to the
                         package.json will be an exact version (e.g. without
                         tilde or caret).
