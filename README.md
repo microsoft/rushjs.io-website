@@ -25,6 +25,7 @@ and run the solution locally:
 
 ```
 set ALGOLIA_API_KEY=(your_admin_api_key)
+bundle exec jekyll build
 bundle exec jekyll algolia
 ```
 
