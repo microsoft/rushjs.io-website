@@ -56,6 +56,8 @@ docs_nav:
 
   - title: Command Reference
     subitems:
+      - title: rush add
+        url: /pages/commands/rush_add
       - title: rush build
         url: /pages/commands/rush_build
       - title: rush change
