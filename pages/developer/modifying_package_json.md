@@ -30,7 +30,16 @@ The `rush add` command can also be used to update the version of an existing dep
 # Or if you want the version specifier "^1.2.3":
 ~/my-repo/apps/my-app$ rush add --package example-lib@1.2.3 --caret
 
-# If any other projects in the repo are using "example-lib", you can update them all together:
+# A more advanced example, where we query the NPM registry to find latest version that is
+# compatible with the SemVer specifier "^1.2.0" and then add it as a tilde dependency
+# such as "~1.5.3".
+#
+# IMPORTANT: When specifying symbol characters on the command line, use quotes so they
+# don't get misinterpreted by your shell.
+~/my-repo/apps/my-app$ rush add --package "example-lib@^1.2.0"
+
+# If any other projects in the repo are using "example-lib", you can update them all
+# to "1.2.3" in bulk:
 ~/my-repo/apps/my-app$ rush add --package example-lib@1.2.3 --make-consistent
 
 ```
