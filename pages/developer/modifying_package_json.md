@@ -18,20 +18,20 @@ In a Rush repo, you should instead use the [rush add]({% link pages/commands/rus
 ~/my-repo$ cd apps/my-app
 
 # Add "example-lib" as a dependency of "my-app", and then automatically run "rush update":
-~/my-repo/apps/my-app$ rush add example-lib
+~/my-repo/apps/my-app$ rush add --package example-lib
 ```
 
 The `rush add` command can also be used to update the version of an existing dependency:
 
 ```sh
 # Update "my-app" to use "example-lib" version "~1.2.3":
-~/my-repo/apps/my-app$ rush add example-lib@1.2.3
+~/my-repo/apps/my-app$ rush add --package example-lib@1.2.3
 
 # Or if you want the version specifier "^1.2.3":
-~/my-repo/apps/my-app$ rush add example-lib@1.2.3 --caret
+~/my-repo/apps/my-app$ rush add --package example-lib@1.2.3 --caret
 
 # If any other projects in the repo are using "example-lib", you can update them all together:
-~/my-repo/apps/my-app$ rush add example-lib@1.2.3 --make-consistent
+~/my-repo/apps/my-app$ rush add --package example-lib@1.2.3 --make-consistent
 
 ```
 
