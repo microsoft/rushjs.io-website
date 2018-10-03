@@ -16,8 +16,8 @@ title: Rush
 # Short bio or description (displayed in the header)
 description: A scalable monorepo manager for JavaScript
 
-# Location of the Open Graph image (1200x1200 recommended size)
-logo: /images/rush-ograph.png
+# Location of the Open Graph image (1200x630 recommended size, must be an absolute URL)
+logo: https://rushjs.io/images/rush-ograph.png
 
 # "true" or "false" to indicate whether to provide a download URL
 show_downloads: false
