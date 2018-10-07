@@ -6,7 +6,7 @@ navigation_source: docs_nav
 
 ## 3 minute demo
 
-Want to see Rush in action?  The only prerequisite you need is NodeJS.
+Want to see Rush in action?  The only prerequisite you need is [NodeJS](https://github.com/nodejs/node).
 
 **From your shell, install Rush like this:**
 ```sh
