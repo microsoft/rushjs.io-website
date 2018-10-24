@@ -21,7 +21,7 @@ The answer depends on your needs.  The Rush developers don't endorse a particula
 
 - NPM is the most compatible choice, and the most forgiving for dealing with "bad" packages.
 
-- If you choose NPM, you will need to do trial+error to find a version that works correctly with Rush.  NPM 5.x and 6.x are both known to have unresolved regressions that cause trouble in Rush repos.  NPM **4.5.0** is the most recent version that's known to work very reliably, but unfortunately it's pretty old.  (We'd greatly appreciate community help improving this situation; look for the ["external issue" label](https://github.com/Microsoft/web-build-tools/issues?q=is%3Aissue+is%3Aopen+label%3A%22external+issue%22).)
+- If you choose NPM, you may need to use an older release.  NPM 5.x and 6.x are both known to have unresolved regressions that cause trouble in Rush repos.  NPM **4.5.0** is the most recent version that's known to work very reliably, but unfortunately it's pretty old.  (We'd greatly appreciate community help improving this situation. We're using [GitHub issue #886](https://github.com/Microsoft/web-build-tools/issues/886) to track this effort.)
 
   *Before reporting a Rush bug involving the NPM package manager, first try downgrading to `"npmVersion": "4.5.0"`.  If that eliminates the repro, then your issue is likely an NPM regression and may not be fixable in the Rush code base.  We still accept these issues, but we track them differently.*
 
