@@ -17,46 +17,46 @@ in computer science.  Unlike a tree data structure, a directed acyclic graph can
 diamond-shaped branches that rejoin.  For example, library **A** might import definitions from
 libraries **B** and **C**, but then **B** and **C** can both import from **D**, which creates
 a "**diamond dependency**" between these four packages.  Conventionally the programming language's
-**module resolver** looks up imported packages by traversing edges of this graph, although
-(in other systems) the packages themselves are normally installed in a central store
-so they can be shared by many projects.
+**module resolver** looks up imported packages by traversing edges of this graph, and
+(in other systems) the packages themselves are found in a central store that can be shared by many projects.
 
-For historical reasons, NodeJS and NPM took a different approach of representing
-the graph physically on disk:  With this approach, the graph's vertexes are actual package folder copies,
-and its edges are subfolder relationships.  But a folder tree's branches cannot rejoin to make diamonds,
-so NodeJS added a [special resolution rule](https://nodejs.org/api/modules.html#modules_all_together)
+For historical reasons, NodeJS and NPM took a different approach by representing this graph physically on disk:
+NPM models the graph vertexes using actual package folder copies, and the graph edges are implied by the
+subfolder relationships.  But a folder tree's branches cannot rejoin to make diamonds.
+To handle this, NodeJS added a [special resolution rule](https://nodejs.org/api/modules.html#modules_all_together)
 whose effect is to introduce extra graph edges (pointing to the immediate children of all parent folders).
 From a computer science perspective, this rule relaxes the file system's
-[tree data structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) so that
+[tree data structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) in two ways:
 (1) it can now represent some (but not all) directed acyclic graphs, and (2) we pick up some
-extra ("phantom") edges that do not correspond to any declared package dependency.
+extra edges that do not correspond to any declared package dependency.  These extra edges are called
+"**phantom dependencies**".
 
 NPM's approach has many unique characteristics that differ from traditional package managers:
 
-- Each (root-level) project gets its own **node_modules** tree containing all the dependencies --
-  at least one copy of every package's contents.  Even a very small NodeJS project is
-  likely to have more than 10,000 files copied under its folder.
+- Each (root-level) project gets its own **node_modules** tree containing lots of package folder copies.
+  Even a very small NodeJS project is likely to have more than 10,000 files copied under its folder.
 
-- In NPM 2.x, the **node_modules** folder tree was very deep and duplicated,
-  in order to minimize extra ("phantom") graph edges.  NPM 3.x improved the installation
-  algorithm to flatten the tree, based on the realization that duplicate folders are a much worse
-  problem than extra graph edges.  In some cases the new algorithm will also choose a slightly older
-  version of a package (while still satisfying SemVer) to further reduce duplication of package folders.
+- In NPM 2.x, the **node_modules** folder tree was very deep and duplicated, which minimized phantom dependencies.
+  NPM 3.x improved the installation algorithm to flatten the tree, which eliminated a lot of duplication, at the
+  expense of introducing even more phantom dependencies (extra graph edges).  In some cases the new algorithm will
+  also choose a slightly older version of a package (while still satisfying SemVer) to further reduce duplication
+  of package folders.
 
 - The installed **node_modules** tree is not unique.  There are many possible ways to arrange
   package folders into a tree to approximate the directed acyclic graph, and there is no
-  unique "normalized" arrangement.  The tree you get depends on whatever heuristics the
+  unique "normalized" arrangement.  The tree you get depends on whatever heuristics your
   package manager chose to follow.  NPM's own heuristics are even sensitive to
   [the order in which you add packages](http://npm.github.io/how-npm-works-docs/npm3/non-determinism.html).
 
 
-The **node_modules** tree is an unusual and mathematically rich data structure.
-But let's focus on three consequences that can cause real trouble, and can be particularly
+The **node_modules** tree is an unusual and theoretically interesting data structure.
+But let's focus on three consequences that can cause real trouble, and which can be particularly
 difficult to diagnose in a large and very active monorepo.  We'll also show how Rush improves
 things -- mitigating these problems was one of the original motivations for creating the Rush tool!
 
 
 ## Phantom dependencies
+<img src="/images/home/card-phantom.svg" style="float: right; padding-left: 30px" alt="NPM phantom dependency">
 
 A "phantom dependency" occurs when a project uses a package that is not defined
 in its **package.json** file.  Consider this example:
@@ -80,9 +80,9 @@ But suppose that the code looks like this:
 
 **my-library/lib/index.js**
 ```javascript
+var minimatch = require("minimatch")
 var expand = require("brace-expansion");  // ???
 var glob = require("glob")  // ???
-var minimatch = require("minimatch")
 
 // (more code here that uses those libraries)
 ```
@@ -91,7 +91,7 @@ Wait a sec -- two of these libraries are not declared as dependencies
 in the **package.json** file.  How is this working at all!?  It turns out that
 **brace-expansion** is a dependency of **minimatch**, and **glob** is a dependency
 of **rimraf**.  During installation, NPM has flattened their folders to be under
-**my-library/node_modules**.  The NodeJS `require()` function finds them there,
+**my-library/node_modules**.  The NodeJS `require()` function finds them there
 because it probes for folders without considering the **package.json** files at all.
 This is perhaps counterintuitive, but it seems to work just fine.  Maybe it's a
 feature and not a bug?
@@ -139,26 +139,24 @@ like this:
     "deploy-app": "node ./deploy-app.js"
   },
   "devDependencies": {
-    "colors": "~1.3.2"
+    "semver": "~5.6.0"
   }
 }
 ```
 
-The intent is that we'll tell people to run `npm run deploy-app`, and our script will
-automatically deploy all the projects in the monorepo.  That's why it's in the repo
-root folder.  (Don't do that with Rush! Instead define a
-[custom command]({% link pages/maintainer/custom_commands.md %}).)
-Since this hypothetical script needs to print colored text, let's say we first ask people to run
-`npm install` in the repo root folder, which will install the **colors** library
-from the `devDependencies` above.
+This allows people to run `npm run deploy-app`, and our script will automatically deploy all the projects
+in the monorepo.  (Don't do this if you're using Rush! Instead define a
+[custom command]({% link pages/maintainer/custom_commands.md %}).)  Notice that this hypothetical script
+needs to use the **semver** library, so it was added to the `devDependencies` list.  People are asked to
+run `npm install` in the repo root folder before `npm run deploy-app`.
 
-The resulting folder tree would look like this:
+The resulting installed folders will look something like this:
 
 ```
 - my-monorepo/
   - package.json
   - node_modules/
-    - colors/
+    - semver/
     - ...
   - my-library/
     - package.json
@@ -170,9 +168,9 @@ The resulting folder tree would look like this:
       - ...
 ```
 
-But recall that NodeJS's module resolver also looks for dependencies in parent folders.
-This means that our **my-library/lib/index.js** can call `require("colors")` and find
-the **colors** package, even if it doesn't appear anywhere under **my-library/node_modules**.
+But recall that NodeJS's module resolver probes for dependencies in parent folders.
+This means that our **my-library/lib/index.js** can call `require("semver")` and find
+the **semver** package, even if it doesn't appear anywhere under **my-library/node_modules**.
 This is an even more insidious way to pick up accidental phantom dependencies -- it can
 sometimes find **node_modules** folders that aren't even under your Git working directory!
 

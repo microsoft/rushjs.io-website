@@ -7,6 +7,7 @@ navigation_source: docs_nav
 *This article continues the discussion from the "[Phantom dependencies]({% link pages/advanced/phantom_deps.md %})" section.  It's recommended to read that first.*
 
 ## How NPM doppelgangers arise
+<img src="/images/home/card-doppel.svg" style="float: right; padding-left: 30px" alt="NPM doppelganger">
 
 Sometimes the **node_modules** data structure is forced to install two copies
 of ***the same version of*** the same package.  Really?  How can that happen?
@@ -121,7 +122,7 @@ but then **F1** gets duplicated:
 Either way, we cannot arrange the tree without having two copies of the same version
 of **library-f**.  We call these "doppelgangers".  Traditional package managers from
 other programming languages don't encounter this issue; it's a peculiar aspect of
-NPM's **node_modules** tree.
+NPM's **node_modules** tree.  It is inherent in the design and unavoidable.
 
 
 ## Consequences of doppelgangers
