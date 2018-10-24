@@ -105,6 +105,8 @@ docs_nav:
 
   - title: Config Reference
     subitems:
+      - title: Environment variables
+        url: /pages/configs/environment_vars
       - title: .npmrc
         url: /pages/configs/npmrc
       - title: command-line.json
