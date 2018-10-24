@@ -100,6 +100,8 @@ docs_nav:
         url: /pages/advanced/npm_doppelgangers
       - title: Preferred versions
         url: /pages/advanced/preferred_versions
+      - title: Installation variants
+        url: /pages/advanced/installation_variants
 
   - title: Help
     subitems:
