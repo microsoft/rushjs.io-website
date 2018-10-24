@@ -54,6 +54,24 @@ docs_nav:
       - title: Publishing Packages
         url: /pages/maintainer/publishing
 
+  - title: Best Practices
+    subitems:
+      - title: Authoring change logs
+        url: /pages/best_practices/change_logs
+
+  - title: Advanced Topics
+    subitems:
+      - title: Config file reference
+        url: /pages/advanced/config_files
+      - title: Phantom dependencies
+        url: /pages/advanced/phantom_deps
+      - title: NPM doppelgangers
+        url: /pages/advanced/npm_doppelgangers
+      - title: Preferred versions
+        url: /pages/advanced/preferred_versions
+      - title: Installation variants
+        url: /pages/advanced/installation_variants
+
   - title: Command Reference
     subitems:
       - title: rush add
@@ -85,23 +103,20 @@ docs_nav:
       - title: rush version
         url: /pages/commands/rush_version
 
-  - title: Best Practices
+  - title: Config Reference
     subitems:
-      - title: Authoring change logs
-        url: /pages/best_practices/change_logs
-
-  - title: Advanced Topics
-    subitems:
-      - title: Config file reference
-        url: /pages/advanced/config_files
-      - title: Phantom dependencies
-        url: /pages/advanced/phantom_deps
-      - title: NPM doppelgangers
-        url: /pages/advanced/npm_doppelgangers
-      - title: Preferred versions
-        url: /pages/advanced/preferred_versions
-      - title: Installation variants
-        url: /pages/advanced/installation_variants
+      - title: .npmrc
+        url: /pages/configs/npmrc
+      - title: command-line.json
+        url: /pages/configs/command_line_json
+      - title: common-versions.json
+        url: /pages/configs/common_versions_json
+      - title: pnpmfile.js
+        url: /pages/configs/pnpmfile_js
+      - title: rush.json
+        url: /pages/configs/rush_json
+      - title: version-policies.json
+        url: /pages/configs/version_policies_json
 
   - title: Help
     subitems:
