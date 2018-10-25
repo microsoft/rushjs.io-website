@@ -7,7 +7,7 @@ navigation_source: docs_nav
 ```
 usage: rush update [-h] [-p] [--bypass-policy] [--no-link]
                    [--network-concurrency COUNT] [--debug-package-manager]
-                   [--full] [--recheck]
+                   [--variant VARIANT] [--full] [--recheck]
 
 
 The "rush update" command installs the dependencies described in your package.
@@ -40,6 +40,9 @@ Optional arguments:
                         Activates verbose logging for the package manager.
                         You will probably want to pipe the output of Rush to
                         a file when using this command.
+  --variant VARIANT     Run command using a variant installation
+                        configuration. This parameter may alternatively
+                        specified via the RUSH_VARIANT environment variable.
   --full                Normally "rush update" tries to preserve your
                         existing installed versions and only makes the
                         minimum updates needed to satisfy the package.json
