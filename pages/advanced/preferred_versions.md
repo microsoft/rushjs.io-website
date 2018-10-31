@@ -4,7 +4,7 @@ title: Preferred versions
 navigation_source: docs_nav
 ---
 
-# Background
+## Background
 
 Rush performs a single install for all your projects by creating a fake **rush-common** project in your common folder that references tarballs containing the dependencies for each project. For example, suppose your **rush.json** has two projects "**project1**" and "**project2**".  The generated file might look like this:
 
@@ -71,7 +71,7 @@ node_modules/
 
 ... which is also a valid solution to the SemVer equation.  Similar problems can arise when using Rush with NPM's [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/).
 
-# Preferred Versions
+## Preferred Versions
 
 To control these effects Rush introduces a concept of "preferred versions", which are dependencies that get explicitly added to the top-level **common/temp/package.json**.
 
@@ -105,7 +105,7 @@ This will cause **css-loader** to be added to the **common/temp/package.json** f
 
 *Note: If you are publishing packages, you should be careful about adding preferred versions in a way that would produce a different result than a person who installs your library normally using NPM.*
 
-# Implicitly Preferred Versions
+## Implicitly Preferred Versions
 
 In general, *you don't need to specify preferred versions explicitly*.  In our original example, Rush would probably automatically solve the problem for you using "implicitly preferred versions".  Most likely your **common/temp/package.json** will already look like this:
 
