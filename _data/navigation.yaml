@@ -53,6 +53,8 @@ docs_nav:
         url: /pages/maintainer/custom_commands
       - title: Publishing Packages
         url: /pages/maintainer/publishing
+      - title: Installing Git hooks
+        url: /pages/maintainer/git_hooks
 
   - title: Best Practices
     subitems:
