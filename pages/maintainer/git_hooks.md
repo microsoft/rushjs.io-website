@@ -52,7 +52,7 @@ echo --------------------------------------------
 
 ```
 
-**3<!---->. Configure any required dependencies.**  The script above requires the **prettier-quick** NPM package,
+**3<!---->. Configure any required dependencies.**  The script above requires the **pretty-quick** NPM package,
 which in turn has a peer dependency on **prettier**.  Since we're not setting up a full tooling project with its own
 **package.json** file, we can simply add **prettier** and **pretty-quick** as Rush "preferred versions".  This will
 ensure that they get installed in the **common/temp/node_modules** folder root whenever `rush install` runs.
