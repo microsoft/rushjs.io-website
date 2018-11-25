@@ -104,9 +104,9 @@ Running `rush bump` will increase package versions based on their associated ver
 
 #### Command to publish packages
 
-`rush publish –include-all`
+`rush publish --include-all`
 
-Running `rush publish –include-all` will publish all the public packages that have version increased.
+Running `rush publish --include-all` will publish all the public packages that have version increased.
 
 ## 4. Summary
 
