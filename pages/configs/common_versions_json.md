@@ -4,7 +4,7 @@ title: common-versions.json
 navigation_source: docs_nav
 ---
 
-This is the template that `rush init` generates for **./commnon/config/rush/common-versions.json**:
+This is the template that `rush init` generates for **./common/config/rush/common-versions.json**:
 
 ```js
 /**
