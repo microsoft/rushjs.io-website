@@ -48,9 +48,9 @@ Optional arguments:
                         parameter defaults to 'hotfix'.
   --set-access-level {public,restricted}
                         The access option to pass to npm publish. By default 
-                        NPM will publish scoped packages with an accesslevel 
+                        NPM will publish scoped packages with an access level 
                         of 'restricted'. Scoped packages can be published 
-                        with an access level of 'public' by specifyingthat 
+                        with an access level of 'public' by specifying that 
                         value for this flag with the initial publication. NPM 
                         always publishes unscoped packages with an access 
                         level of 'public'.
