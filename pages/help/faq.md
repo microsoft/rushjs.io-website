@@ -67,3 +67,7 @@ Without Rush, NPM looks for "**.npmrc**" in these two places, *and merges their 
 When Rush invokes "npm install", it looks for "**.npmrc**" in these two places:
 - "**./common/config/rush/.npmrc**" (which gets copied to "**./common/temp/.npmrc**" during install)
 - in your user home directory
+
+### Why do Rush's JSON config files contain `//` comments that GitHub shows in red?
+
+Obviously config files need to be documented.  We're trying to figure out a better way to handle this.  See [issue #1088](https://github.com/Microsoft/web-build-tools/issues/1088) for a proposal.

@@ -7,7 +7,7 @@ navigation_source: docs_nav
 ```
 usage: rush change [-h] [-v] [-b BRANCH]
 
-Asks a series of questions and then generates a <branchname>-<timstamp>.json
+Asks a series of questions and then generates a <branchname>-<timestamp>.json
 file in the common folder. The `publish` command will consume these files and
 perform the proper version bumps. Note these changes will eventually be
 published in a changelog.md file in each package. The possible types of

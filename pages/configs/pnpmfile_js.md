@@ -4,7 +4,7 @@ title: pnpmfile.js
 navigation_source: docs_nav
 ---
 
-This is the template that `rush init` generates for **./commnon/config/rush/pnpmfile.js**:
+This is the template that `rush init` generates for **./common/config/rush/pnpmfile.js**:
 
 ```js
 "use strict";

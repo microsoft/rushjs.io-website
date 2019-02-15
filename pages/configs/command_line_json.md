@@ -4,7 +4,7 @@ title: command-line.json
 navigation_source: docs_nav
 ---
 
-This is the template that `rush init` generates for **./commnon/config/rush/command-line.json**:
+This is the template that `rush init` generates for **./common/config/rush/command-line.json**:
 
 ```js
 /**
