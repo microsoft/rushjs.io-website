@@ -119,6 +119,6 @@ script:
   - echo -en 'travis_fold:end:build\\r'
 ```
 
-For a real world example, take a look at the
-[Travis script for web-build-tools](https://github.com/Microsoft/web-build-tools/blob/master/.travis.yml),
-the monorepo where Rush is developed.
+For an example of an equivalent setup using an Azuze DevOps build pipeline, take a look at the
+[build.yaml file](https://github.com/Microsoft/web-build-tools/blob/master/common/config/azure-pipelines/templates/build.yaml),
+in the monorepo where Rush is developed.
