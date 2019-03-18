@@ -85,6 +85,11 @@ algolia:
   index_name: 'rushjs.io'
   search_only_api_key: 'a0ab6dfc3db0c301b0ca8e725af85641'
 
+  # The default is to only consider <p> tags.  That also picks up <p> inside other
+  # tags such as <li>.
+  # But these additional tags are not containers for <p>, so we add them explicitly:
+  nodes_to_index: 'p,h1,h2,h3'
+
 # Use the following plug-ins
 plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
