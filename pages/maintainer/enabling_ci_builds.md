@@ -17,9 +17,6 @@ $ git fetch origin master:refs/remotes/origin/master -a
 # a nonzero exit code.
 $ rush change -v
 
-# (optional) Fail if the developer introduced an inconsistent version
-$ rush check
-
 # Install NPM packages in the common folder, but don't automatically do "rush link"
 $ rush install --no-link
 
@@ -106,10 +103,6 @@ script:
   - node common/scripts/install-run-rush.js change -v
   - echo -en 'travis_fold:end:change\\r'
 
-  - echo 'Checking for inconsistent dependency versions' && echo -en 'travis_fold:start:check\\r'
-  - node common/scripts/install-run-rush.js check
-  - echo -en 'travis_fold:end:check\\r'
-
   - echo 'Installing...' && echo -en 'travis_fold:start:install\\r'
   - node common/scripts/install-run-rush.js install
   - echo -en 'travis_fold:end:install\\r'
@@ -122,3 +115,5 @@ script:
 For an example of an equivalent setup using an Azuze DevOps build pipeline, take a look at the
 [build.yaml file](https://github.com/Microsoft/web-build-tools/blob/master/common/config/azure-pipelines/templates/build.yaml),
 in the monorepo where Rush is developed.
+
+#### Next up: [Recommended Settings]({% link pages/maintainer/recommended_settings.md %})
