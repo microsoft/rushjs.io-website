@@ -70,10 +70,13 @@ function scrollToSelectedNavItem() {
 
     // Is it in already in view?
     let bounding = navSelection.getBoundingClientRect();
+
+    let footerHeight = document.getElementById('scripted-footer').offsetHeight;
+
     let isInView =
         bounding.top >= 0 &&
         bounding.left >= 0 &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) - footerHeight &&
         bounding.right <= (window.innerWidth || document.documentElement.clientWidth);
 
     if (!isInView) {
