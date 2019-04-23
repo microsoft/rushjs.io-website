@@ -25,7 +25,7 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.6.3",
+  "rushVersion": "5.7.0",
 
   /**
    * The next field selects which package manager should be installed and determines its version.
@@ -55,7 +55,19 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
      * The default value is false to avoid legacy compatibility issues.
      * It is strongly recommended to set strictPeerDependencies=true.
      */
-    // "strictPeerDependencies": true
+    // "strictPeerDependencies": true,
+
+
+    /**
+     * Configures the strategy used to select versions during installation.
+     *
+     * This feature requires PNPM version 3.1 or newer.  It corresponds to the "--resolution-strategy" command-line
+     * option for PNPM.  Possible values are "fast" and "fewer-dependencies".  PNPM's default is "fast", but this may
+     * be incompatible with certain packages, for example the "@types" packages from DefinitelyTyped.  Rush's default
+     * is "fewer-dependencies", which causes PNPM to avoid installing a newer version if an already installed version
+     * can be reused; this is more similar to NPM's algorithm.
+     */
+    // "resolutionStrategy": "fast"
   },
 
   /**
