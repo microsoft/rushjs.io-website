@@ -70,4 +70,26 @@ When Rush invokes "npm install", it looks for "**.npmrc**" in these two places:
 
 ### Why do Rush's JSON config files contain `//` comments that GitHub shows in red?
 
-Obviously config files need to be documented.  We're trying to figure out a better way to handle this.  See [issue #1088](https://github.com/Microsoft/web-build-tools/issues/1088) for a proposal.
+JSON was originally intended as a machine interchange format, and thus does not formally support
+code comments.  Recently JSON has gained popularity as a human-edited config file format, which obviously requires
+comments.  As such, most serious JSON libraries can handle comments without any trouble. (A notable exception
+is `JSON.parse()`; don't use that -- it cannot validate schemas and has poor error reporting.)
+
+VS Code highlights JSON comments as errors by default, but it provides an optional "[JSON with comments](
+https://code.visualstudio.com/docs/languages/identifiers)" mode.  To enable this, add this line to
+your **settings.json** in VS Code:
+
+```json
+"files.associations": { "*.json": "jsonc" }
+```
+
+GitHub also highlights comments as errors by default.  To fix that, you can add this line to your
+**.gitattributes** file (and you may also need to commit a change to the affected files to work around a GitHub
+caching issue):
+
+```
+*.json  linguist-language=JSON-with-Comments
+```
+
+*For a discussion of some other possibilities, see
+[issue #1088](https://github.com/Microsoft/web-build-tools/issues/1088).*
