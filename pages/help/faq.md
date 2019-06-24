@@ -22,7 +22,7 @@ Nope!  Rush works within the existing systems and standards.  It just does thing
 - It's still possible to build any project without Rush; just do `npm install` and `gulp` as usual
 - A project can be moved to a separate repo at any time, without any code changes; no commitment!
 
-### After installing Rush, why am I stilling see the old version?
+### After installing Rush, why am I still seeing the old version?
 
 This problem isn't specific to Rush, but we hear about it a lot because Rush is one of the first tools people need to invoke when starting work in a repo.  The symptoms look like this:
 
