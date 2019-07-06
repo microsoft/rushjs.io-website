@@ -83,6 +83,15 @@
   z-index: -1000;
 }
 
+// When clicking a "jump link" to an anchor within the page, shift the target downwards to account for the
+// docsite header (which is floating above the page)
+:target::before {
+  content:"";
+  display: block;
+  height: var(--docsite-header-size);
+  margin: -var(--docsite-header-size);
+}
+
 // Add a little icon next to hyperlinks that point to an external page.
 // We only do this inside an <article>.  An external page has "://" in its
 // URL and does not include to "rushjs.io" or "localhost".
