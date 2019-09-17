@@ -92,6 +92,8 @@ docs_nav:
         url: /pages/commands/rush_install
       - title: rush link
         url: /pages/commands/rush_link
+      - title: rush list
+        url: /pages/commands/rush_list
       - title: rush publish
         url: /pages/commands/rush_publish
       - title: rush purge

@@ -31,10 +31,11 @@ Optional arguments:
   --no-fetch            Skips fetching the baseline branch before running
                         "git diff" to detect changes.
   -b BRANCH, --target-branch BRANCH
-                        If this parameter is specified, compare current
-                        branch with the target branch to get changes. If this
-                        parameter is not specified, the current branch is
-                        compared against the "master" branch.
+                        If this parameter is specified, compare the checked
+                        out branch with the specified branch to determine
+                        which projects were changed. If this parameter is not
+                        specified, the checked out branch is compared against
+                        the "master" branch.
 ```
 
 ### See Also
