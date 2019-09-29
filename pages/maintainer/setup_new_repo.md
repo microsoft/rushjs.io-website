@@ -4,7 +4,7 @@ title: Setting up a new repo
 navigation_source: docs_nav
 ---
 
-This tutorial walks through the process of consolidating several projects into a new Rush monorepo.  (If you'd like to see a fully worked out sample based on these steps, take a look at the [rush-example](https://github.com/Microsoft/rush-example) repo on GitHub.)
+This tutorial walks through the process of consolidating several projects into a new Rush monorepo.  (If you'd like to see a fully worked out sample based on these steps, take a look at the [rush-example](https://github.com/microsoft/rush-example) repo on GitHub.)
 
 For this example, suppose we have 3 project folders, like this:
 

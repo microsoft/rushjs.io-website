@@ -22,7 +22,7 @@ $ rush -h
 
 **To see Rush build some real projects, try running these commands:**
 ```sh
-$ git clone https://github.com/Microsoft/web-build-tools
+$ git clone https://github.com/microsoft/rushstack
 $ cd web-build-tools
 $ rush update
 $ rush update  # <-- instantaneous!

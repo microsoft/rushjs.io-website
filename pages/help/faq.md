@@ -9,7 +9,7 @@ _Answered in [this article]({% link pages/intro/why_mono.md %})._
 
 ### Where do I send bug reports or feature requests?
 
-Open a [GitHub issue](https://github.com/Microsoft/web-build-tools/issues) for the **web-build-tools** project.  Include "Rush" in your issue title.
+Open a [GitHub issue](https://github.com/microsoft/rushstack/issues) for the **web-build-tools** project.  Include "Rush" in your issue title.
 
 ### With many projects in one repo, will "npm install" take too long?
 
@@ -92,4 +92,4 @@ caching issue):
 ```
 
 *For a discussion of some other possibilities, see
-[issue #1088](https://github.com/Microsoft/web-build-tools/issues/1088).*
+[issue #1088](https://github.com/microsoft/rushstack/issues/1088).*

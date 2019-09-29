@@ -4,7 +4,7 @@ title: Adding projects to a repo
 navigation_source: docs_nav
 ---
 
-*This continues the tutorial that started with "[Setting up a new repo]({% link pages/maintainer/setup_new_repo.md %})".  (To see a fully worked out sample based on these steps, take a look at the [rush-example](https://github.com/Microsoft/rush-example) repo on GitHub.)*
+*This continues the tutorial that started with "[Setting up a new repo]({% link pages/maintainer/setup_new_repo.md %})".  (To see a fully worked out sample based on these steps, take a look at the [rush-example](https://github.com/microsoft/rush-example) repo on GitHub.)*
 
 ## Step 4: Add your first project
 
@@ -95,7 +95,7 @@ Since this is the first project for the repo, you'll notice that `rush update` c
 
 ## Step 6: Verify that the new project builds
 
-In order to build your projects, Rush will look for a `"build"` script in the `"scripts"` section of your **package.json** file.  In our example from [rush-example](https://github.com/Microsoft/rush-example), the project builds using a simple shell script `"rimraf ./lib/ && tsc"`:
+In order to build your projects, Rush will look for a `"build"` script in the `"scripts"` section of your **package.json** file.  In our example from [rush-example](https://github.com/microsoft/rush-example), the project builds using a simple shell script `"rimraf ./lib/ && tsc"`:
 
 ```json
 {
@@ -126,7 +126,7 @@ There are a few things to keep in mind when creating a `"build"` script:
 
 * If the process returns a non-zero exit status, Rush will assume there was a failure and will block downstream builds.
 
-* If the command writes anything to the `stderr` stream, Rush will interpret this to mean that at least one error or warning was reported.  This will break the build.  (This is by design -- if you allow people to merge PRs that "cry wolf", pretty soon you will find that so many warnings have accumulated that nobody even reads them any more.)  Some tooling libraries (e.g. Jest) write to `stderr` as part of their normal operation; you will need to [redirect their output](https://github.com/Microsoft/web-build-tools/blob/master/core-build/gulp-core-build/src/tasks/JestReporter.ts).
+* If the command writes anything to the `stderr` stream, Rush will interpret this to mean that at least one error or warning was reported.  This will break the build.  (This is by design -- if you allow people to merge PRs that "cry wolf", pretty soon you will find that so many warnings have accumulated that nobody even reads them any more.)  Some tooling libraries (e.g. Jest) write to `stderr` as part of their normal operation; you will need to [redirect their output](https://github.com/microsoft/rushstack/blob/master/core-build/gulp-core-build/src/tasks/JestReporter.ts).
 
 * If certain projects don't need to be processed by `rush build`, you still need a `build` entry.  Set the value to an empty string (`""`) and Rush will ignore it.
 
@@ -164,6 +164,6 @@ You can add more projects by following the same operations from Step 4.  In our 
   ]
 ```
 
-Once you have all your projects added and building without errors, you may consider enabling other optional features.  The config files contain lots of snippets that you can uncomment to get started.  The [rush-example](https://github.com/Microsoft/rush-example) repo uses some of these snippets.
+Once you have all your projects added and building without errors, you may consider enabling other optional features.  The config files contain lots of snippets that you can uncomment to get started.  The [rush-example](https://github.com/microsoft/rush-example) repo uses some of these snippets.
 
 #### Next up: [Enabling CI builds]({% link pages/maintainer/enabling_ci_builds.md %})

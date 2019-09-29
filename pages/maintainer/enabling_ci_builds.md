@@ -113,7 +113,7 @@ script:
 ```
 
 For an example of an equivalent setup using an Azuze DevOps build pipeline, take a look at the
-[build.yaml file](https://github.com/Microsoft/web-build-tools/blob/master/common/config/azure-pipelines/templates/build.yaml),
+[build.yaml file](https://github.com/microsoft/rushstack/blob/master/common/config/azure-pipelines/templates/build.yaml),
 in the monorepo where Rush is developed.
 
 #### Next up: [Recommended Settings]({% link pages/maintainer/recommended_settings.md %})

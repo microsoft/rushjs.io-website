@@ -27,4 +27,4 @@ Optional arguments:
 ### See Also
 
 - [Setting up a new repo]({% link pages/maintainer/setup_new_repo.md %})
-- The [rush-example](https://github.com/Microsoft/rush-example) repo on GitHub
+- The [rush-example](https://github.com/microsoft/rush-example) repo on GitHub

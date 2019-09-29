@@ -21,7 +21,7 @@ Example excerpt from **rush.json**:
 ```js
   "repository": {
     // Replace this with the URL that you use when running "git clone" for your repo
-    "url": "https://github.com/Microsoft/rush-example"
+    "url": "https://github.com/microsoft/rush-example"
   }
 ```
 

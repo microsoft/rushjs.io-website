@@ -209,7 +209,7 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
      * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
      * to retrieve the latest activity for the remote master branch.
      */
-    // "url": "https://github.com/Microsoft/rush-example"
+    // "url": "https://github.com/microsoft/rush-example"
   },
 
   /**
