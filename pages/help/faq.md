@@ -22,6 +22,13 @@ Nope!  Rush works within the existing systems and standards.  It just does thing
 - It's still possible to build any project without Rush; just do `npm install` and `gulp` as usual
 - A project can be moved to a separate repo at any time, without any code changes; no commitment!
 
+### Is "Rush Stack" the same thing as Rush?
+
+No.  **Rush Stack** is a suite of projects, maintained by a group of developers with a common mission to build
+professional tooling for large scale TypeScript monorepos.  Rush is a part of Rush Stack.  The other pieces are
+strictly optional, though.  Rush itself is toolchain agnostic -- it works great as a standalone tool.
+For more details, check out the [Rush Stack](https://rushstack.io/) website.
+
 ### After installing Rush, why am I still seeing the old version?
 
 This problem isn't specific to Rush, but we hear about it a lot because Rush is one of the first tools people need to invoke when starting work in a repo.  The symptoms look like this:
