@@ -100,7 +100,7 @@ You need two steps to publish your packages when version policies are used. The 
 
 `rush version --bump`
 
-Running `rush bump` will increase package versions based on their associated version policies.
+Running `rush version --bump` will increase package versions based on their associated version policies.
 
 #### Command to publish packages
 
