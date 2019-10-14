@@ -85,5 +85,4 @@ Optional arguments:
                         If specified with --publish and --pack, git tags will
                         be applied for packages as if a publish was being run
                         without --pack.
-
 ```

@@ -5,7 +5,10 @@ navigation_source: docs_nav
 ---
 
 ```
-usage: rush change [-h] [-v] [--no-fetch] [-b BRANCH]
+usage: rush change [-h] [-v] [--no-fetch] [-b BRANCH] [--overwrite]
+                   [--email EMAIL] [--bulk] [--message MESSAGE]
+                   [--bump-type {major,minor,patch,none}]
+
 
 Asks a series of questions and then generates a <branchname>-<timestamp>.json
 file in the common folder. The `publish` command will consume these files and
@@ -32,10 +35,24 @@ Optional arguments:
                         "git diff" to detect changes.
   -b BRANCH, --target-branch BRANCH
                         If this parameter is specified, compare the checked
-                        out branch with the specified branch to determine
+                        out branch with the specified branch todetermine
                         which projects were changed. If this parameter is not
                         specified, the checked out branch is compared against
                         the "master" branch.
+  --overwrite           If a changefile already exists, overwrite without
+                        prompting (or erroring in --bulk mode).
+  --email EMAIL         The email address to use in changefiles. If this
+                        parameter is not provided, the email address will be
+                        detected or prompted for in interactive mode.
+  --bulk                If this flag is specified, apply the same change
+                        message and bump type to all changed projects. The
+                        --message and the --bump-type parameters must be
+                        specified if the --bulk parameter is specified
+  --message MESSAGE     The message to apply to all changed projects if the
+                        --bulk flag is provided.
+  --bump-type {major,minor,patch,none}
+                        The bump type to apply to all changed projects if the
+                        --bulk flag is provided.
 ```
 
 ### See Also

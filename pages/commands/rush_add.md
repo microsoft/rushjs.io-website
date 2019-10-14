@@ -5,7 +5,7 @@ navigation_source: docs_nav
 ---
 
 ```
-usage: rush add [-h] -p PACKAGE [--exact] [--caret] [--dev] [-m] [-s]
+usage: rush add [-h] -p PACKAGE [--exact] [--caret] [--dev] [-m] [-s] [--all]
 
 Adds a specified package as a dependency of the current project (as
 determined by the current working directory) and then runs "rush update". If
@@ -41,5 +41,6 @@ Optional arguments:
                         same version of the dependency.
   -s, --skip-update     If specified, the "rush update" command will not be
                         run after updating the package.json files.
-
+  --all                 If specified, the dependency will be added to all
+                        projects.
 ```
