@@ -24,7 +24,7 @@ $ rush -h
 ```sh
 $ git clone https://github.com/microsoft/rushstack
 $ cd rushstack
-$ rush update
+$ rush install
 $ rush update  # <-- instantaneous!
 $ rush rebuild
 $ rush build    # <-- instantaneous!
