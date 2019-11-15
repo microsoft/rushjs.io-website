@@ -85,7 +85,16 @@ This is the template that `rush init` generates for **./common/config/rush/versi
   //    * inappropriately.  The minor/patch version parts will be bumped independently according
   //    * to the types of changes made to each project, according to the "rush change" command.
   //    */
-  //   "lockedMajor": 3
+  //   "lockedMajor": 3,
+  //
+  //   /**
+  //    * (Optional) When publishing is managed by Rush, by default the "rush change" command will
+  //    * request changes for any projects that are modified by a pull request. These change entries
+  //    * will produce a CHANGELOG.md file. If you author your CHANGELOG.md manually or announce updates
+  //    * in some other way, set "exemptFromRushChange" to true to tell "rush change" to ignore the projects
+  //    * belonging to this version policy.
+  //    */
+  //   "exemptFromRushChange": false
   // }
 ]
 ```
