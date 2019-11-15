@@ -119,6 +119,8 @@ docs_nav:
         url: /pages/configs/command_line_json
       - title: common-versions.json
         url: /pages/configs/common_versions_json
+      - title: experiments.json
+        url: /pages/configs/experiments_json
       - title: pnpmfile.js
         url: /pages/configs/pnpmfile_js
       - title: rush.json

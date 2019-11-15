@@ -1,0 +1,26 @@
+---
+layout: page
+title: experiments.json
+navigation_source: docs_nav
+---
+
+This is the template that `rush init` generates for **./common/config/rush/experiments.json**:
+
+```js
+/**
+ * This configuration file allows repo maintainers to enable and disable experimental
+ * Rush features. For full documentation, please see https://rushjs.io
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/experiments.schema.json",
+
+  /**
+    * Rush 5.14.0 improved incremental builds to ignore spurious changes in the pnpm-lock.json file.
+    * This optimization is enabled by default. If you encounter a problem where "rush build" is neglecting
+    * to build some projects, please open a GitHub issue. As a workaround you can uncomment this line
+    * to temporarily restore the old behavior where everything must be rebuilt whenever pnpm-lock.json
+    * is modified.
+    */
+  // "legacyIncrementalBuildDependencyDetection": true
+}
+```
