@@ -91,8 +91,8 @@ algolia:
   nodes_to_index: 'p,li,h1,h2,h3'
 
   files_to_exclude:
-    - 404.html
-    - mobile_nav.html
+    - permalinks/404.html
+    - permalinks/mobile_nav.html
 
 # Use the following plug-ins
 plugins:
