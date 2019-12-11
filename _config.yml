@@ -88,7 +88,11 @@ algolia:
   # The default is to only consider <p> tags.  That also picks up <p> inside other
   # tags such as <li>.
   # But these additional tags are not containers for <p>, so we add them explicitly:
-  nodes_to_index: 'p,h1,h2,h3'
+  nodes_to_index: 'p,li,h1,h2,h3'
+
+  files_to_exclude:
+    - permalinks/404.html
+    - permalinks/mobile_nav.html
 
 # Use the following plug-ins
 plugins:

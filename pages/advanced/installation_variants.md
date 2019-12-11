@@ -81,7 +81,7 @@ compatible version.  How to build and test with the older version 2?  Let's set 
 ```
 
 **2<!-- -->. Copy the config files.**  To get your variant started, copy your existing config files from **common/config/rush**
-to your variant folder **common/config/rush/old-widget-sdk**.   Three config files are currently supported
+to your variant folder **common/config/rush/variants/old-widget-sdk**.   Three config files are currently supported
 (others may be added in the future):
 
 - **shrinkwrap.yaml**, **npm-shrinkwrap.json**, or **yarn.lock** depending on your package manager
