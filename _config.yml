@@ -90,6 +90,10 @@ algolia:
   # But these additional tags are not containers for <p>, so we add them explicitly:
   nodes_to_index: 'p,li,h1,h2,h3'
 
+  files_to_exclude:
+    - 404.html
+    - mobile_nav.html
+
 # Use the following plug-ins
 plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
