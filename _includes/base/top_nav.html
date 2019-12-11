@@ -25,14 +25,40 @@
             displayKey: 'title',
             templates: {
               suggestion: function(suggestion) {
-                let result = '<b>' + suggestion.title + '</b>';
+                var resultHeading = '';
 
                 if (suggestion._highlightResult && suggestion._highlightResult.title) {
-                  result = '<b>' + suggestion._highlightResult.title.value + '</b>';
+                  resultHeading = suggestion._highlightResult.title.value;
+                } else if (suggestion.title) {
+                  resultHeading = suggestion.title;
+                } else {
+                  if (suggestion.tag_name[0] !== 'h') {
+                    // If the suggestion did not match a heading, then we can use the heading
+                    // from the hierarchy
+                    if (suggestion.hierarchy) {
+                      for (var i = 6; i >= 0; --i) {
+                        var hierarchyValue = suggestion.hierarchy['lvl' + i.toString()];
+                        if (hierarchyValue) {
+                          resultHeading = hierarchyValue;
+                          break;
+                        }
+                      }
+                    }
+                  }
                 }
 
+                if (!resultHeading) {
+                  resultHeading = suggestion.slug || suggestion.url || '(Untitled)';
+                }
+
+                let result = '<b>' + resultHeading + '</b>';
+
                 if (suggestion._snippetResult && suggestion._snippetResult.content) {
-                  result += '<br />' + suggestion._snippetResult.content.value;
+                    result += '<br />' + suggestion._snippetResult.content.value;
+                } else if (suggestion._highlightResult && suggestion._highlightResult.content) {
+                  result += '<br />' + suggestion._highlightResult.content.value;
+                } else if (suggestion.content) {
+                  result += '<br />' + suggestion.content;
                 }
 
                 return '<p>' + result + '</p>';
