@@ -16,34 +16,12 @@
       <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
       <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
       <script>
-        var client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
-        var index = client.initIndex('{{ site.algolia.index_name }}');
-
-        autocomplete('#search-input', { hint: false }, [
-          {
-            source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
-            displayKey: 'title',
-            templates: {
-              suggestion: function(suggestion) {
-                let result = '<b>' + suggestion.title + '</b>';
-
-                if (suggestion._highlightResult && suggestion._highlightResult.title) {
-                  result = '<b>' + suggestion._highlightResult.title.value + '</b>';
-                }
-
-                if (suggestion._snippetResult && suggestion._snippetResult.content) {
-                  result += '<br />' + suggestion._snippetResult.content.value;
-                }
-
-                return '<p>' + result + '</p>';
-              }
-            }
-          }
-        ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-          console.log(suggestion.url);
-          window.location.href = suggestion.url;
-        });
+        // Configure top_nav.js
+        var searchClient = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
+        window.searchIndex = searchClient.initIndex('{{ site.algolia.index_name }}');
       </script>
+      <script src="/scripts/top_nav.js"></script>
+
       <!-- SEARCH BOX - END -->
 
       {% for link in site.data.navigation.top_nav %}
