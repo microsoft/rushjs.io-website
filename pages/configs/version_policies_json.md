@@ -14,7 +14,7 @@ This is the template that `rush init` generates for **./common/config/rush/versi
 
  /**
   * A list of version policy definitions.  A "version policy" is a custom package versioning
-  * strategy that affets "rush change", "rush version", and "rush publish".  The strategy applies
+  * strategy that affects "rush change", "rush version", and "rush publish".  The strategy applies
   * to a set of projects that are specified using the "versionPolicyName" field in rush.json.
   */
 [

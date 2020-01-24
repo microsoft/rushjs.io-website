@@ -25,7 +25,7 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.17.0",
+  "rushVersion": "5.18.0",
 
   /**
    * The next field selects which package manager should be installed and determines its version.
