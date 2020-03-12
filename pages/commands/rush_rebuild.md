@@ -8,7 +8,7 @@ navigation_source: docs_nav
 usage: rush rebuild [-h] [-p COUNT] [-t PROJECT1]
                     [--from-version-policy VERSION_POLICY_NAME]
                     [--to-version-policy VERSION_POLICY_NAME] [-f PROJECT2]
-                    [-v] [--no-color] [--production]
+                    [-v]
 
 
 This command assumes that the package.json file for each project contains a
@@ -30,7 +30,8 @@ Optional arguments:
                         CPU cores.
   -t PROJECT1, --to PROJECT1
                         Run command in the specified project and all of its
-                        dependencies
+                        dependencies. "." can be used as shorthand to specify
+                        the project in the current working directory.
   --from-version-policy VERSION_POLICY_NAME
                         Run command in all projects with the specified
                         version policy and all projects that directly or
@@ -41,10 +42,9 @@ Optional arguments:
                         version policy and all of their dependencies
   -f PROJECT2, --from PROJECT2
                         Run command in all projects that directly or
-                        indirectly depend on the specified project
+                        indirectly depend on the specified project. "." can
+                        be used as shorthand to specify the project in the
+                        current working directory.
   -v, --verbose         Display the logs during the build, rather than just
                         displaying the build status summary
-  --no-color            disable colors in the build log, defaults to 'true'
-  --production          Perform a production build, including minification
-                        and localization steps
 ```

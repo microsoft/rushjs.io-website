@@ -5,7 +5,7 @@ navigation_source: docs_nav
 ---
 
 ```
-usage: rush list [-h] [-v] [-p] [-f]
+usage: rush list [-h] [-v] [-p] [-f] [--json]
 
 List package names, and optionally version (--version) and path (--path) or
 full path (--full-path), for projects in the current rush config.
@@ -18,4 +18,5 @@ Optional arguments:
                    displayed in a column along with the package name.
   -f, --full-path  If this flag is specified, the project full path will be
                    displayed in a column along with the package name.
+  --json           If this flag is specified, output will be in JSON format.
 ```
