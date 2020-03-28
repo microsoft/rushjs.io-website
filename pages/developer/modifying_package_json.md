@@ -54,10 +54,4 @@ The [command-line help]({% link pages/commands/rush_add.md %}) for `rush add` de
 > If you modify **package.json** manually, don't forget to run `rush update` afterwards.
 
 
-## Upgrading to newer versions of your NPM packages
-
-Today, Rush does not yet have an integrated equivalent of `npm update` or [npm-check-updates](https://www.npmjs.com/package/npm-check-updates).  So you if you want to update the SemVer patterns across all your package.json files, you'll need to use an external tool.
-
-*NOTE: Bulk updating of package.json versions is an important feature.  We would love for someone to contribute a PR.  The only reason the Rush developers have not prioritized this is that it generally gets solved in various other ways for the monorepos that we manage.*
-
 #### Next up: [Other helpful commands]({% link pages/developer/other_commands.md %})
