@@ -90,7 +90,7 @@ Since this is the first project for the repo, you'll notice that `rush update` c
 
 - **common/config/rush/shrinkwrap.yaml**: The common shrinkwrap file (here we're assuming PNPM package manager)
 - **common/scripts/install-run-rush.js**: Used by CI jobs to bootstrap the Rush tool in a reliable way
-- **common/scripts/install-run-rush.js**: Used by CI jobs to bootstrap arbitrary tools in a reliable way
+- **common/scripts/install-run.js**: Used by CI jobs to bootstrap arbitrary tools in a reliable way
 
 
 ## Step 6: Verify that the new project builds
