@@ -20,7 +20,7 @@
 - image: o365.png
   text: Office UI Fabric
   url: https://github.com/OfficeDev/office-ui-fabric-react
-
-  - image: telia.png
+  
+- image: telia.png
   text: Telia Company
   url: https://www.telia.se/
