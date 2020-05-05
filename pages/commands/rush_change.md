@@ -24,7 +24,7 @@ are backwards and forwards compatible. Examples are: Modifying a private API
 or fixing a bug in the logic of how an existing API works. HOTFIX
 (EXPERIMENTAL) - these are changes that are hotfixes targeting a specific
 older version of the package. When a hotfix change is added, other changes
-will not be able to increment the version number.Enable this feature by
+will not be able to increment the version number. Enable this feature by
 setting 'hotfixChangeEnabled' in your rush.json.
 
 Optional arguments:
@@ -35,7 +35,7 @@ Optional arguments:
                         "git diff" to detect changes.
   -b BRANCH, --target-branch BRANCH
                         If this parameter is specified, compare the checked
-                        out branch with the specified branch todetermine
+                        out branch with the specified branch to determine
                         which projects were changed. If this parameter is not
                         specified, the checked out branch is compared against
                         the "master" branch.
