@@ -25,7 +25,7 @@ Optional arguments:
                         be applied to package.json files.
   -b BRANCH, --target-branch BRANCH
                         If this flag is specified, applied changes and
-                        deleted change requests will becommitted and merged
+                        deleted change requests will be committed and merged
                         into the target branch.
   -p, --publish         If this flag is specified, applied changes will be
                         published to npm.

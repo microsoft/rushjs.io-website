@@ -33,7 +33,7 @@ Optional arguments:
                         The name of the version policy
   --override-bump BUMPTYPE
                         Overrides the bump type in the version-policy.json
-                        for the specified version policy.Valid BUMPTYPE
+                        for the specified version policy. Valid BUMPTYPE
                         values include: prerelease, patch, preminor, minor,
                         major. This setting only works for lock-step version
                         policy in bump action.
