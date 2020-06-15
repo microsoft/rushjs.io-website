@@ -28,7 +28,6 @@ This is the template that `rush init` generates for **./common/config/rush/commo
    * will recalculate all version selections.
    */
   "preferredVersions": {
-
     /**
      * When someone asks for "^1.0.0" make sure they get "1.2.3" when working in this repo,
      * instead of the latest version.
@@ -60,8 +59,7 @@ This is the template that `rush init` generates for **./common/config/rush/commo
    * USUAL VERSION (WHICH IS INFERRED BY LOOKING AT ALL PROJECTS IN THE REPO).
    * This design avoids unnecessary churn in this file.
    */
-   "allowedAlternativeVersions": {
-
+  "allowedAlternativeVersions": {
     /**
      * For example, allow some projects to use an older TypeScript compiler
      * (in addition to whatever "usual" version is being used by other projects in the repo):

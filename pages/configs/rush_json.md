@@ -25,7 +25,7 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.21.0",
+  "rushVersion": "5.26.0",
 
   /**
    * The next field selects which package manager should be installed and determines its version.
@@ -35,7 +35,7 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "2.15.1",
+  "pnpmVersion": "4.12.5",
 
   // "npmVersion": "4.5.0",
   // "yarnVersion": "1.9.4",
@@ -73,7 +73,6 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
      */
     // "strictPeerDependencies": true,
 
-
     /**
      * Configures the strategy used to select versions during installation.
      *
@@ -86,7 +85,25 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
      * After modifying this field, it's recommended to run "rush update --full" so that the package manager
      * will recalculate all version selections.
      */
-    // "resolutionStrategy": "fast"
+    // "resolutionStrategy": "fast",
+
+    /**
+     * If true, then `rush install` will report an error if manual modifications
+     * were made to the PNPM shrinkwrap file without running "rush update" afterwards.
+     *
+     * This feature protects against accidental inconsistencies that may be introduced
+     * if the PNPM shrinkwrap file ("pnpm-lock.yaml") is manually edited.  When this
+     * feature is enabled, "rush update" will append a hash to the file as a YAML comment,
+     * and then "rush update" and "rush install" will validate the hash.  Note that this does not prohibit
+     * manual modifications, but merely requires "rush update" be run
+     * afterwards, ensuring that PNPM can report or repair any potential inconsistencies.
+     *
+     * To temporarily disable this validation when invoking "rush install", use the
+     * "--bypass-policy" command-line parameter.
+     *
+     * The default value is false.
+     */
+    // "preventManualShrinkwrapChanges": true
   },
 
   /**
@@ -97,19 +114,19 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
    * Specify a SemVer range to ensure developers use a Node.js version that is appropriate
    * for your repo.
    */
-  "nodeSupportedVersionRange": ">=10.13.0 <11.0.0",
+  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0",
 
   /**
-  * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
-  * spend six months in a stabilization period before the first Long Term Support (LTS) version.
-  * For example, 8.9.0 was the first LTS version of Node.js 8.  Pre-LTS versions are not recommended
-  * for production usage because they frequently have bugs.  They may cause Rush itself
-  * to malfunction.
-  *
-  * Rush normally prints a warning if it detects a pre-LTS Node.js version.  If you are testing
-  * pre-LTS versions in preparation for supporting the first LTS version, you can use this setting
-  * to disable Rush's warning.
-  */
+   * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
+   * spend six months in a stabilization period before the first Long Term Support (LTS) version.
+   * For example, 8.9.0 was the first LTS version of Node.js 8.  Pre-LTS versions are not recommended
+   * for production usage because they frequently have bugs.  They may cause Rush itself
+   * to malfunction.
+   *
+   * Rush normally prints a warning if it detects a pre-LTS Node.js version.  If you are testing
+   * pre-LTS versions in preparation for supporting the first LTS version, you can use this setting
+   * to disable Rush's warning.
+   */
   // "suppressNodeLtsWarning": false,
 
   /**
@@ -123,7 +140,7 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
    * version. In those cases, you will need to add an entry to the "allowedAlternativeVersions"
    * section of the common-versions.json.
    */
-   // "ensureConsistentVersions": true,
+  // "ensureConsistentVersions": true,
 
   /**
    * Large monorepos can become intimidating for newcomers if project folder paths don't follow
@@ -150,6 +167,19 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
    */
   // "projectFolderMinDepth": 2,
   // "projectFolderMaxDepth": 2,
+
+  /**
+   * Today the npmjs.com registry enforces fairly strict naming rules for packages, but in the early
+   * days there was no standard and hardly any enforcement.  A few large legacy projects are still using
+   * nonstandard package names, and private registries sometimes allow it.  Set "allowMostlyStandardPackageNames"
+   * to true to relax Rush's enforcement of package names.  This allows upper case letters and in the future may
+   * relax other rules, however we want to minimize these exceptions.  Many popular tools use certain punctuation
+   * characters as delimiters, based on the assumption that they will never appear in a package name; thus if we relax
+   * the rules too much it is likely to cause very confusing malfunctions.
+   *
+   * The default value is false.
+   */
+  // "allowMostlyStandardPackageNames": true,
 
   /**
    * This feature helps you to review and approve new packages before they are introduced
@@ -184,7 +214,7 @@ This is the template that `rush init` generates for **rush.json** (in the repo r
   //    * if the underlying package was already approved, this would imply that the typings
   //    * are also approved.
   //    */
-  //   // "ignoredNpmScopes": [ "@types" ]
+  //   // "ignoredNpmScopes": ["@types"]
   // },
 
   /**
