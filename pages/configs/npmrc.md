@@ -4,7 +4,8 @@ title: .npmrc
 navigation_source: docs_nav
 ---
 
-This is the template that `rush init` generates for **./common/config/rush/.npmrc**:
+This is the template that [rush init]({% link pages/commands/rush_init.md %})
+generates for **common/config/rush/.npmrc**:
 
 ```shell
 # Rush uses this file to configure the package registry, regardless of whether the

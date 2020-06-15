@@ -4,7 +4,8 @@ title: version-policies.json
 navigation_source: docs_nav
 ---
 
-This is the template that `rush init` generates for **./common/config/rush/version-policies.json**:
+This is the template that [rush init]({% link pages/commands/rush_init.md %})
+generates for **common/config/rush/version-policies.json**:
 
 ```js
 /**
