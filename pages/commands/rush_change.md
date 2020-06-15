@@ -58,3 +58,4 @@ Optional arguments:
 ### See Also
 
 - [Authoring change logs]({% link pages/best_practices/change_logs.md %})
+- [rush version]({% link pages/commands/rush_version.md %})

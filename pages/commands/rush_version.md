@@ -46,3 +46,9 @@ Optional arguments:
                         replaces the prerelease name when
                         "--ensure-version-policy" is provided.
 ```
+
+### See Also
+
+- [Publishing packages]({% link pages/maintainer/publishing.md %})
+- [rush change]({% link pages/commands/rush_change.md %})
+- [rush publish]({% link pages/commands/rush_publish.md %})

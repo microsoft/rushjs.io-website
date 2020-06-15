@@ -90,3 +90,8 @@ Optional arguments:
                         tags at the commit hash specified. If not provided,
                         the current HEAD will be tagged.
 ```
+
+### See Also
+
+- [Publishing packages]({% link pages/maintainer/publishing.md %})
+- [rush version]({% link pages/commands/rush_version.md %})

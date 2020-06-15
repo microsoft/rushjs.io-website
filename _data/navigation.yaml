@@ -1,4 +1,3 @@
-
 top_nav:
   - title: Docs
     url: /pages/intro/welcome
@@ -53,8 +52,10 @@ docs_nav:
         url: /pages/maintainer/setup_policies
       - title: Custom commands
         url: /pages/maintainer/custom_commands
-      - title: Publishing Packages
+      - title: Publishing packages
         url: /pages/maintainer/publishing
+      - title: Deploying projects
+        url: /pages/maintainer/deploying
       - title: Installing Git hooks
         url: /pages/maintainer/git_hooks
 
@@ -86,8 +87,12 @@ docs_nav:
         url: /pages/commands/rush_change
       - title: rush check
         url: /pages/commands/rush_check
+      - title: rush deploy
+        url: /pages/commands/rush_deploy
       - title: rush init
         url: /pages/commands/rush_init
+      - title: rush init-deploy
+        url: /pages/commands/rush_init-deploy
       - title: rush install
         url: /pages/commands/rush_install
       - title: rush link
@@ -121,6 +126,8 @@ docs_nav:
         url: /pages/configs/common_versions_json
       - title: experiments.json
         url: /pages/configs/experiments_json
+      - title: deploy.json
+        url: /pages/configs/deploy_json
       - title: pnpmfile.js
         url: /pages/configs/pnpmfile_js
       - title: rush.json

@@ -23,11 +23,14 @@ of "rush rebuild".)
 Optional arguments:
   -h, --help            Show this help message and exit.
   -p COUNT, --parallelism COUNT
-                        Specify the number of concurrent build processes The
-                        value "max" can be specified to indicate the number
-                        of CPU cores. If this parameter omitted, the default
-                        value depends on the operating system and number of
-                        CPU cores.
+                        Specifies the maximum number of concurrent processes
+                        to launch during a build. The COUNT should be a
+                        positive integer or else the word "max" to specify a
+                        count that is equal to the number of CPU cores. If
+                        this parameter is omitted, then the default value
+                        depends on the operating system and number of CPU
+                        cores. This parameter may alternatively be specified
+                        via the RUSH_PARALLELISM environment variable.
   -t PROJECT1, --to PROJECT1
                         Run command in the specified project and all of its
                         dependencies. "." can be used as shorthand to specify
@@ -48,3 +51,7 @@ Optional arguments:
   -v, --verbose         Display the logs during the build, rather than just
                         displaying the build status summary
 ```
+
+### See Also
+
+- [rush build]({% link pages/commands/rush_build.md %})
