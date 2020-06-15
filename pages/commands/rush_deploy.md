@@ -1,6 +1,6 @@
 ---
 layout: page
-title: rush check
+title: rush deploy
 navigation_source: docs_nav
 ---
 
@@ -43,4 +43,5 @@ Optional arguments:
 
 ### See Also
 
+- [Deploying projects]({% link pages/maintainer/deploying.md %})
 - [rush init-deploy]({% link pages/commands/rush_init-deploy.md %})

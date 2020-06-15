@@ -52,8 +52,10 @@ docs_nav:
         url: /pages/maintainer/setup_policies
       - title: Custom commands
         url: /pages/maintainer/custom_commands
-      - title: Publishing Packages
+      - title: Publishing packages
         url: /pages/maintainer/publishing
+      - title: Deploying projects
+        url: /pages/maintainer/deploying
       - title: Installing Git hooks
         url: /pages/maintainer/git_hooks
 

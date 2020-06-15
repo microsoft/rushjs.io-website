@@ -1,6 +1,6 @@
 ---
 layout: page
-title: command-line.json
+title: deploy.json
 navigation_source: docs_nav
 ---
 
@@ -27,7 +27,7 @@ generates for **common/config/rush/deploy.json**:
    * If the main project should include other unrelated Rush projects, add it to the "projectSettings" section,
    * and then specify those projects in the "additionalProjectsToInclude" list.
    */
-  "deploymentProjectNames": ["my-app"],
+  "deploymentProjectNames": [ /* YOUR PROJECT HERE */ ],
 
   /**
    * When deploying a local Rush project, the package.json "devDependencies" are normally excluded.

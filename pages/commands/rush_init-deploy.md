@@ -1,6 +1,6 @@
 ---
 layout: page
-title: rush init
+title: rush init-deploy
 navigation_source: docs_nav
 ---
 
@@ -8,8 +8,8 @@ navigation_source: docs_nav
 usage: rush init-deploy [-h] -p PROJECT_NAME [-s SCENARIO]
 
 (EXPERIMENTAL) Use this command to initialize a new scenario config file for
-use with "rush deploy". The default filename is common/config/rush/deploy.
-json. However, if you need to manage multiple deployments with different
+use with "rush deploy". The default filename is common/config/rush/deploy.json.
+However, if you need to manage multiple deployments with different
 settings, you can use use "--scenario" to create additional config files.
 
 Optional arguments:
@@ -29,5 +29,7 @@ Optional arguments:
 
 ### See Also
 
+- [Deploying projects]({% link pages/maintainer/deploying.md %})
+- [deploy.json]({% link pages/configs/deploy_json.md %}) config file
 - [rush deploy]({% link pages/commands/rush_deploy.md %})
 - [rush init]({% link pages/commands/rush_init.md %})
