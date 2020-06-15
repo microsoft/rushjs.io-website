@@ -7,7 +7,8 @@ navigation_source: docs_nav
 ```
 usage: rush update [-h] [-p] [--bypass-policy] [--no-link]
                    [--network-concurrency COUNT] [--debug-package-manager]
-                   [--variant VARIANT] [--full] [--recheck]
+                   [--max-install-attempts NUMBER] [--variant VARIANT]
+                   [--full] [--recheck]
 
 
 The "rush update" command installs the dependencies described in your package.
@@ -40,8 +41,11 @@ Optional arguments:
                         Activates verbose logging for the package manager.
                         You will probably want to pipe the output of Rush to
                         a file when using this command.
+  --max-install-attempts NUMBER
+                        Overrides the default maximum number of install
+                        attempts. The default value is 3.
   --variant VARIANT     Run command using a variant installation
-                        configuration. This parameter may alternatively
+                        configuration. This parameter may alternatively be
                         specified via the RUSH_VARIANT environment variable.
   --full                Normally "rush update" tries to preserve your
                         existing installed versions and only makes the
@@ -63,3 +67,7 @@ Optional arguments:
                         shrinkwrap churn, these fixups are normally performed
                         only in the temporary folder.)
 ```
+
+### See Also
+
+- [rush install]({% link pages/commands/rush_install.md %})

@@ -28,3 +28,4 @@ Optional arguments:
 
 - [Setting up a new repo]({% link pages/maintainer/setup_new_repo.md %})
 - The [rush-example](https://github.com/microsoft/rush-example) repo on GitHub
+- [rush init-deploy]({% link pages/commands/rush_init-deploy.md %})

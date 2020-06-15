@@ -7,7 +7,7 @@ navigation_source: docs_nav
 ```
 usage: rush install [-h] [-p] [--bypass-policy] [--no-link]
                     [--network-concurrency COUNT] [--debug-package-manager]
-                    [--variant VARIANT]
+                    [--max-install-attempts NUMBER] [--variant VARIANT]
 
 
 The "rush install" command installs package dependencies for all your
@@ -41,7 +41,14 @@ Optional arguments:
                         Activates verbose logging for the package manager.
                         You will probably want to pipe the output of Rush to
                         a file when using this command.
+  --max-install-attempts NUMBER
+                        Overrides the default maximum number of install
+                        attempts. The default value is 3.
   --variant VARIANT     Run command using a variant installation
-                        configuration. This parameter may alternatively
+                        configuration. This parameter may alternatively be
                         specified via the RUSH_VARIANT environment variable.
 ```
+
+### See Also
+
+- [rush update]({% link pages/commands/rush_update.md %})
