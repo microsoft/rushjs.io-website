@@ -5,6 +5,9 @@ top_nav:
   - title: News
     url: /pages/news
 
+  - title: API
+    url: /pages/advanced/api
+
   - title: GitHub
     url: /pages/contributing
 
@@ -76,6 +79,8 @@ docs_nav:
         url: /pages/advanced/preferred_versions
       - title: Installation variants
         url: /pages/advanced/installation_variants
+      - title: The "rush-lib" API
+        url: /pages/advanced/api
 
   - title: Command Reference
     subitems:
