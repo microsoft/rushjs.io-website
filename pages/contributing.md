@@ -7,11 +7,18 @@ Rush is developed in the monorepo for the [Rush Stack](https://rushstack.io/) fa
 
 &nbsp;&nbsp;&nbsp;&nbsp; [https://github.com/microsoft/rushstack](https://github.com/microsoft/rushstack)
 
-Contribute to the documentation website in the [rushjs.io-website](https://github.com/microsoft/rushjs.io-website) repo on GitHub.
+Contribute to the documentation website in the [rushjs.io-website](https://github.com/microsoft/rushjs.io-website) GitHub repo.
 
 For general instructions for building Rush and guidelines for submitting PRs, please read the
 [Contributing](https://rushstack.io/pages/contributing/get_started/) documentation for the Rush Stack
 monorepo.
+
+The relevant monorepo project folders are:
+
+- [apps/rush](https://github.com/microsoft/rushstack/tree/master/apps/rush) - the command line interface front end
+- [apps/rush-lib](https://github.com/microsoft/rushstack/tree/master/apps/rush-lib) - the automation API and "engine" where all the logic is implemented
+- [apps/rush-buildxl](https://github.com/microsoft/rushstack/tree/master/apps/rush-buildxl) - adapter for integrating with the [BuildXL](https://github.com/Microsoft/BuildXL) distributed build system
+
 
 ## Testing Rush builds
 
