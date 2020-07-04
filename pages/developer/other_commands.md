@@ -10,11 +10,12 @@ Normally `rush update` only makes the minimal incremental changes necessary to s
 
 ```sh
 # This effectively deletes the old shrinkwrap file and re-solves everything
-# using the latest compatible versions
+# using the latest compatible versions as specified in package.json files.
+# Note that the package.json files themselves are not modified.
 $ rush update --full
 ```
 
-In a large repo, this can introduce unrelated breaks into your PR branch (e.g. if one of the dependencies didn't perfectly follow the SemVer rules).  Instead, `rush update --full` will be run periodically as a separate workflow by a CI job or designated person.  For smaller repos, this usually isn't a concern.
+For everyday work, `--full` can introduce unrelated breaks in your PR branch, for example if one of the dependencies didn't perfectly follow the SemVer rules.  This isn't too much of a concern for small repos. For a large monorepo, we recommended to use `rush update` for everyday work, and then run `rush update --full` periodically as a separate workflow by a CI job or designated person.
 
 ## Faster ways to build
 

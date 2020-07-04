@@ -56,8 +56,10 @@ The [command-line help]({% link pages/commands/rush_add.md %}) for `rush add` de
 
 ## Upgrading to newer versions of your NPM packages
 
-Today, Rush does not yet have an integrated equivalent of `npm update` or [npm-check-updates](https://www.npmjs.com/package/npm-check-updates).  So you if you want to update the SemVer patterns across all your package.json files, you'll need to use an external tool.
+The `rush update --full` can install newer versions that satisfy your existing **package.json** files; however, if you want to upgrade the **package.json** files to specify newer version ranges, today Rush does not yet provide a command for doing that in bulk.
 
-*NOTE: Bulk updating of package.json versions is an important feature.  We would love for someone to contribute a PR.  The only reason the Rush developers have not prioritized this is that it generally gets solved in various other ways for the monorepos that we manage.*
+The [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) tool will work to upgrade individual projects in a Rush repo, as long as you remember to run `rush update` afterwards (instead of `npm install`).
+
+*NOTE: Support for PNPM workspaces is [coming very soon](https://github.com/microsoft/rushstack/pull/1938); with this feature enabled, the [pnpm update](https://pnpm.js.org/en/cli/update) command can be used for bulk upgrades.*
 
 #### Next up: [Other helpful commands]({% link pages/developer/other_commands.md %})
