@@ -1,6 +1,7 @@
 ---
 layout: page
 title: The "rush-lib" API
+navigation_source: docs_nav
 ---
 
 Rush provides an API for use by automation scripts.  It is documented in integrated API reference for all Rush Stack projects:
