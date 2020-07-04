@@ -3,12 +3,13 @@ layout: page
 title: Contributing
 ---
 
-Rush is developed in the [rushstack](https://github.com/microsoft/rushstack/)
-monorepo on GitHub.
+Rush is developed in the monorepo for the [Rush Stack](https://rushstack.io/) family of projects:
+
+&nbsp;&nbsp;&nbsp;&nbsp; [https://github.com/microsoft/rushstack](https://github.com/microsoft/rushstack)
 
 Contribute to the documentation website in the [rushjs.io-website](https://github.com/microsoft/rushjs.io-website) repo on GitHub.
 
-For general instructions on building Rush and guidelines for submitting PRs, please read the
+For general instructions for building Rush and guidelines for submitting PRs, please read the
 [Contributing](https://rushstack.io/pages/contributing/get_started/) documentation for the Rush Stack
 monorepo.
 
