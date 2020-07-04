@@ -5,15 +5,18 @@ title: The "rush-lib" API
 
 Rush provides an API for use by automation scripts.  It is documented in integrated API reference for all Rush Stack projects:
 
-  [API Reference: @microsoft/rush-lib package](https://rushstack.io/pages/api/rush-lib/)
+&nbsp;&nbsp;&nbsp;&nbsp; [API Reference: @microsoft/rush-lib package](https://rushstack.io/pages/api/rush-lib/)
 
 Below are some usage examples.
 
-# Reading the rush.json configuration
+> Although these code samples are presented as plain JavaScript, we strongly recommend to use TypeScript and model your scripts as regular Rush projects.  It is more work to set up initially, but it generally saves time and simplifies maintenance in the long run.
 
-Rather than trying to load **rush.json** as a JSON file, it is recommended to use the [RushConfiguration](https://rushstack.io/pages/api/rush-lib.rushconfiguration/) class which calculates a lot of additional information for you.
+## Reading the rush.json configuration
+
+Rather than trying to load **rush.json** as a JSON file, it is recommended to use the [RushConfiguration](https://rushstack.io/pages/api/rush-lib.rushconfiguration/) class which provides a richer set of data views.
 
 For example, this script will show all the Rush projects and their folders:
+
 ```ts
 const rushLib = require('@microsoft/rush-lib');
 
@@ -29,9 +32,10 @@ for (const project of rushConfiguration.projects) {
 }
 ```
 
-# Modifying package.json files
+## Modifying package.json files
 
-If you want to modify a **package.json** file, the [PackageJsonEditor](https://rushstack.io/pages/api/rush-lib.packagejsoneditor/) class can simplify this:
+If you want to modify a **package.json** file, the [PackageJsonEditor](https://rushstack.io/pages/api/rush-lib.packagejsoneditor/) class provides helpful validation and normalization:
+
 ```ts
 const rushLib = require('@microsoft/rush-lib');
 
@@ -48,3 +52,4 @@ project.packageJsonEditor.addOrUpdateDependency('lodash', '4.17.15', "optionalDe
 // Save the modified package.json file
 project.packageJsonEditor.saveIfModified();
 ```
+
