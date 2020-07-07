@@ -100,3 +100,12 @@ caching issue):
 
 *For a discussion of some other possibilities, see
 [issue #1088](https://github.com/microsoft/rushstack/issues/1088).*
+
+
+### How to clean up Rush's installation to avoid interfering with other tools?
+
+Generally it's recommended to perform all monorepo management using Rush.  The symlinks that Rush creates under the project `node_modules` folders may confuse other tools such as NPM or Yarn, causing them to malfunction because they expect a different installation model.  Sometimes this is unavoidable, however.  For example, when migrating an existing repo to use Rush however, the CI system may need to reuse an existing working folder to build different branches that use different installation models.  To prevent interference, your CI job will first need to invoke a command that deletes the old files from the previous installation model.
+
+For Yarn or NPM, a command like `git clean -dfx` is generally sufficient. (THIS DELETES FILES -- [read the manual](https://git-scm.com/docs/git-clean) before invoking!)
+
+For cleaning up a Rush installation, `git clean` is NOT recommended because it does not handle symlinks reliably.  Instead, use the [rush purge]({% link pages/commands/rush_purge.md %}) command to delete the `node_modules` folders created by Rush.

@@ -4,7 +4,7 @@ title: The "rush-lib" API
 navigation_source: docs_nav
 ---
 
-Rush provides an API for use by automation scripts.  It is documented in integrated API reference for all Rush Stack projects:
+Rush provides an API for use by automation scripts.  It is documented in the integrated API reference for all Rush Stack projects:
 
 &nbsp;&nbsp;&nbsp;&nbsp; [API Reference: @microsoft/rush-lib package](https://rushstack.io/pages/api/rush-lib/)
 
@@ -54,3 +54,6 @@ project.packageJsonEditor.addOrUpdateDependency('lodash', '4.17.15', "optionalDe
 project.packageJsonEditor.saveIfModified();
 ```
 
+## Generating a README.md summary
+
+For a more realistic example, the [repo-toolbox/src/ReadmeAction.ts](https://github.com/microsoft/rushstack/blob/master/repo-scripts/repo-toolbox/src/ReadmeAction.ts) tool uses these APIs to generate the [README.md](https://github.com/microsoft/rushstack/blob/master/README.md#published-packages) inventory for the Rush Stack monorepo.
