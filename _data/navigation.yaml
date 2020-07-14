@@ -96,6 +96,8 @@ docs_nav:
         url: /pages/commands/rush_deploy
       - title: rush init
         url: /pages/commands/rush_init
+      - title: rush init-autoinstaller
+        url: /pages/commands/rush_init-autoinstaller
       - title: rush init-deploy
         url: /pages/commands/rush_init-deploy
       - title: rush install
@@ -116,6 +118,8 @@ docs_nav:
         url: /pages/commands/rush_unlink
       - title: rush update
         url: /pages/commands/rush_update
+      - title: rush update-autoinstaller
+        url: /pages/commands/rush_update-autoinstaller
       - title: rush version
         url: /pages/commands/rush_version
 

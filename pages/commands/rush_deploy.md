@@ -6,7 +6,7 @@ navigation_source: docs_nav
 
 ```
 usage: rush deploy [-h] [-p PROJECT_NAME] [-s SCENARIO_NAME] [--overwrite]
-                   [-t PATH]
+                   [-t PATH] [--create-archive ARCHIVE_PATH]
 
 
 (EXPERIMENTAL) After building the repo, "rush deploy" can be used to prepare
@@ -39,6 +39,13 @@ Optional arguments:
                         WHEN COMBINING WITH "--overwrite". This parameter may
                         alternatively be specified via the
                         RUSH_DEPLOY_TARGET_FOLDER environment variable.
+  --create-archive ARCHIVE_PATH
+                        If specified, after the deployment has been prepared,
+                        "rush deploy" will create an archive containing the
+                        contents of the target folder. The newly created
+                        archive file will be placed according to the
+                        designated path, relative to the target folder.
+                        Supported file extensions: .zip
 ```
 
 ### See Also
