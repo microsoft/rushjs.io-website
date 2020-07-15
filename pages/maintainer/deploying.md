@@ -207,3 +207,9 @@ $ rush deploy --target-folder /mnt/deploy/app2 --scenario app2-example
 
 Note that the `--project` parameter is not needed with `rush deploy` because each config file has only one project
 in its `"deploymentProjectNames"` array.
+
+## See also
+
+- [common/config/rush/deploy.json]({% link pages/configs/deploy_json.md %}) config file
+- [rush deploy]({% link pages/commands/rush_deploy.md %}) command-line parameters
+- [rush init-deploy]({% link pages/commands/rush_init-deploy.md %}) command-line parameters
