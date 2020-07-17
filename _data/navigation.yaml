@@ -130,9 +130,9 @@ docs_nav:
       - title: .npmrc
         url: /pages/configs/npmrc
       - title: command-line.json
-        url: /pages/configs/command_line_json
+        url: /pages/configs/command-line_json
       - title: common-versions.json
-        url: /pages/configs/common_versions_json
+        url: /pages/configs/common-versions_json
       - title: experiments.json
         url: /pages/configs/experiments_json
       - title: deploy.json
@@ -142,7 +142,7 @@ docs_nav:
       - title: rush.json
         url: /pages/configs/rush_json
       - title: version-policies.json
-        url: /pages/configs/version_policies_json
+        url: /pages/configs/version-policies_json
 
   - title: Help
     subitems:
