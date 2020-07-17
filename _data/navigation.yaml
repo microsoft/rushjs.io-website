@@ -28,7 +28,7 @@ docs_nav:
       - title: Getting started
         url: /pages/intro/get_started
 
-  - title: Developer Tutorials
+  - title: Developer tutorials
     subitems:
       - title: Getting started as a developer
         url: /pages/developer/new_developer
@@ -39,7 +39,7 @@ docs_nav:
       - title: Other helpful commands
         url: /pages/developer/other_commands
 
-  - title: Maintainer Tutorials
+  - title: Maintainer tutorials
     subitems:
       - title: Setting up a new repo
         url: /pages/maintainer/setup_new_repo
@@ -62,12 +62,12 @@ docs_nav:
       - title: Installing Git hooks
         url: /pages/maintainer/git_hooks
 
-  - title: Best Practices
+  - title: Best practices
     subitems:
       - title: Authoring change logs
         url: /pages/best_practices/change_logs
 
-  - title: Advanced Topics
+  - title: Advanced topics
     subitems:
       - title: Config file reference
         url: /pages/advanced/config_files
@@ -82,7 +82,7 @@ docs_nav:
       - title: The "rush-lib" API
         url: /pages/advanced/api
 
-  - title: Command Reference
+  - title: Command reference
     subitems:
       - title: rush add
         url: /pages/commands/rush_add
@@ -123,7 +123,7 @@ docs_nav:
       - title: rush version
         url: /pages/commands/rush_version
 
-  - title: Config Reference
+  - title: Config reference
     subitems:
       - title: Environment variables
         url: /pages/configs/environment_vars
@@ -146,7 +146,7 @@ docs_nav:
 
   - title: Help
     subitems:
-      - title: Getting Support
+      - title: Getting support
         url: /pages/help/support
       - title: FAQ
         url: /pages/help/faq

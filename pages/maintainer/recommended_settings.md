@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Recommended Settings
+title: Recommended settings
 navigation_source: docs_nav
 ---
 

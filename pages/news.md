@@ -1,6 +1,6 @@
 ---
 layout: page
-title: What's New
+title: What's new
 ---
 
 To find out what's changed in the latest release, please see the Rush

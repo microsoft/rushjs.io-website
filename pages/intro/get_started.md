@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Started
+title: Getting started
 navigation_source: docs_nav
 ---
 
