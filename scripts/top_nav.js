@@ -13,7 +13,7 @@ autocomplete('#search-input', { hint: false }, [
                     resultHeading = suggestion.title;
                 }
                 else {
-                    if (suggestion.tag_name[0] !== 'h') {
+                    if ((!suggestion.tag_name) || suggestion.tag_name[0] !== 'h') {
                         // If the suggestion did not match a heading, then we can use the heading
                         // from the hierarchy
                         if (suggestion.hierarchy) {
