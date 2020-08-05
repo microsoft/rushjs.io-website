@@ -153,10 +153,16 @@ For this situation, Rush's "autoinstaller" feature provides a convenient alterna
     ````shell
     $ cd common/installers/rush-prettier
 
+    # Instead of running these commands, you could instead manually edit the
+    # "dependencies" in the package.json file
     $ pnpm install prettier
     $ pnpm install pretty-quick
 
     # (If you need plugins, install them as well)
+
+    # When you are finished, run this command to ensure that the
+    # common/autoinstallers/rush-prettier/ppnpm-lock.yaml file is up to date
+    $ rush update-autoinstaller --name rush-prettier
     ````
 
 3.  You should now have two files **package.json** and **pnpm-lock.yaml** in your
