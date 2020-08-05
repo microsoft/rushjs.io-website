@@ -198,8 +198,11 @@ For this situation, Rush's "autoinstaller" feature provides a convenient alterna
     and its dependencies, (4) invoking `pretty-quick --staged`.  However the second time you invoke it, the first
     3 steps are up to date, so step (4) runs without any delay.  Nice!
 
-    Because `rush prettier` only processes files that are staged for commit, the report will most likely
-    say `Found 0 changed files.`.
+    Because `rush prettier` only processes files that are staged for commit, the report will most likely show:
+    ```
+    Found 0 changed files.
+    Everything is awesome!
+    ```
 
 6.  The last step is to add a Git hook that invokes `rush prettier` automatically whenever `git commit` is performed.
     To do this, create a file called **pre-commit** in the **common/git-hooks** folder:
