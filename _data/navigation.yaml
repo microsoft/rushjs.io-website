@@ -53,14 +53,16 @@ docs_nav:
         url: /pages/maintainer/package_managers
       - title: Enabling policies
         url: /pages/maintainer/setup_policies
+      - title: Installing Git hooks
+        url: /pages/maintainer/git_hooks
+      - title: Enabling Prettier
+        url: /pages/maintainer/enabling_prettier
       - title: Custom commands
         url: /pages/maintainer/custom_commands
       - title: Publishing packages
         url: /pages/maintainer/publishing
       - title: Deploying projects
         url: /pages/maintainer/deploying
-      - title: Installing Git hooks
-        url: /pages/maintainer/git_hooks
 
   - title: Best practices
     subitems:

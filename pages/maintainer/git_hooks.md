@@ -14,6 +14,7 @@ For security reasons, Git will not automatically install these scripts when you 
 developer must invoke a command that creates the files and chmods them to be executable.  Rush can automate
 this for you!
 
+
 ## Configuring Rush to install a Git hook script
 
 As an example, suppose we find that developers are making commits without a meaningful description of their work.
@@ -50,6 +51,11 @@ if [ `cat $1 | wc -w` -lt 3 ]; then
 fi
 ```
 
+The sample file shown above is a template that `rush init` generates when setting up a new repo.
+You can probably find a copy as
+[common/git-hooks/commit-msg.sample](https://github.com/microsoft/rush-example/blob/master/common/git-hooks/commit-msg.sample)
+in your own repo.
+
 You would use it as follows:
 
 1. Add this file in your **common/git-hooks** folder, and commit to Git.
@@ -63,10 +69,8 @@ Using Rush to install the hook script avoids the need for a separate solution su
 root-level **package.json** and **node_modules** folder, and Husky runs shell commands for every Git operation
 (even unused hooks); using Rush to install hooks avoids those limitations.
 
-> The sample file shown above is a template that `rush init` generates when setting up a new repo.
-> You can probably find a copy as
-> [common/git-hooks/commit-msg.sample](https://github.com/microsoft/rush-example/blob/master/common/git-hooks/commit-msg.sample)
-> in your own repo.
+> **Note:** If you need to uninstall the hooks for some reason, it is safe to delete the files
+> in your **.git/hooks/** folder.
 
 
 ## Invoking Prettier during "git commit"
