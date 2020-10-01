@@ -42,5 +42,6 @@ Optional arguments:
   -s, --skip-update     If specified, the "rush update" command will not be
                         run after updating the package.json files.
   --all                 If specified, the dependency will be added to all
-                        projects.
+                        projects. This flag doesn't work for adding local 
+                        dependencies for now. 
 ```

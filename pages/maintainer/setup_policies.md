@@ -123,8 +123,8 @@ Continuing the example scenario from [Setting up a new repo]({% link pages/maint
 
 When you run `rush install`, it will create two files that report your dependencies.  These files should be added to Git and can be configured so that changes require approval:
 
-- **~/demo/common/rush/config/browser-approved-packages.json**:  Packages approved for usage in a web browser.  This is generally the stricter of the two types, so by default all new packages are added to this file.  For web browser dependencies, the review discussion typically focuses on:  _How big is the minified code?_  _What's the license?_  _Are there security issues?_
-- **~/demo/common/rush/config/nonbrowser-approved-packages.json**:  Packages approved for usage everywhere *except* in a web browser. This review discussion typically focuses on:  _How much clutter will it pull into our node_modules folder?_  _Do we already have an equivalent package?_  _Is there any real code in there, or is it a just a flimsy wrapper for another package?_
+- **~/demo/common/config/rush/browser-approved-packages.json**:  Packages approved for usage in a web browser.  This is generally the stricter of the two types, so by default all new packages are added to this file.  For web browser dependencies, the review discussion typically focuses on:  _How big is the minified code?_  _What's the license?_  _Are there security issues?_
+- **~/demo/common/config/rush/nonbrowser-approved-packages.json**:  Packages approved for usage everywhere *except* in a web browser. This review discussion typically focuses on:  _How much clutter will it pull into our node_modules folder?_  _Do we already have an equivalent package?_  _Is there any real code in there, or is it a just a flimsy wrapper for another package?_
 
 After running `rush install`, the **browser-approved-packages.json** file will look like this.
 
