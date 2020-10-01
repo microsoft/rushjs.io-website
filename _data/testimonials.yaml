@@ -20,3 +20,7 @@
 - image: telia.png
   text: Telia Company
   url: https://www.telia.se/
+
+- image: wix.png
+  text: Wix
+  url: https://www.wix.com/
