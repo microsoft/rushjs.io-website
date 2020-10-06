@@ -195,7 +195,7 @@ For this situation, Rush's "autoinstaller" feature provides a convenient alterna
     ```
 
     The `"autoinstallerName": "rush-prettier"` line ensures that our autoinstaller will install Prettier
-    before the shell command is ingoked.  The shell command `pretty-quick --staged` will be invoked
+    before the shell command is invoked.  The shell command `pretty-quick --staged` will be invoked
     in the **common/autoinstallers/rush-prettier** folder.
 
 5.  After saving these changes, let's test our custom command by running `rush prettier`.  The first time you should
