@@ -151,7 +151,7 @@ For this situation, Rush's "autoinstaller" feature provides a convenient alterna
 2.  Install the dependencies and create the **pnpm-lock.yaml** file:
 
     ````shell
-    $ cd common/installers/rush-prettier
+    $ cd common/autoinstallers/rush-prettier
 
     # Instead of running these commands, you could instead manually edit the
     # "dependencies" in the package.json file
