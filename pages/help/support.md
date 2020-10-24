@@ -11,5 +11,4 @@ Rush is actively developed by a team within MS Office.  Although Microsoft does 
 - **Found a bug?** You can [open a GitHub issue](https://github.com/microsoft/rushstack/issues)
   in the **rushstack** monorepo where Rush is developed
 
-- **Gitter**: Chat with Rush developers in the Rush Stack
-  [Gitter chat room](https://gitter.im/rushstack/rushstack)
+- **Zulip**: Chat with Rush developers in the Rush Stack [Zulip chat room](https://rushstack.zulipchat.com/)
