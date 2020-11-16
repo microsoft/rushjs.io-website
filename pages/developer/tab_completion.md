@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Everyday commands
+title: Tab completion
 navigation_source: docs_nav
 ---
 
