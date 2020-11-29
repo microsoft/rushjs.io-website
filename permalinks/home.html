@@ -20,7 +20,7 @@ permalink: /
             </form>
           </div>
           <div class="col-6">
-            <form action={{ site.data.links.masthead_get_started }}>
+            <form action="{{ site.data.links.masthead_get_started }}">
               <button type="submit" class="btn btn-block btn-lg btn-primary">Get Started!</button>
             </form>
           </div>
@@ -192,10 +192,10 @@ permalink: /
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="home-testimonial mx-auto mb-5 mb-lg-0">
                 {% if project.url %}
-                  <a href={{ project.url }}>
+                  <a href="{{ project.url }}">
                 {% endif %}
 
-                  <img class="img-fluid mb-3" src={{ "/images/" | append: project.image | absolute_url }} alt="{{ project.text }} logo">
+                  <img class="img-fluid mb-3" src="{{ '/images/' | append: project.image | absolute_url }}" alt="{{ project.text }} logo">
                   <div style="text-align: center;">{{ project.text }}</div>
 
                 {% if project.url %}
