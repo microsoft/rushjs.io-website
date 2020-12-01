@@ -36,5 +36,5 @@ $ rush unlink
 $ rush purge
 ```
 
-#### Next up: [How to get help]({% link pages/help/support.md %})
+#### Next up: [Tab completion]({% link pages/developer/tab_completion.md %})
 
