@@ -36,5 +36,5 @@ $ rush unlink
 $ rush purge
 ```
 
-#### Next up: [Tab completion]({% link pages/developer/tab_completion.md %})
+#### Next up: [Configuring tab completion]({% link pages/developer/tab_completion.md %})
 

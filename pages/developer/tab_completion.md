@@ -1,17 +1,21 @@
 ---
 layout: page
-title: Tab completion
+title: Configuring tab completion
 navigation_source: docs_nav
 ---
 
-# Tab completion for the Rush CLI
+As of version 5.34.0, Rush supports tab completion so that shell commands can be input more quickly
+by pressing the TAB key.  (The setup instructions below are based on the article
+[Tab completion for the .NET Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete)
+which provides some additional tips.)
 
-Inspired by [Tab completion for the .NET Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete).
-
-**NOTE**: the globally installed version of `Rush` will need to be at least `5.34.0`.
 
 ## PowerShell
-To add tab completion to PowerShell for the Rush CLI, create or edit the profile stored in the variable `$PROFILE`. For more information, see [How to create your profile](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles#how-to-create-a-profile) and [Profiles and execution policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles#profiles-and-execution-policy).
+
+To enable tab completion for PowerShell, create or edit the profile stored in the `$PROFILE` variable.
+For more information, see
+[How to create your profile](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles#how-to-create-a-profile)
+and [Profiles and execution policy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles#profiles-and-execution-policy).
 
 Add the following code to your profile:
 
@@ -26,7 +30,9 @@ Register-ArgumentCompleter -Native -CommandName rush -ScriptBlock {
 ```
 
 ## Bash
-To add tab completion to your bash shell for the Rush CLI, add the following code to your .bashrc file:
+
+To enable tab completion for Bash, add the following code to your **.bashrc** file:
+
 ```bash
 # bash parameter completion for the Rush CLI
 
@@ -45,7 +51,6 @@ _rush_bash_complete()
 
 complete -f -F _rush_bash_complete rush
 ```
-
 
 
 #### Next up: [How to get help]({% link pages/help/support.md %})

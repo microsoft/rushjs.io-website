@@ -118,6 +118,8 @@ docs_nav:
         url: /pages/commands/rush_rebuild
       - title: rush scan
         url: /pages/commands/rush_scan
+      - title: rush tab-complete
+        url: /pages/commands/rush_tab-complete
       - title: rush unlink
         url: /pages/commands/rush_unlink
       - title: rush update
