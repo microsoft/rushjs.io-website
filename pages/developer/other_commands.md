@@ -23,6 +23,24 @@ For everyday work, `--full` can introduce unrelated breaks in your PR branch, fo
 
 - **If you changed a library**: Let's say your Git repo contains 50 projects, and you just fixed some bugs in the **widget** library.  You need to run unit tests for all the projects that use this library, and anything that depends on them, but it would be wasteful to rebuild everything else.  To rebuild just the downstream projects:  `rush rebuild --from widget`
 
+
+## A faster way to install
+
+If you repo is using PNPM with the new `useWorkspaces=true` mode enabled in your [rush.json]({% link pages/configs/rush_json.md %}) file, you can use a feature called "filtered installs".  This feature reduces installation times by only installing the subset of NPM packages required to build a specific project.
+
+For example:
+```sh
+# Only install the NPM packages needed to build "my-project" and the other
+# Rush projects that it depends on:
+$ rush install --to my-project
+
+# Like with "rush build", you can use "." to refer to the project from your
+# shell's current working directory:
+$ cd my-project
+$ rush install --to .
+```
+
+
 ## Getting back to a clean state
 
 After working with Rush, maybe you want to get back to a clean state, e.g. so you can zip up a folder.  Here's a couple commands to do that:
