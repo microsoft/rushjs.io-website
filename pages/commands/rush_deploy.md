@@ -9,11 +9,11 @@ usage: rush deploy [-h] [-p PROJECT_NAME] [-s SCENARIO_NAME] [--overwrite]
                    [-t PATH] [--create-archive ARCHIVE_PATH]
 
 
-(EXPERIMENTAL) After building the repo, "rush deploy" can be used to prepare
-a deployment by copying a subset of Rush projects and their dependencies to a
-target folder, which can then be uploaded to a production server. The "rush
-deploy" behavior is specified by a scenario config file that must be created
-first, using the "rush init-deploy" command.
+After building the repo, "rush deploy" can be used to prepare a deployment by
+copying a subset of Rush projects and their dependencies to a target folder,
+which can then be uploaded to a production server. The "rush deploy" behavior
+is specified by a scenario config file that must be created first, using the
+"rush init-deploy" command.
 
 Optional arguments:
   -h, --help            Show this help message and exit.
