@@ -138,6 +138,15 @@ $ rush build
 
 Rush provides a lot of command-line switches for building projects.  See [rush build]({% link pages/commands/rush_build.md %}) and [rush rebuild]({% link pages/commands/rush_rebuild.md %}) for details.
 
+> **Phantom dependency errors**
+>
+> Rush and PNPM use symlinks to prevent projects from importing [phantom dependencies]({% link pages/advanced/phantom_deps.md %}).
+> If an NPM dependency is not declared in your **package.json** file, a runtime error may occur if your project tries to
+> import it.  These phantom dependency errors are one of the most common issues when migrating an existing project into
+> a Rush monorepo.  Generally the fix is simply to add the missing dependency to your **package.json** file.
+>
+> The [rush scan]({% link pages/commands/rush_scan.md %}) command is a quick way to detect these problems.
+
 
 ## Step 7: Adding more projects
 

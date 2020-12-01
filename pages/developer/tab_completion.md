@@ -5,9 +5,9 @@ navigation_source: docs_nav
 ---
 
 As of version 5.34.0, Rush supports tab completion so that shell commands can be input more quickly
-by pressing the TAB key.  (The setup instructions below are based on the article
+by pressing the TAB key.  The setup instructions below are based on the article
 [Tab completion for the .NET Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete)
-which provides some additional tips.)
+which provides some additional tips.
 
 
 ## PowerShell
