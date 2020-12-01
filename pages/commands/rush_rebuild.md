@@ -8,7 +8,7 @@ navigation_source: docs_nav
 usage: rush rebuild [-h] [-p COUNT] [-t PROJECT1]
                     [--from-version-policy VERSION_POLICY_NAME]
                     [--to-version-policy VERSION_POLICY_NAME] [-f PROJECT2]
-                    [-v]
+                    [-v] [--ignore-hooks]
 
 
 This command assumes that the package.json file for each project contains a
@@ -44,12 +44,15 @@ Optional arguments:
                         Run command in all projects with the specified
                         version policy and all of their dependencies
   -f PROJECT2, --from PROJECT2
-                        Run command in all projects that directly or
-                        indirectly depend on the specified project. "." can
-                        be used as shorthand to specify the project in the
-                        current working directory.
+                        Run command in the specified project and all projects
+                        that directly or indirectly depend on the specified
+                        project. "." can be used as shorthand to specify the
+                        project in the current working directory.
   -v, --verbose         Display the logs during the build, rather than just
                         displaying the build status summary
+  --ignore-hooks        Skips execution of the "eventHooks" scripts defined
+                        in rush.json. Make sure you know what you are
+                        skipping.
 ```
 
 ### See Also

@@ -11,11 +11,11 @@ Adds a specified package as a dependency of the current project (as
 determined by the current working directory) and then runs "rush update". If
 no version is specified, a version will be automatically detected (typically
 either the latest version or a version that won't break the
-"ensureConsistentVersions" policy). If a version range is specified, the
-latest version in the range will be used. The version will be automatically
-prepended with a tilde, unless the "--exact" or "--caret" flags are used. The
-"--make-consistent" flag can be used to update all packages with the
-dependency.
+"ensureConsistentVersions" policy). If a version range (or a workspace range)
+is specified, the latest version in the range will be used. The version will
+be automatically prepended with a tilde, unless the "--exact" or "--caret"
+flags are used. The "--make-consistent" flag can be used to update all
+packages with the dependency.
 
 Optional arguments:
   -h, --help            Show this help message and exit.
@@ -42,6 +42,5 @@ Optional arguments:
   -s, --skip-update     If specified, the "rush update" command will not be
                         run after updating the package.json files.
   --all                 If specified, the dependency will be added to all
-                        projects. This flag doesn't work for adding local 
-                        dependencies for now. 
+                        projects.
 ```
