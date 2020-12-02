@@ -7,8 +7,8 @@ navigation_source: docs_nav
 ```
 usage: rush update [-h] [-p] [--bypass-policy] [--no-link]
                    [--network-concurrency COUNT] [--debug-package-manager]
-                   [--max-install-attempts NUMBER] [--variant VARIANT]
-                   [--full] [--recheck]
+                   [--max-install-attempts NUMBER] [--ignore-hooks]
+                   [--variant VARIANT] [--full] [--recheck]
 
 
 The "rush update" command installs the dependencies described in your package.
@@ -32,7 +32,8 @@ Optional arguments:
                         You will need to run "rush link" manually. This flag
                         is useful for automated builds that want to report
                         stages individually or perform extra operations in
-                        between the two stages.
+                        between the two stages. This flag is not supported
+                        when using workspaces.
   --network-concurrency COUNT
                         If specified, limits the maximum number of concurrent
                         network requests. This is useful when troubleshooting
@@ -44,6 +45,9 @@ Optional arguments:
   --max-install-attempts NUMBER
                         Overrides the default maximum number of install
                         attempts. The default value is 3.
+  --ignore-hooks        Skips execution of the "eventHooks" scripts defined
+                        in rush.json. Make sure you know what you are
+                        skipping.
   --variant VARIANT     Run command using a variant installation
                         configuration. This parameter may alternatively be
                         specified via the RUSH_VARIANT environment variable.

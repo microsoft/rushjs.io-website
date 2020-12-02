@@ -11,8 +11,7 @@ usage: rush version [-h] [-b BRANCH] [--ensure-version-policy]
                     [--override-bump BUMPTYPE] [--override-prerelease-id ID]
 
 
-(EXPERIMENTAL) use this "rush version" command to ensure version policies and
-bump versions.
+use this "rush version" command to ensure version policies and bump versions.
 
 Optional arguments:
   -h, --help            Show this help message and exit.

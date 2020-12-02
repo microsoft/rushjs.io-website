@@ -8,7 +8,7 @@ navigation_source: docs_nav
 usage: rush build [-h] [-p COUNT] [-t PROJECT1]
                   [--from-version-policy VERSION_POLICY_NAME]
                   [--to-version-policy VERSION_POLICY_NAME] [-f PROJECT2] [-v]
-                  [-o]
+                  [-o] [--ignore-hooks]
 
 
 This command is similar to "rush rebuild", except that "rush build" performs
@@ -47,16 +47,19 @@ Optional arguments:
                         Run command in all projects with the specified
                         version policy and all of their dependencies
   -f PROJECT2, --from PROJECT2
-                        Run command in all projects that directly or
-                        indirectly depend on the specified project. "." can
-                        be used as shorthand to specify the project in the
-                        current working directory.
+                        Run command in the specified project and all projects
+                        that directly or indirectly depend on the specified
+                        project. "." can be used as shorthand to specify the
+                        project in the current working directory.
   -v, --verbose         Display the logs during the build, rather than just
                         displaying the build status summary
   -o, --changed-projects-only
                         If specified, the incremental build will only rebuild
                         projects that have changed, but not any projects that
                         directly or indirectly depend on the changed package.
+  --ignore-hooks        Skips execution of the "eventHooks" scripts defined
+                        in rush.json. Make sure you know what you are
+                        skipping.
 ```
 
 ### See Also

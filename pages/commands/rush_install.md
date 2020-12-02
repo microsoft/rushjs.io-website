@@ -7,7 +7,9 @@ navigation_source: docs_nav
 ```
 usage: rush install [-h] [-p] [--bypass-policy] [--no-link]
                     [--network-concurrency COUNT] [--debug-package-manager]
-                    [--max-install-attempts NUMBER] [--variant VARIANT]
+                    [--max-install-attempts NUMBER] [--ignore-hooks]
+                    [--variant VARIANT] [-t PROJECT1]
+                    [--to-version-policy VERSION_POLICY_NAME]
 
 
 The "rush install" command installs package dependencies for all your
@@ -32,7 +34,8 @@ Optional arguments:
                         You will need to run "rush link" manually. This flag
                         is useful for automated builds that want to report
                         stages individually or perform extra operations in
-                        between the two stages.
+                        between the two stages. This flag is not supported
+                        when using workspaces.
   --network-concurrency COUNT
                         If specified, limits the maximum number of concurrent
                         network requests. This is useful when troubleshooting
@@ -44,9 +47,21 @@ Optional arguments:
   --max-install-attempts NUMBER
                         Overrides the default maximum number of install
                         attempts. The default value is 3.
+  --ignore-hooks        Skips execution of the "eventHooks" scripts defined
+                        in rush.json. Make sure you know what you are
+                        skipping.
   --variant VARIANT     Run command using a variant installation
                         configuration. This parameter may alternatively be
                         specified via the RUSH_VARIANT environment variable.
+  -t PROJECT1, --to PROJECT1
+                        Run install in the specified project and all of its
+                        dependencies. "." can be used as shorthand to specify
+                        the project in the current working directory. This
+                        argument is only valid in workspace environments.
+  --to-version-policy VERSION_POLICY_NAME
+                        Run install in all projects with the specified
+                        version policy and all of their dependencies. This
+                        argument is only valid in workspace environments.
 ```
 
 ### See Also
