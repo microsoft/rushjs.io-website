@@ -26,7 +26,7 @@ For everyday work, `--full` can introduce unrelated breaks in your PR branch, fo
 
 ## A faster way to install
 
-If you repo is using PNPM with the new `useWorkspaces=true` mode enabled in your [rush.json]({% link pages/configs/rush_json.md %}) file, you can use a feature called "filtered installs".  This feature reduces installation times by only installing the subset of NPM packages required to build a specific project.
+If your repo is using PNPM with the new `useWorkspaces=true` mode enabled in your [rush.json]({% link pages/configs/rush_json.md %}) file, you can use a feature called "filtered installs".  This feature reduces installation times by only installing the subset of NPM packages required to build a specific project.
 
 For example:
 ```sh
