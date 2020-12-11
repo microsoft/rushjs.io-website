@@ -41,7 +41,7 @@ In some workflows, a human editor will review the change logs before they are pu
 
 - When referring to public API changes, use the `()` suffix to indicate a function name, e.g. `setSomethingOnWebpart()`
 
-- When referring to public API changes, use "double-quotes" around class and property names.
+- When referring to public API changes, use `backticks (``)` around class and property names.
 
 - When documenting an upgrade, indicate the old and new version.  For example: "Upgraded `widget-library` from `1.0.2` to `2.0.1`"
 
