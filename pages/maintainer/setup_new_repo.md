@@ -83,7 +83,7 @@ You can change your options at any time, but there are a few settings in **rush.
 
 - **Check your Rush version**: Make sure your `rushVersion` setting is the latest version, which is shown in the [NPM registry](https://www.npmjs.com/package/@microsoft/rush).
 
-- **Check other version fields**: Also check that you're using recent stable releases for any other applicable fields such as `pnpmVersion`, `pnpmVersion`, `yarnVersion`, `nodeSupportedVersionRange`
+- **Check other version fields**: Also check that you're using recent stable releases for any other applicable fields such as `pnpmVersion`, `npmVersion`, `yarnVersion`, `nodeSupportedVersionRange`
 
 - **Decide whether to use the "category folders" model**: See the comments in **rush.json** regarding `projectFolderMinDepth` and `projectFolderMaxDepth`, and make a plan for how project folders will be organized in the monorepo
 
