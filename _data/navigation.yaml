@@ -38,6 +38,8 @@ docs_nav:
         url: /pages/developer/modifying_package_json
       - title: Other helpful commands
         url: /pages/developer/other_commands
+      - title: Selecting subsets of projects
+        url: /pages/developer/selecting_subsets
       - title: Tab completion
         url: /pages/developer/tab_completion
 
