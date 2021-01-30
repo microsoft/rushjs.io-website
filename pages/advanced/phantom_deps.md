@@ -56,7 +56,7 @@ things -- mitigating these problems was one of the original motivations for crea
 
 
 ## Phantom dependencies
-<img src="/images/home/card-phantom.svg" style="float: right; padding-left: 30px" alt="NPM phantom dependency">
+<img src="/images/home/card-phantom.svg" style="float: right; padding-left: 30px" alt="NPM phantom dependency" />
 
 A "phantom dependency" occurs when a project uses a package that is not defined
 in its **package.json** file.  Consider this example:

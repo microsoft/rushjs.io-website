@@ -7,7 +7,7 @@ navigation_source: docs_nav
 *This article continues the discussion from the "[Phantom dependencies]({% link pages/advanced/phantom_deps.md %})" section.  It's recommended to read that first.*
 
 ## How NPM doppelgangers arise
-<img src="/images/home/card-doppel.svg" style="float: right; padding-left: 30px" alt="NPM doppelganger">
+<img src="/images/home/card-doppel.svg" style="float: right; padding-left: 30px" alt="NPM doppelganger" />
 
 Sometimes the **node_modules** data structure is forced to install two copies
 of ***the same version of*** the same package.  Really?  How can that happen?
