@@ -34,6 +34,14 @@ generates for **common/config/rush/experiments.json**:
    * If true, the chmod field in temporary project tar headers will not be normalized.
    * This normalization can help ensure consistent tarball integrity across platforms.
    */
-  // "noChmodFieldInTarHeaderNormalization": true
+  // "noChmodFieldInTarHeaderNormalization": true,
+
+  /**
+   * If true, the build cache feature is enabled. To use this feature, a common/config/rush/build-cache.json
+   * file must be created with configuration options.
+   *
+   * See https://github.com/microsoft/rushstack/issues/2393 for details about this experimental feature.
+   */
+  // "buildCache": true
 }
 ```

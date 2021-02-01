@@ -26,7 +26,7 @@ generates for **rush.json** (in the repo root folder):
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.29.0",
+  "rushVersion": "5.38.0",
 
   /**
    * The next field selects which package manager should be installed and determines its version.
@@ -36,7 +36,7 @@ generates for **rush.json** (in the repo root folder):
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "4.14.4",
+  "pnpmVersion": "5.15.2",
 
   // "npmVersion": "4.5.0",
   // "yarnVersion": "1.9.4",
@@ -110,7 +110,7 @@ generates for **rush.json** (in the repo root folder):
      * If true, then `rush install` will use the PNPM workspaces feature to perform the
      * install.
      *
-     * This feature uses PNPM to peform the entire monorepo install. When using workspaces, Rush will
+     * This feature uses PNPM to perform the entire monorepo install. When using workspaces, Rush will
      * generate a "pnpm-workspace.yaml" file referencing all local projects to install. Rush will
      * also generate a "pnpmfile.js" which is used to provide preferred versions support. When install
      * is run, this pnpmfile will be used to replace dependency version ranges with a smaller subset
@@ -130,8 +130,11 @@ generates for **rush.json** (in the repo root folder):
    *
    * Specify a SemVer range to ensure developers use a Node.js version that is appropriate
    * for your repo.
+   *
+   * LTS schedule: https://nodejs.org/en/about/releases/
+   * LTS versions: https://nodejs.org/en/download/releases/
    */
-  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0",
+  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <15.0.0",
 
   /**
    * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
@@ -167,7 +170,7 @@ generates for **rush.json** (in the repo root folder):
    *
    * The Rush developers recommend a "category folder" model, where buildable project folders
    * must always be exactly two levels below the repo root.  The parent folder acts as the category.
-   * This provides a basic facility for grouping related projects (e.g. "apps", "libaries",
+   * This provides a basic facility for grouping related projects (e.g. "apps", "libraries",
    * "tools", "prototypes") while still encouraging teams to organize their projects into
    * a unified taxonomy.  Limiting to 2 levels seems very restrictive at first, but if you have
    * 20 categories and 20 projects in each category, this scheme can easily accommodate hundreds
@@ -248,7 +251,7 @@ generates for **rush.json** (in the repo root folder):
      * They are case-insensitive anchored JavaScript RegExps.  Example: ".*@example\.com"
      *
      * IMPORTANT: Because these are regular expressions encoded as JSON string literals,
-     * RegExp escapes need two backspashes, and ordinary periods should be "\\.".
+     * RegExp escapes need two backslashes, and ordinary periods should be "\\.".
      */
     // "allowedEmailRegExps": [
     //   "[^@]+@users\\.noreply\\.github\\.com",
@@ -269,7 +272,16 @@ generates for **rush.json** (in the repo root folder):
      * you might configure your system's trigger to look for a special string such as "[skip-ci]"
      * in the commit message, and then customize Rush's message to contain that string.
      */
-    // "versionBumpCommitMessage": "Applying package updates. [skip-ci]"
+    // "versionBumpCommitMessage": "Applying package updates. [skip-ci]",
+
+    /**
+     * The commit message to use when committing changes during 'rush version'.
+     *
+     * For example, if you want to prevent these commits from triggering a CI build,
+     * you might configure your system's trigger to look for a special string such as "[skip-ci]"
+     * in the commit message, and then customize Rush's message to contain that string.
+     */
+    // "changeLogUpdateCommitMessage": "Applying package updates. [skip-ci]"
   },
 
   "repository": {
@@ -334,7 +346,7 @@ generates for **rush.json** (in the repo root folder):
    * Installation variants allow you to maintain a parallel set of configuration files that can be
    * used to build the entire monorepo with an alternate set of dependencies.  For example, suppose
    * you upgrade all your projects to use a new release of an important framework, but during a transition period
-   * you intend to maintain compability with the old release.  In this situation, you probably want your
+   * you intend to maintain compatibility with the old release.  In this situation, you probably want your
    * CI validation to build the entire repo twice: once with the old release, and once with the new release.
    *
    * Rush "installation variants" correspond to sets of config files located under this folder:
@@ -426,6 +438,15 @@ generates for **rush.json** (in the repo root folder):
     //    * NOTE: "versionPolicyName" and "shouldPublish" are alternatives; you cannot specify them both.
     //    */
     //   // "shouldPublish": false,
+    //
+    //   /**
+    //    * Facilitates postprocessing of a project's files prior to publishing.
+    //    *
+    //    * If specified, the "publishFolder" is the relative path to a subfolder of the project folder.
+    //    * The "rush publish" command will publish the subfolder instead of the project folder.  The subfolder
+    //    * must contain its own package.json file, which is typically a build output.
+    //    */
+    //   // "publishFolder": "temp/publish",
     //
     //   /**
     //    * An optional version policy associated with the project.  Version policies are defined

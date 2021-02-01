@@ -18,10 +18,38 @@ If this variable is set to `true`, Rush will not fail the build when running a v
 of Node that does not match the criteria specified in the `nodeSupportedVersionRange`
 field from **rush.json**.
 
+## RUSH_BUILD_CACHE_WRITE_CREDENTIAL (EXPERIMENTAL)
+
+This environment variable is used by the experimental `buildCache` feature.  It provides a credential for
+accessing the remote build cache, if configured.  Setting this environment variable overrides a `false` value
+for the `isCacheWriteAllowed` setting.  This credential also overrides any cached credentials.
+
+If Azure Blob Storage is used to store cache entries, this must be a SAS token serialized as query parameters.
+See [this article](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for details
+about SAS tokens.
+
 ## RUSH_DEPLOY_TARGET_FOLDER
 
 This environment variable can be used to specify the `--target-folder` parameter
 for the [rush deploy]({% link pages/commands/rush_deploy.md %}) command.
+
+## RUSH_GIT_BINARY_PATH
+
+Explicitly specifies the path for the Git binary that is invoked by certain Rush operations.
+
+## RUSH_GLOBAL_FOLDER
+
+Overrides the location of the `~/.rush` global folder where Rush stores temporary files.
+
+Most of the temporary files created by Rush are stored separately for each monorepo working folder,
+to avoid issues of concurrency and compatibility between tool versions.  However, a small set
+of files (e.g. installations of the `@microsoft/rush-lib` engine and the package manager) are stored
+in a global folder to speed up installations.  The default location is `~/.rush` on POSIX-like
+operating systems or `C:\Users\YourName` on Windows.
+(POSIX is a registered trademark of the Institute of Electrical and Electronic Engineers, Inc.)
+
+Use `RUSH_GLOBAL_FOLDER` to specify a different folder path.  This is useful for example if a Windows
+group policy forbids executing scripts installed in a user's home directory.
 
 ## RUSH_PARALLELISM
 

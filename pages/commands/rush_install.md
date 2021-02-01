@@ -8,8 +8,9 @@ navigation_source: docs_nav
 usage: rush install [-h] [-p] [--bypass-policy] [--no-link]
                     [--network-concurrency COUNT] [--debug-package-manager]
                     [--max-install-attempts NUMBER] [--ignore-hooks]
-                    [--variant VARIANT] [-t PROJECT1]
+                    [--variant VARIANT] [-t PROJECT] [-f PROJECT]
                     [--to-version-policy VERSION_POLICY_NAME]
+                    [--from-version-policy VERSION_POLICY_NAME]
 
 
 The "rush install" command installs package dependencies for all your
@@ -53,15 +54,27 @@ Optional arguments:
   --variant VARIANT     Run command using a variant installation
                         configuration. This parameter may alternatively be
                         specified via the RUSH_VARIANT environment variable.
-  -t PROJECT1, --to PROJECT1
+  -t PROJECT, --to PROJECT
                         Run install in the specified project and all of its
                         dependencies. "." can be used as shorthand to specify
                         the project in the current working directory. This
+                        argument is only valid in workspace environments.
+  -f PROJECT, --from PROJECT
+                        Run install in the specified project and all projects
+                        that directly or indirectly depend on the specified
+                        project. "." can be used as shorthand to specify the
+                        project in the current working directory. This
                         argument is only valid in workspace environments.
   --to-version-policy VERSION_POLICY_NAME
                         Run install in all projects with the specified
                         version policy and all of their dependencies. This
                         argument is only valid in workspace environments.
+  --from-version-policy VERSION_POLICY_NAME
+                        Run command in all projects with the specified
+                        version policy and all projects that directly or
+                        indirectly depend on projects with the specified
+                        version policy. This argument is only valid in
+                        workspace environments.
 ```
 
 ## See Also
