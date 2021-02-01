@@ -19,7 +19,7 @@ Optional arguments:
                         must conform to the naming rules for NPM packages.
 ```
 
-### See Also
+## See Also
 
 - [rush init]({% link pages/commands/rush_init.md %})
 - [rush update-autoinstaller]({% link pages/commands/rush_update-autoinstaller.md %})

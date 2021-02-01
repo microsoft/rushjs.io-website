@@ -23,6 +23,8 @@ For everyday work, `--full` can introduce unrelated breaks in your PR branch, fo
 
 - **If you changed a library**: Let's say your Git repo contains 50 projects, and you just fixed some bugs in the **widget** library.  You need to run unit tests for all the projects that use this library, and anything that depends on them, but it would be wasteful to rebuild everything else.  To rebuild just the downstream projects:  `rush rebuild --from widget`
 
+The full set of project selection parameters are described in the article [Selecting subsets of projects]({% link pages/developer/selecting_subsets.md %}).
+
 
 ## A faster way to install
 
@@ -38,6 +40,9 @@ $ rush install --to my-project
 # shell's current working directory:
 $ cd my-project
 $ rush install --to .
+
+# Here's how to install dependencies required to do "rush build --from my-project"
+$ rush install --from my-project
 ```
 
 

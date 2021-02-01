@@ -96,7 +96,7 @@ Optional arguments:
                         the current HEAD will be tagged.
 ```
 
-### See Also
+## See Also
 
 - [Publishing packages]({% link pages/maintainer/publishing.md %})
 - [rush version]({% link pages/commands/rush_version.md %})

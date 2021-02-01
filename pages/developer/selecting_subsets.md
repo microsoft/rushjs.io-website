@@ -4,9 +4,6 @@ title: Selecting subsets of projects
 navigation_source: docs_nav
 ---
 
-> **Coming soon:**  The CLI parameters documented on this page will be released with Rush 5.38.0, after PR [#2422](https://github.com/microsoft/rushstack/pull/2422) is merged.
-
-
 [Bulk commands]({% link pages/maintainer/custom_commands.md %}) like `rush build` and `rush rebuild` operate on
 all projects in the monorepo by default.  This becomes expensive as you accumulate more and more projects.
 To speed things up, Rush provides a set of command-line parameters for selecting subsets of projects.
@@ -152,3 +149,8 @@ The projects selected by this example are `A`, `C`, `D`, `E`, and `F`:
 
 <img src="/images/docs/selection-multi.svg" alt="rush build --only A --impacted-by-except B --to F" style="height: 150px;" />
 
+
+## See Also
+
+- [rush build]({% link pages/commands/rush_build.md %})
+- [rush rebuild]({% link pages/commands/rush_rebuild.md %})

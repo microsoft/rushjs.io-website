@@ -17,6 +17,6 @@ Optional arguments:
 ```
 
 
-### See Also
+## See Also
 
 - [Configuring tab completion]({% link pages/developer/tab_completion.md %})

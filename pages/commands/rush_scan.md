@@ -22,6 +22,6 @@ Optional arguments:
   -h, --help  Show this help message and exit.
 ```
 
-### See Also
+## See Also
 
 - [Phantom dependencies]({% link pages/advanced/phantom_deps.md %})

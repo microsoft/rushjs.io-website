@@ -64,6 +64,6 @@ Optional arguments:
                         argument is only valid in workspace environments.
 ```
 
-### See Also
+## See Also
 
 - [rush update]({% link pages/commands/rush_update.md %})
