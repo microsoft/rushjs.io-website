@@ -22,10 +22,14 @@ Add the following code to your profile:
 ```powershell
 # PowerShell parameter completion shim for the Rush CLI
 Register-ArgumentCompleter -Native -CommandName rush -ScriptBlock {
-     param($commandName, $wordToComplete, $cursorPosition)
-         rush tab-complete --position $cursorPosition --word "$wordToComplete" | ForEach-Object {
-            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-         }
+  param($commandName, $commandAst, $cursorPosition)
+    [string]$value = $commandAst.ToString()
+    # Handle input like `rush install; rush bui` + Tab
+    [int]$position = [Math]::Min($cursorPosition, $value.Length)
+
+    rush tab-complete --position $position --word "$value" | ForEach-Object {
+      [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+    }
  }
 ```
 
