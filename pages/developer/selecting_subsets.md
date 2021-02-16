@@ -12,9 +12,10 @@ Suppose we're working with the following collection of Rush projects:
 
 <img src="/images/docs/selection-intro.svg" alt="a sample monorepo" style="height: 150px;" />
 
-In this illustration, the arrow from `C` to `D` indicates that `C` is a dependency of `D`.
-The circles represent Rush projects (not external NPM dependencies).  We'll use the `rush build` command as
-our example, but these same parameters work for any bulk command.
+In the above illustration, the circles represent local projects, not external NPM dependencies.
+The arrow from `D` to `C` indicates that `D` depends on `C`; this means that `C` must be built before
+`D` can be built.  We'll use the `rush build` command in the examples given below, but these same parameters
+work for any bulk command.
 
 
 ## -<!---->-to
