@@ -124,6 +124,8 @@ docs_nav:
         url: /pages/commands/rush_rebuild
       - title: rush scan
         url: /pages/commands/rush_scan
+      - title: rush setup
+        url: /pages/commands/rush_setup
       - title: rush tab-complete
         url: /pages/commands/rush_tab-complete
       - title: rush unlink
@@ -134,6 +136,8 @@ docs_nav:
         url: /pages/commands/rush_update-autoinstaller
       - title: rush version
         url: /pages/commands/rush_version
+      - title: rush write-build-cache
+        url: /pages/commands/rush_write-build-cache
 
   - title: Config reference
     subitems:

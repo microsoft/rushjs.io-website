@@ -9,7 +9,7 @@ usage: rush build [-h] [-p COUNT] [-t PROJECT] [-T PROJECT] [-f PROJECT]
                   [-o PROJECT] [-i PROJECT] [-I PROJECT]
                   [--to-version-policy VERSION_POLICY_NAME]
                   [--from-version-policy VERSION_POLICY_NAME] [-v] [-c]
-                  [--ignore-hooks]
+                  [--ignore-hooks] [--disable-build-cache]
 
 
 This command is similar to "rush rebuild", except that "rush build" performs
@@ -115,12 +115,20 @@ Optional arguments:
   -v, --verbose         Display the logs during the build, rather than just
                         displaying the build status summary
   -c, --changed-projects-only
-                        If specified, the incremental build will only rebuild
-                        projects that have changed, but not any projects that
-                        directly or indirectly depend on the changed package.
+                        Normally the incremental build logic will rebuild
+                        changed projects as well as any projects that
+                        directly or indirectly depend on a changed project.
+                        Specify "--changed-projects-only" to ignore dependent
+                        projects, only rebuilding those projects whose files
+                        were changed. Note that this parameter is "unsafe";
+                        it is up to the developer to ensure that the ignored
+                        projects are okay to ignore.
   --ignore-hooks        Skips execution of the "eventHooks" scripts defined
                         in rush.json. Make sure you know what you are
                         skipping.
+  --disable-build-cache
+                        (EXPERIMENTAL) Disables the build cache for this
+                        command invocation.
 ```
 
 ## See also
