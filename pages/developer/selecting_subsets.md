@@ -155,5 +155,6 @@ The projects selected by this example are `A`, `C`, `D`, `E`, and `F`:
 ## See also
 
 - [Incremental builds]({% link pages/advanced/incremental_builds.md %})
+- [Using watch mode]({% link pages/advanced/watch_mode.md %})
 - [rush build]({% link pages/commands/rush_build.md %})
 - [rush rebuild]({% link pages/commands/rush_rebuild.md %})
