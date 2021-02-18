@@ -10,7 +10,7 @@ generates for **common/config/rush/version-policies.json**:
 ```js
 /**
  * This is configuration file is used for advanced publishing configurations with Rush.
- * For full documentation, please see https://rushjs.io
+ * More documentation is available on the Rush website: https://rushjs.io
  */
 
 /**

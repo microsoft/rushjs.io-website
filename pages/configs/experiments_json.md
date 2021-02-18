@@ -10,7 +10,7 @@ generates for **common/config/rush/experiments.json**:
 ```js
 /**
  * This configuration file allows repo maintainers to enable and disable experimental
- * Rush features. For full documentation, please see https://rushjs.io
+ * Rush features.  More documentation is available on the Rush website: https://rushjs.io
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/experiments.schema.json",

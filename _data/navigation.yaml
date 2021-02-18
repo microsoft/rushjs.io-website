@@ -141,6 +141,8 @@ docs_nav:
         url: /pages/configs/environment_vars
       - title: .npmrc
         url: /pages/configs/npmrc
+      - title: artifactory.json
+        url: /pages/configs/artifactory_json
       - title: command-line.json
         url: /pages/configs/command-line_json
       - title: common-versions.json

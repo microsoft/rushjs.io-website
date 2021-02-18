@@ -148,7 +148,7 @@ Rush's "watch mode" formalizes this basic idea.  It works as follows:
 
 
 > **"Experimental"** The `"watchForChanges"` feature is still in its early stages.  Feedback is welcome!
-> [GitHub issue #1202](https://github.com/microsoft/rushstack/issues/1202)
+> GitHub issue [#1202](https://github.com/microsoft/rushstack/issues/1202)
 > tracks additional work items and [William Bernting](https://github.com/wbern)'s original dev plan.
 
 
