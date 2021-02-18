@@ -183,3 +183,8 @@ If we run `rush import-strings --locale fr-fr`, then Rush will read the "import-
 ```
 
 In other words, Rush's custom parameters are simply appended to the **package.json** script body.  This means you may run into trouble if your script body uses shell expressions such as "`rimraf ./lib && rimraf ./temp`" which don't support these parameters, or need them to be inserted in the middle of the string.  This is by design:  We don't recommend writing nontrivial build scripts inside a JSON string.  Instead, it's better to move this operation into a proper script file that can be commented and reviewed.  As your monorepo grows, you'll probably also want to move that script into a reusable library that can be shared across projects.
+
+
+## See Also
+
+- [command-line.json]({% link pages/configs/command-line_json.md %})

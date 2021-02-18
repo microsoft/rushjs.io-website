@@ -83,6 +83,8 @@ docs_nav:
         url: /pages/advanced/npm_doppelgangers
       - title: Preferred versions
         url: /pages/advanced/preferred_versions
+      - title: Incremental builds
+        url: /pages/advanced/incremental_builds
       - title: Installation variants
         url: /pages/advanced/installation_variants
       - title: The "rush-lib" API
