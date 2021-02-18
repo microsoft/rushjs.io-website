@@ -55,7 +55,7 @@ Optional arguments:
                         --bulk flag is provided.
 ```
 
-## See Also
+## See also
 
 - [Authoring change logs]({% link pages/best_practices/change_logs.md %})
 - [rush version]({% link pages/commands/rush_version.md %})

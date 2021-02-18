@@ -46,7 +46,7 @@ Optional arguments:
                         "--ensure-version-policy" is provided.
 ```
 
-## See Also
+## See also
 
 - [Publishing packages]({% link pages/maintainer/publishing.md %})
 - [rush change]({% link pages/commands/rush_change.md %})

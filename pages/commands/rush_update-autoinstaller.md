@@ -17,6 +17,6 @@ Optional arguments:
                         be one of the folders under common/autoinstallers.
 ```
 
-## See Also
+## See also
 
 - [rush init-autoinstaller]({% link pages/commands/rush_init-autoinstaller.md %})

@@ -15,6 +15,6 @@ Optional arguments:
   -h, --help  Show this help message and exit.
 ```
 
-## See Also
+## See also
 
 - [rush link]({% link pages/commands/rush_link.md %})

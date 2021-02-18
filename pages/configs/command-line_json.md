@@ -291,6 +291,6 @@ generates for **common/config/rush/command-line.json**:
 }
 ```
 
-## See Also
+## See also
 
 - [Custom commands]({% link pages/maintainer/custom_commands.md %})

@@ -123,7 +123,7 @@ Optional arguments:
                         skipping.
 ```
 
-## See Also
+## See also
 
 - [Selecting subsets of projects]({% link pages/developer/selecting_subsets.md %})
 - [rush rebuild]({% link pages/commands/rush_rebuild.md %})

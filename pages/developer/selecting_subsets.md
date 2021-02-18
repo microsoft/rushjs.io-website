@@ -151,7 +151,7 @@ The projects selected by this example are `A`, `C`, `D`, `E`, and `F`:
 <img src="/images/docs/selection-multi.svg" alt="rush build --only A --impacted-by-except B --to F" style="height: 150px;" />
 
 
-## See Also
+## See also
 
 - [Incremental builds]({% link pages/advanced/incremental_builds.md %})
 - [rush build]({% link pages/commands/rush_build.md %})

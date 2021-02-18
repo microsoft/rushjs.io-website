@@ -99,6 +99,6 @@ did need to be rebuilt.  This parameter saves time by assuming that you know bet
 to be built.  If that assumption is incorrect, you can always do `rush build` to get back to a good state.
 
 
-## See Also
+## See also
 
 - [Selecting subsets of projects]({% link pages/developer/selecting_subsets.md %})

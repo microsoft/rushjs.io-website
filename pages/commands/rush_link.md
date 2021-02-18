@@ -19,6 +19,6 @@ Optional arguments:
                seems to indicate that this is unnecessary.
 ```
 
-## See Also
+## See also
 
 - [rush unlink]({% link pages/commands/rush_unlink.md %})

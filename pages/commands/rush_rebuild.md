@@ -116,7 +116,7 @@ Optional arguments:
                         skipping.
 ```
 
-## See Also
+## See also
 
 - [Selecting subsets of projects]({% link pages/developer/selecting_subsets.md %})
 - [rush build]({% link pages/commands/rush_build.md %})

@@ -72,6 +72,6 @@ Optional arguments:
                         only in the temporary folder.)
 ```
 
-## See Also
+## See also
 
 - [rush install]({% link pages/commands/rush_install.md %})

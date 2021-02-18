@@ -77,6 +77,6 @@ Optional arguments:
                         workspace environments.
 ```
 
-## See Also
+## See also
 
 - [rush update]({% link pages/commands/rush_update.md %})

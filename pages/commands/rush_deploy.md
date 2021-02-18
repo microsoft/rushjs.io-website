@@ -48,7 +48,7 @@ Optional arguments:
                         Supported file extensions: .zip
 ```
 
-## See Also
+## See also
 
 - [Deploying projects]({% link pages/maintainer/deploying.md %})
 - [rush init-deploy]({% link pages/commands/rush_init-deploy.md %})

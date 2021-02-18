@@ -27,7 +27,7 @@ Optional arguments:
                         would be "common/config/rush/deploy-web.json".
 ```
 
-## See Also
+## See also
 
 - [Deploying projects]({% link pages/maintainer/deploying.md %})
 - [deploy.json]({% link pages/configs/deploy_json.md %}) config file
