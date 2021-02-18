@@ -85,6 +85,8 @@ docs_nav:
         url: /pages/advanced/preferred_versions
       - title: Incremental builds
         url: /pages/advanced/incremental_builds
+      - title: Using watch mode
+        url: /pages/advanced/watch_mode
       - title: Installation variants
         url: /pages/advanced/installation_variants
       - title: The "rush-lib" API

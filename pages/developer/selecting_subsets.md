@@ -1,5 +1,6 @@
 ---
 layout: page
+# The CLI help refers to this article title:
 title: Selecting subsets of projects
 navigation_source: docs_nav
 ---

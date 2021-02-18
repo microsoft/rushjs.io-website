@@ -60,7 +60,7 @@ file can provide some insight into what the algorithm is doing.
 
 ## Building changed projects only (unsafe)
 
-Suppose hypothetically that our repo has the following projects:
+Suppose hypothetically that our monorepo has the following projects:
 
 <img src="/images/docs/selection-intro.svg" alt="a sample monorepo" style="height: 150px;" />
 
@@ -102,3 +102,4 @@ to be built.  If that assumption is incorrect, you can always do `rush build` to
 ## See also
 
 - [Selecting subsets of projects]({% link pages/developer/selecting_subsets.md %})
+- [Using watch mode]({% link pages/advanced/watch_mode.md %})
