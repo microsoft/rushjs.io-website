@@ -80,11 +80,13 @@ These problems can be solved by creating a special streamlined script for watch 
 
 ## The "watchForChanges" setting (experimental)
 
-Rush's "watch mode" formalizes this basic idea.  It works as follows:
+Rush's "watch mode" formalizes this basic idea, replacing the simple loop with an optimized
+[chokidar](https://www.npmjs.com/package/chokidar) filesystem monitor.  Here's how you would use it:
 
 1. Add a [custom command]({% link pages/maintainer/custom_commands.md %}) in
    your [command-line.json]({% link pages/configs/command-line_json.md %}) config file.
-   In our example, the custom command would be called `"build:watch"`:
+   Continuing the example above, our custom command will be called `"build:watch"`.
+   The important settings are `"incremental"` and `"watchForChanges"`:
 
    **common/config/rush/command-line.json**
    ```js
@@ -105,13 +107,12 @@ Rush's "watch mode" formalizes this basic idea.  It works as follows:
      . . .
    ```
 
-2. Add a `"build:watch"` script to each **package.json** file as shown above.
+2. Add a `"build:watch"` script to the **package.json** file for each Rush project.
    ([PR #2298](https://github.com/microsoft/rushstack/pull/2298) aims to simplify this step
-   in situations where `"build:watch"` would invoke exactly the same command as `"build"`.
-   Eventually it will also be possible to specify these commands centrally via
-   a [rig package](https://rushstack.io/pages/heft/rig_packages/).)
+   for projects whose `"build:watch"` would be the same as `"build"`.  Eventually it will also be possible
+   to consolidate these definitions in a shared [rig package](https://rushstack.io/pages/heft/rig_packages/).)
 
-   If you're using [Heft](https://rushstack.io/pages/heft/overview/), it might look like this:
+   If you're using [Heft](https://rushstack.io/pages/heft/overview/), your scripts would look like this:
 
    **package.json**
    ```js
