@@ -51,6 +51,14 @@ operating systems or `C:\Users\YourName` on Windows.
 Use `RUSH_GLOBAL_FOLDER` to specify a different folder path.  This is useful for example if a Windows
 group policy forbids executing scripts installed in a user's home directory.
 
+## RUSH_INVOKED_FOLDER
+
+When Rush executes shell scripts, it sometimes changes the working directory to be a project folder or
+the repository root folder.  The original working directory (where the Rush command was invoked) is assigned
+to the the child process's `RUSH_INVOKED_FOLDER` environment variable, in case it is needed by the script.
+The `RUSH_INVOKED_FOLDER` variable is the same idea as the `INIT_CWD` variable that package managers
+assign when they execute lifecycle scripts.
+
 ## RUSH_PARALLELISM
 
 Specifies the maximum number of concurrent processes to launch during a build.
