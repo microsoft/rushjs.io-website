@@ -56,5 +56,4 @@ _rush_bash_complete()
 complete -f -F _rush_bash_complete rush
 ```
 
-
-#### Next up: [How to get help]({% link pages/help/support.md %})
+#### Next up: [Selecting subsets of projects]({% link pages/developer/selecting_subsets %})
