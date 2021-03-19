@@ -120,6 +120,12 @@ to create the links:
 $ node create-links.js create
 ```
 
+> NOTE: When using `"linkCreation": "script"`, the current implementation does not yet generate the
+> **node_modules/.bin** command-line binaries.  If you're interested in contributing a fix, see
+> [this PR comment](https://github.com/microsoft/rushstack/pull/2010#issuecomment-656900649) for a
+> suggested solution.
+
+
 ## Including additional projects
 
 Continuing our example, suppose that we want to include `app1` and `app2` together as a single deployment.
