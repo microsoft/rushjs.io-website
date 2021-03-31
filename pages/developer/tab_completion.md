@@ -56,4 +56,4 @@ _rush_bash_complete()
 complete -f -F _rush_bash_complete rush
 ```
 
-#### Next up: [Selecting subsets of projects]({% link pages/developer/selecting_subsets %})
+#### Next up: [Selecting subsets of projects]({% link pages/developer/selecting_subsets.md %})
