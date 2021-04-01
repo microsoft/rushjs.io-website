@@ -87,7 +87,7 @@ You can change your options at any time, but there are a few settings in **rush.
 
 - **Decide whether to use the "category folders" model**: See the comments in **rush.json** regarding `projectFolderMinDepth` and `projectFolderMaxDepth`, and make a plan for how project folders will be organized in the monorepo
 
-- **Configure your registry access**: The initial **.npmrc** file is configured to use the public NPM registry.  If you will be using a private registry, you should update the **common/config/rush/.npmrc** file.
+- **Configure your registry access**: The initial **.npmrc** file is configured to use the public NPM registry.  If you will be using a [private registry]({% link pages/maintainer/npm_registry_auth.md %}), you should update the **common/config/rush/.npmrc** file.
 
 
 #### Next up: [Adding projects to a repo]({% link pages/maintainer/add_to_repo.md %})

@@ -67,6 +67,8 @@ docs_nav:
         url: /pages/maintainer/publishing
       - title: Deploying projects
         url: /pages/maintainer/deploying
+      - title: NPM registry authentication
+        url: /pages/maintainer/npm_registry_auth
 
   - title: Best practices
     subitems:
@@ -145,6 +147,8 @@ docs_nav:
         url: /pages/configs/environment_vars
       - title: .npmrc
         url: /pages/configs/npmrc
+      - title: .npmrc-publish
+        url: /pages/configs/npmrc-publish
       - title: artifactory.json
         url: /pages/configs/artifactory_json
       - title: command-line.json
