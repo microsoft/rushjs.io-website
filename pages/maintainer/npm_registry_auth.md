@@ -5,10 +5,32 @@ navigation_source: docs_nav
 ---
 
 A **private NPM registry** enables your monorepo to publish NPM packages for internal usage.  It works the same as
-the public [https://www.npmjs.com/](https://www.npmjs.com/) registry, except that access the private registry
+the public [https://www.npmjs.com/](https://www.npmjs.com/) registry, except that accessing the private registry
 requires authorization.  Each user will need to obtain an access token that typically gets stored in the
 [~/.npmrc file](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc)
 on their computer.
+
+Most large monorepos eventually need a private NPM registry.  It's useful for:
+
+- sharing code privately between teams
+- proxying access to the public registry, to improve reliability, audit package usage, and apply security screening
+- speeding up CI operations by installing prebuilt packages, instead of performing `rush install && rush build`
+  before a tool can be invoked
+- publishing wrappers or temporary forks of open source packages
+- testing package installation before publishing to public NPM registry
+
+Some popular providers are:
+
+- [AWS CodeArtifact](https://aws.amazon.com/blogs/devops/publishing-private-npm-packages-aws-codeartifact/)
+- [Azure DevOps Artifacts](https://docs.microsoft.com/en-us/azure/devops/artifacts/get-started-npm?view=azure-devops)
+- [GitHub Packages](https://github.com/features/packages)
+- [GitLab Package Registry](https://docs.gitlab.com/ee/user/packages/npm_registry/)
+- [JFrog Artifactory](https://jfrog.com/artifactory/)
+- [NPM private packages](https://docs.npmjs.com/about-private-packages)
+
+For testing purposes, [Verdaccio](https://verdaccio.org/) is a simple Node.js server that implements
+a private registry.
+
 
 ## Registry mappings
 
@@ -77,3 +99,51 @@ The above rules also apply for helpers scripts such as **install-run.js**.
 The `rush publish` command uses a different file **.npmrc-publish** with its own rules.
 See [this documentation]({% link pages/configs/npmrc-publish.md %}) for details.
 
+
+## Prompting for credentials with "rush setup"
+
+Rush recently introduced an experimental feature where `rush install` can detect when a user's registry credentials
+are missing or expired.  If so, they are asked to run `rush setup`, which walks the user through the process of
+obtaining a token, and then updates their **~/.npmrc** file.  The new settings will be intelligently merged with
+any existing contents of that file.
+
+A sample `rush setup` interaction looks like this:
+```
+NPM credentials are missing or expired
+
+==> Fix this problem now? (y/N) Yes
+
+This monorepo consumes packages from an Artifactory private NPM registry.
+
+==> Do you already have an Artifactory user account? (y/n) Yes
+
+Please open this URL in your web browser:
+
+  https://my-company.jfrog.io/
+
+Your user name appears in the upper-right corner of the JFrog website.
+
+==> What is your Artifactory user name? example-user
+
+Click "Edit Profile" on the JFrog website.  Click the "Generate API Key" button if you haven't already done so
+previously.
+
+==> What is your Artifactory API key? ***************
+
+Fetching an NPM token from the Artifactory service...
+
+Adding Artifactory token to: /home/example-user/.npmrc
+```
+
+The initial implementation supports the [JFrog Artifactory](https://jfrog.com/artifactory/) service only.
+Other services will be implemented in the future.
+
+To use this feature, simply assign the `"registryUrl"` field and set `"enabled": true` in your
+[artifactory.json]({% link pages/configs/artifactory_json.md %}) config file.
+The file template contains documentation for other optional settings that can be used to customize
+the dialogue.
+
+## See also
+
+- [rush setup]({% link pages/commands/rush_setup.md %})
+- [artifactory.json]({% link pages/configs/artifactory_json.md %}) config file
