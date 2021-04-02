@@ -29,3 +29,7 @@ generates for **common/config/rush/.npmrc-publish**:
 #   //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
 #
 ```
+
+## See also
+
+- [.npmrc]({% link pages/configs/npmrc.md %}) config file

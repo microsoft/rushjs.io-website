@@ -123,3 +123,8 @@ generates for **common/config/rush/deploy.json**:
   ]
 }
 ```
+
+## See also
+
+- [Deploying projects]({% link pages/maintainer/deploying.md %})
+- [rush deploy]({% link pages/commands/rush_deploy.md %}) command-line parameters

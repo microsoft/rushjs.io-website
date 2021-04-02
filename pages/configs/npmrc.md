@@ -31,3 +31,35 @@ generates for **common/config/rush/.npmrc**:
 registry=https://registry.npmjs.org/
 always-auth=false
 ```
+
+## .npmrc file precedence
+
+Regular Rush operations perform the following lookup:
+
+1. To support unusual situations, NPM config environment variables take precedence over any **.npmrc** settings.
+   The environment variable name is prefixed by `npm_config_`.  For example, setting the `npm_config_registry`
+   variable will override the `registry` setting in **.npmrc**.  Nonstandard name patterns like
+   `npm_config_@example:registry` are also accepted by NPM's design.
+2. Typically settings come from a temporary **.npmrc** file that Rush copies into the working directory
+   for the operation.  The file is copied from **common/config/rush/.npmrc**, but omitting any lines that
+   reference undefined environment variables (as explained above).  For most operations, the working directory
+   will be **common/temp**.
+3. If the package manager cannot find a setting via 1 or 2, then the user's **~/.npmrc** is
+   consulted.  Individual users typically store their authentication tokens in this file.
+
+The above rules also apply for helpers scripts such as **install-run.js**.
+
+The `rush publish` command uses a different file **.npmrc-publish** with its own rules.
+See [this documentation]({% link pages/configs/npmrc-publish.md %}) for details.
+
+The above rules do not apply if the package manager is invoked directly (instead of via Rush).
+For example, `npm publish` is invoked from the shell, then the
+[package manager's usual precedence](https://docs.npmjs.com/cli/v7/using-npm/config#npmrc-files) will
+apply instead.  Generally this practice is discouraged in a Rush repo, but if used, you may need to create
+additional **.npmrc** files.
+
+
+## See also
+
+- [NPM registry authentication]({% link pages/maintainer/npm_registry_auth.md %})
+- [.npmrc-publish]({% link pages/configs/npmrc-publish.md %}) config file

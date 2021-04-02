@@ -10,14 +10,16 @@ requires authorization.  Each user will need to obtain an access token that typi
 [~/.npmrc file](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc)
 on their computer.
 
-Most large monorepos eventually need a private NPM registry.  It's useful for:
+Most large monorepos eventually require a private NPM registry.  It's useful for:
 
 - sharing code privately between teams
 - proxying access to the public registry, to improve reliability, audit package usage, and apply security screening
-- speeding up CI operations by installing prebuilt packages, instead of performing `rush install && rush build`
+- speeding up CI operations by installing prebuilt tooling packages, instead of performing `rush install && rush build`
   before a tool can be invoked
-- publishing wrappers or temporary forks of open source packages
-- testing package installation before publishing to public NPM registry
+- testing installation behaviors before publishing a package to public NPM registry
+- publishing wrappers or temporary forks of third-party packages<br/>
+  (Compared to [GitHub URL dependencies](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#github-urls),
+  NPM packages give you proper SemVer versioning and better caching semantics.)
 
 Some popular providers are:
 
@@ -28,8 +30,8 @@ Some popular providers are:
 - [JFrog Artifactory](https://jfrog.com/artifactory/)
 - [NPM private packages](https://docs.npmjs.com/about-private-packages)
 
-For testing purposes, [Verdaccio](https://verdaccio.org/) is a simple Node.js server that implements
-a private registry.
+And for testing purposes, [Verdaccio](https://verdaccio.org/) is a lightweight Node.js server that can run
+on `http://localhost` and implements a complete private registry with proxy capabilities.
 
 
 ## Registry mappings
@@ -79,25 +81,8 @@ always-auth=true
 //my-registry.example.com/npm-private/:username=${MY_CI_USER}
 ```
 
-## .npmrc file precedence
-
-Regular Rush operations perform the following lookup:
-
-1. For unusual situations, NPM config environment variables take precedence over any **.npmrc** settings.
-   These environment variable name is prefixed by `npm_config_`.  For example, `npm_config_registry` overrides
-   the `registry` setting in **.npmrc**.  Nonstandard name patterns like `npm_config_@example:registry` are
-   also accepted by NPM's design.
-2. Typically settings come from a temporary **.npmrc** file that Rush copies into the working directory
-   for the operation.  The file is copied from **common/config/rush/.npmrc**, but omitting any lines that
-   reference undefined environment variables (see above).  For most operations, the working directory
-   will be **common/temp**.
-3. If the package manager cannot find a setting via 1 or 2, then the user's **~/.npmrc** is
-   consulted.  Individual users typically store their authentication tokens in this file.
-
-The above rules also apply for helpers scripts such as **install-run.js**.
-
-The `rush publish` command uses a different file **.npmrc-publish** with its own rules.
-See [this documentation]({% link pages/configs/npmrc-publish.md %}) for details.
+> For details about the lookup precedence for **.npmrc** settings,
+see the [.npmrc]({% link pages/configs/npmrc.md %}) page.
 
 
 ## Prompting for credentials with "rush setup"
@@ -143,7 +128,10 @@ To use this feature, simply assign the `"registryUrl"` field and set `"enabled":
 The file template contains documentation for other optional settings that can be used to customize
 the dialogue.
 
+
 ## See also
 
 - [rush setup]({% link pages/commands/rush_setup.md %})
 - [artifactory.json]({% link pages/configs/artifactory_json.md %}) config file
+- [.npmrc]({% link pages/configs/npmrc.md %}) config file
+- [.npmrc-publish]({% link pages/configs/npmrc-publish.md %}) config file

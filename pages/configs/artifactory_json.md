@@ -98,3 +98,7 @@ generates for **common/config/rush/artifactory.json**:
   }
 }
 ```
+
+## See also
+
+- [NPM registry authentication]({% link pages/maintainer/npm_registry_auth.md %})
