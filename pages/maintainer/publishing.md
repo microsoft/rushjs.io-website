@@ -60,6 +60,16 @@ In addition to what previous command can do, this command allows packages to be 
 
 In addition to what previous command can do, This command will include commit details in the change logs.
 
+### Pack mode
+
+Instead of publishing, you also have the option to pack the outputs locally into `.tgz` files.
+
+    rush publish --pack --include-all --publish 
+    
+> Note: the `--publish` flag disables dry mode, which allows writing the file contents to the disk.
+>
+> You can also use this command in combination with `--release-folder` to hint where the files should be outputted.
+
 ## 3. Version Policy
 
 Version policy is a new concept introduced into Rush to solve the problem of how to notify packages to do different types of version increase when the number of packages is large.  For example, rush and rush-lib are always published together and use the same version. Those two versions should always be increased together. Another example is that developers can create different branches to service different major versions. People should not be able to modify the major version in that branch. Version policy solves this kind of problems by defining different policies, one enforcing rush and rush-lib always have the same version and the other locking the major version in a branch.
