@@ -185,6 +185,7 @@ For this situation, Rush's "autoinstaller" feature provides a convenient alterna
           "name": "prettier",
           "commandKind": "global",
           "summary": "Used by the pre-commit Git hook. This command invokes Prettier to reformat staged changes.",
+          "safeForSimultaneousRushProcesses": true,
 
           "autoinstallerName": "rush-prettier",
 
