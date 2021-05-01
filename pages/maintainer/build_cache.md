@@ -19,20 +19,18 @@ The build cache archives are stored in two places:
 
 - **In a cache folder on your local disk.**  This way you can switch between different branches without
   losing your incremental build state.  You can even configure a centralized folder to be shared between
-  multiple enlistments on your machine.
+  multiple enlistments on your machine.  The default location is **common/temp/build-cache**.
 
-- **Optionally also in a cloud storage container.**  In a typical setup, the CI system would be configured to write
+- **In a cloud-hosted storage container. (Optional)**  In a typical setup, the CI system would be configured to write
   to cloud storage, and individual users are granted read-only access.  For example, each time a PR is merged into
-  the `master` branch, the CI system builds that baseline and uploads it to cloud storage.  This way even after
-  a clean `git clone`, the initial `rush build` will complete very quickly.
+  the `master` branch, the CI system builds that baseline and uploads it to cloud storage.  Even for a user who
+  is doing `git clone` for the first time, their `rush build` will be very fast.
+
 
 ## Enabling the local disk cache
 
 The build cache feature is enabled using the [build-cache.json]({% link pages/configs/build-cache_json.md %})
 config file.  You can copy the template from the website or use `rush init` to create this file.
-
-> Upgrade note: Early releases of this feature were enabled using the `"buildCache": true` setting
-> in **experiments.json**. This has been superseded by `"buildCacheEnabled"` in **build-cache.json**.
 
 To enable the basic local disk cache, add these two settings:
 
@@ -45,7 +43,7 @@ To enable the basic local disk cache, add these two settings:
    *
    * See https://rushjs.io/pages/maintainer/build_cache/ for details about this experimental feature.
    */
-  "buildCacheEnabled": false,
+  "buildCacheEnabled": true,
 
   /**
    * (Required) Choose where project build outputs will be cached.
@@ -58,6 +56,9 @@ To enable the basic local disk cache, add these two settings:
 }
 ```
 
+> **Upgrade note:** Early releases of this feature were enabled using the `"buildCache": true` setting
+> in **experiments.json**. This has been superseded by `"buildCacheEnabled"` in **build-cache.json**.
+
 
 ## Configuring project output folders
 
@@ -68,11 +69,14 @@ Project does not have a rush-project.json configuration file, or one provided by
 so it does not support caching.
 ```
 
-The build cache needs to know which folders should be considered build outputs. This is configured independently
-for each project, using the [rush-project.json]({% link pages/configs/rush-project_json.md %}) config file.
+The build cache needs to know which folders should be stored in the tar archive.  Those details vary between
+toolchains, and are thus configured separately for each project using the
+[rush-project.json]({% link pages/configs/rush-project_json.md %}) config file.
+
 For example:
 
-**<your-project>/config/rush-project.json**
+**&lt;your-project&gt;/config/rush-project.json**
+
 ```js
 {
   . . .
@@ -95,7 +99,7 @@ to copy this file into each project folder.
 
 ## Testing the build cache
 
-With these changes, when a project is being cached, you should see log output similar to this:
+Now you should see projects being cached as shown in this sample log output:
 
 ```shell
 $ rush rebuild --verbose
@@ -117,7 +121,7 @@ Successfully set cache entry.
 "example-project" completed successfully in 11.27 seconds.
 ```
 
-When we run the command a second time, it is now a cache hit:
+When we run the same command a second time, Rush extracts the archive instead of invoking the build task:
 
 ```shell
 $ rush rebuild --verbose
@@ -135,7 +139,7 @@ Successfully restored output from the build cache.
 example-project was restored from the build cache.
 ```
 
-Note that the cache is applied even for `rush rebuild`.  To force rebuilding without the cache,
+Note that caching is applied even for `rush rebuild`.  To force rebuilding without the cache,
 you need to add `--disable-build-cache` like this:
 
 ```

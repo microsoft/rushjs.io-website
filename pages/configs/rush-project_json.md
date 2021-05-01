@@ -10,8 +10,8 @@ by a [rig package](https://rushstack.io/pages/heft/rig_packages/).
 **&lt;your project&gt;/config/rush-project.json**
 ```js
 /**
- * This configuration file defines custom commands for the "rush" command-line.
- * More documentation is available on the Rush website: https://rushjs.io
+ * The "config/rush-project.json" file configures Rush-specific settings for an individual project
+ * in a Rush monorepo.  More documentation is available on the Rush website: https://rushjs.io
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush-project.schema.json"
