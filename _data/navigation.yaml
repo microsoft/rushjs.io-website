@@ -67,6 +67,8 @@ docs_nav:
         url: /pages/maintainer/publishing
       - title: Deploying projects
         url: /pages/maintainer/deploying
+      - title: Enabling the build cache
+        url: /pages/maintainer/build_cache
       - title: NPM registry authentication
         url: /pages/maintainer/npm_registry_auth
 
@@ -151,18 +153,22 @@ docs_nav:
         url: /pages/configs/npmrc-publish
       - title: artifactory.json
         url: /pages/configs/artifactory_json
+      - title: build-cache.json
+        url: /pages/configs/build-cache_json
       - title: command-line.json
         url: /pages/configs/command-line_json
       - title: common-versions.json
         url: /pages/configs/common-versions_json
-      - title: experiments.json
-        url: /pages/configs/experiments_json
       - title: deploy.json
         url: /pages/configs/deploy_json
+      - title: experiments.json
+        url: /pages/configs/experiments_json
       - title: pnpmfile.js
         url: /pages/configs/pnpmfile_js
       - title: rush.json
         url: /pages/configs/rush_json
+      - title: rush-project.json
+        url: /pages/configs/rush-project_json
       - title: version-policies.json
         url: /pages/configs/version-policies_json
 
