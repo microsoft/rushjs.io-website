@@ -5,8 +5,10 @@ navigation_source: docs_nav
 ---
 
 This is the template that [rush init-deploy]({% link pages/commands/rush_init-deploy.md %})
-generates for **common/config/rush/deploy.json**:
+generates for **deploy.json** and **deploy-&lt;scenario name&gt;>.json**:
 
+
+**common/config/rush/deploy.json**
 ```js
 /**
  * This configuration file defines a deployment scenario for use with the "rush deploy" command.

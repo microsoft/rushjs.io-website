@@ -5,8 +5,9 @@ navigation_source: docs_nav
 ---
 
 This is the template that [rush init]({% link pages/commands/rush_init.md %})
-generates for **common/config/rush/.npmrc-publish**:
+generates for **.npmrc-publish**:
 
+**common/config/rush/.npmrc-publish**
 ```shell
 # This config file is very similar to common/config/rush/.npmrc, except that .npmrc-publish
 # is used by the "rush publish" command, as publishing often involves different credentials

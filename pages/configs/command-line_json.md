@@ -5,8 +5,9 @@ navigation_source: docs_nav
 ---
 
 This is the template that [rush init]({% link pages/commands/rush_init.md %})
-generates for **common/config/rush/command-line.json**:
+generates for **command-line.json**:
 
+**common/config/rush/command-line.json**
 ```js
 /**
  * This configuration file defines custom commands for the "rush" command-line.

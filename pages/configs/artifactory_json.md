@@ -5,8 +5,9 @@ navigation_source: docs_nav
 ---
 
 This is the template that [rush init]({% link pages/commands/rush_init.md %})
-generates for **common/config/rush/artifactory.json**:
+generates for **artifactory.json**:
 
+**common/config/rush/artifactory.json**
 ```js
 /**
  * This configuration file manages Rush integration with JFrog Artifactory services.
