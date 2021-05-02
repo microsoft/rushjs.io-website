@@ -148,3 +148,117 @@ $ rush rebuild --verbose --disable-build-cache
 
 By default, the cached tar archives are stored under your **common/temp/build-cache** folder
 (and thus will be cleaned by `rush purge`).  It is safe to delete these files.
+
+
+## Enabling cloud storage
+
+Currently the `cacheProvider` setting provides three choices:
+
+- `"local-only"`: no cloud storage; archives are only kept on a local disk folder
+- `"azure-blob-storage"`: Microsoft Azure [blob storage container](https://docs.microsoft.com/en-us/azure/storage/blobs/)
+- `"amazon-s3"`: Amazon [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html)
+
+Other options may be implemented in the future.  (Consider contributing one by implementing a subclass of
+[CloudBuildCacheProviderBase](https://github.com/microsoft/rushstack/blob/master/apps/rush-lib/src/logic/buildCache/CloudBuildCacheProviderBase.ts).)
+
+For example, here's how we would configure an Azure blob container:
+
+**common/config/rush/build-cache.json**
+```js
+{
+  . . .
+  /**
+   * (Required) EXPERIMENTAL - Set this to true to enable the build cache feature.
+   *
+   * See https://rushjs.io/pages/maintainer/build_cache/ for details about this experimental feature.
+   */
+  "buildCacheEnabled": true,
+
+  /**
+   * (Required) Choose where project build outputs will be cached.
+   *
+   * Possible values: "local-only", "azure-blob-storage", "amazon-s3"
+   */
+  "cacheProvider": "azure-blob-storage",
+
+  /**
+   * Use this configuration with "cacheProvider"="azure-blob-storage"
+   */
+  "azureBlobStorageConfiguration": {
+    /**
+     * (Required) The name of the the Azure storage account to use for build cache.
+     */
+    "storageAccountName": "example",
+
+    /**
+     * The name of the container in the Azure storage account to use for build cache.
+     */
+    "storageContainerName": "my-container"
+
+    /**
+     * If set to true, allow writing to the cache. Defaults to false.
+     */
+    "isCacheWriteAllowed": false
+
+  . . .
+```
+
+Not that we have set `"isCacheWriteAllowed": false` to prevent regular users from writing to the container.
+(Later, we will use an environment variable to override this for our CI job.)
+
+
+## User authentication
+
+If security is not a priority for your repo, you can simplify user setup by configuring your storage container
+to allow unauthenticated anonymous access.  The container is accessed via an HTTPS URL containing randomized
+hashes which are difficult to guess without access to your Git repo.  This provides rudimentary
+[security through obscurity](https://en.wikipedia.org/wiki/Security_through_obscurity).
+
+A more security-conscious organization however will prefer to require authentication even for read-only access.
+Rush provides a [rush update-cloud-credentials]({% link pages/commands/rush_update-cloud-credentials.md %})
+command to make this easy for users to set up:
+
+```shell
+$ rush update-cloud-credentials --interactive
+
+
+Rush Multi-Project Build Tool 5.45.6 (unmanaged) - https://rushjs.io
+Node.js version is 12.20.1 (LTS)
+
+
+Starting "rush update-cloud-credentials"
+
+ ╔═════════════════════════════════════════════════════════════════════════╗
+ ║             To sign in, use a web browser to open the page              ║
+ ║     https://microsoft.com/devicelogin and enter the code XAYBQEGRK      ║
+ ║                            to authenticate.                             ║
+ ╚═════════════════════════════════════════════════════════════════════════╝
+```
+
+The credentials are stored in the user's home directory under `~/.rush-user/credentials.json`.
+
+
+## CI setup
+
+In a typical configuration, users have read-only access and the cache is populated by an automation account
+(for example, a CI job that builds your `master` branch after each PR is merged).  In our example above, the
+`"isCacheWriteAllowed": false` setting is what prevents users from writing to the cache.
+
+The CI job can override this by setting the [RUSH_BUILD_CACHE_WRITE_CREDENTIAL]({% link pages/configs/environment_vars.md %})
+environment variable.  For Azure Blob Storage, this must be a SAS token serialized as query parameters.
+See [this article](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for details
+about SAS tokens.
+
+If your CI system uses a custom build orchestrator with Rush
+(for example [BuildXL](https://github.com/Microsoft/BuildXL)),
+the [rush write-build-cache]({% link pages/commands/rush_write-build-cache.md %}) command enables you to
+ populate a cache entry from a specific project's output folders.
+
+
+> The build cache feature is still under development.  Feedback is welcome!
+>
+> Some relevant GitHub issues to follow:
+> - [Build cache feature #2393](https://github.com/microsoft/rushstack/issues/2393) - the original feature spec
+> - [Build Cache: split apart RUSH_BUILD_CACHE_WRITE_CREDENTIAL #2642](https://github.com/microsoft/rushstack/issues/2642)
+> - [Allow project config to specify non-build-related files #2618](https://github.com/microsoft/rushstack/issues/2618)
+> - ["tar" exited with code 1 while attempting to create the cache entry #2622](https://github.com/microsoft/rushstack/issues/2622)

@@ -17,3 +17,7 @@ Optional arguments:
                         that produced the current project state.
   -v, --verbose         Display verbose log information.
 ```
+
+## See also
+
+- [Enabling the build cache]({% link pages/maintainer/build_cache.md %})

@@ -20,9 +20,13 @@ field from **rush.json**.
 
 ## RUSH_BUILD_CACHE_WRITE_CREDENTIAL (EXPERIMENTAL)
 
-This environment variable is used by the experimental `buildCache` feature.  It provides a credential for
-accessing the remote build cache, if configured.  Setting this environment variable overrides a `false` value
-for the `isCacheWriteAllowed` setting.  This credential also overrides any cached credentials.
+This environment variable is used by the experimental
+[build cache]({% link pages/maintainer/build_cache.md %})
+feature.
+
+It provides a credential for accessing the remote build cache, if configured.  Setting this environment variable
+ overrides a `false` value for the `isCacheWriteAllowed` setting.  This credential also overrides any cached
+ credentials.
 
 If Azure Blob Storage is used to store cache entries, this must be a SAS token serialized as query parameters.
 See [this article](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for details

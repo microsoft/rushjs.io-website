@@ -138,6 +138,8 @@ docs_nav:
         url: /pages/commands/rush_update
       - title: rush update-autoinstaller
         url: /pages/commands/rush_update-autoinstaller
+      - title: rush update-cloud-credentials
+        url: /pages/commands/rush_update-cloud-credentials
       - title: rush version
         url: /pages/commands/rush_version
       - title: rush write-build-cache
