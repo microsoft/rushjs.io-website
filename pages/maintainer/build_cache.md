@@ -240,20 +240,22 @@ The credentials are stored in the user's home directory under `~/.rush-user/cred
 
 ## CI setup
 
-In a typical configuration, users have read-only access and the cache is populated by an automation account
-(for example, a CI job that builds your `master` branch after each PR is merged).  In our example above, the
-`"isCacheWriteAllowed": false` setting is what prevents users from writing to the cache.
+In a typical configuration, users have read-only access and the cache is populated by an automation account;
+for example, a CI job that builds your `master` branch after each PR is merged.  In our example above, the
+`"isCacheWriteAllowed": false` setting is what prevents users from writing to the cache.  The CI job can
+override this by setting the [RUSH_BUILD_CACHE_WRITE_CREDENTIAL]({% link pages/configs/environment_vars.md %})
+environment variable.
 
-The CI job can override this by setting the [RUSH_BUILD_CACHE_WRITE_CREDENTIAL]({% link pages/configs/environment_vars.md %})
-environment variable.  For Azure Blob Storage, this must be a SAS token serialized as query parameters.
+For Azure Blob Storage, this must be a SAS token serialized as query parameters.
 See [this article](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for details
-about SAS tokens.
+about SAS tokens.  You can obtain a SAS token via the [Settings > Access keys](
+https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)
+page for your storage account.
 
 If your CI system uses a custom build orchestrator with Rush
 (for example [BuildXL](https://github.com/Microsoft/BuildXL)),
 the [rush write-build-cache]({% link pages/commands/rush_write-build-cache.md %}) command enables you to
- populate a cache entry from a specific project's output folders.
-
+populate a cache entry from a specific project's output folders.
 
 > The build cache feature is still under development.  Feedback is welcome!
 >
