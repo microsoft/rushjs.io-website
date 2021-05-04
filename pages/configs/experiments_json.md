@@ -5,8 +5,9 @@ navigation_source: docs_nav
 ---
 
 This is the template that [rush init]({% link pages/commands/rush_init.md %})
-generates for **common/config/rush/experiments.json**:
+generates for **experiments.json**:
 
+**common/config/rush/experiments.json**
 ```js
 /**
  * This configuration file allows repo maintainers to enable and disable experimental
@@ -22,26 +23,31 @@ generates for **common/config/rush/experiments.json**:
    * to temporarily restore the old behavior where everything must be rebuilt whenever pnpm-lock.json
    * is modified.
    */
-  // "legacyIncrementalBuildDependencyDetection": true,
+  /*[LINE "HYPOTHETICAL"]*/ "legacyIncrementalBuildDependencyDetection": true,
 
   /**
-   * By default, rush passes --no-prefer-frozen-lockfile to 'pnpm install'.
-   * Set this option to true to pass '--frozen-lockfile' instead.
+   * By default, 'rush install' passes --no-prefer-frozen-lockfile to 'pnpm install'.
+   * Set this option to true to pass '--frozen-lockfile' instead for faster installs.
    */
-  // "usePnpmFrozenLockfileForRushInstall": true,
+  /*[LINE "HYPOTHETICAL"]*/ "usePnpmFrozenLockfileForRushInstall": true,
+
+  /**
+   * By default, 'rush update' passes --no-prefer-frozen-lockfile to 'pnpm install'.
+   * Set this option to true to pass '--prefer-frozen-lockfile' instead to minimize shrinkwrap changes.
+   */
+  /*[LINE "HYPOTHETICAL"]*/ "usePnpmPreferFrozenLockfileForRushUpdate": true,
+
+  /**
+   * If using the 'preventManualShrinkwrapChanges' option, restricts the hash to only include the layout of external dependencies.
+   * Used to allow links between workspace projects or the addition/removal of references to existing dependency versions to not
+   * cause hash changes.
+   */
+  /*[LINE "HYPOTHETICAL"]*/ "omitImportersFromPreventManualShrinkwrapChanges": true,
 
   /**
    * If true, the chmod field in temporary project tar headers will not be normalized.
    * This normalization can help ensure consistent tarball integrity across platforms.
    */
-  // "noChmodFieldInTarHeaderNormalization": true,
-
-  /**
-   * If true, the build cache feature is enabled. To use this feature, a common/config/rush/build-cache.json
-   * file must be created with configuration options.
-   *
-   * See https://github.com/microsoft/rushstack/issues/2393 for details about this experimental feature.
-   */
-  // "buildCache": true
+  /*[LINE "HYPOTHETICAL"]*/ "noChmodFieldInTarHeaderNormalization": true
 }
 ```

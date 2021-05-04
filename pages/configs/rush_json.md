@@ -7,6 +7,7 @@ navigation_source: docs_nav
 This is the template that [rush init]({% link pages/commands/rush_init.md %})
 generates for **rush.json** (in the repo root folder):
 
+**&lt;repo root&gt;rush.json**
 ```js
 /**
  * This is the main configuration file for Rush.

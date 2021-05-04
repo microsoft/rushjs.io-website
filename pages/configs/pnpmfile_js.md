@@ -5,8 +5,9 @@ navigation_source: docs_nav
 ---
 
 This is the template that [rush init]({% link pages/commands/rush_init.md %})
-generates for **common/config/rush/pnpmfile.js**:
+generates for **pnpmfile.js**:
 
+**common/config/rush/pnpmfile.js**
 ```js
 "use strict";
 
