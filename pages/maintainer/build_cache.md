@@ -243,8 +243,9 @@ The credentials are stored in the user's home directory under `~/.rush-user/cred
 In a typical configuration, users have read-only access and the cache is populated by an automation account;
 for example, a CI job that builds your `master` branch after each PR is merged.  In our example above, the
 `"isCacheWriteAllowed": false` setting is what prevents users from writing to the cache.  The CI job can
-override this by setting the [RUSH_BUILD_CACHE_WRITE_CREDENTIAL]({% link pages/configs/environment_vars.md %})
-environment variable.
+override this by setting the [RUSH_BUILD_CACHE_WRITE_ALLOWED]({% link pages/configs/environment_vars.md %})
+environment variable, and by providing credentials for the CI environment in the
+[RUSH_BUILD_CACHE_CREDENTIAL]({% link pages/configs/environment_vars.md %}) environment variable.
 
 For Azure Blob Storage, this must be a SAS token serialized as query parameters.
 See [this article](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for details
