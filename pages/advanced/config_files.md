@@ -27,14 +27,14 @@ navigation_source: docs_nav
 
 | File(s)                                  | What it does                    |
 | :--------------------------------------- | :------------------------------ |
-| common/temp/install-run/...             | Storage for the **install-run.js** and **instal-run-rush.js** scripts. See [Enabling CI builds]({% link pages/maintainer/enabling_ci_builds.md %}). |
+| common/temp/install-run/...             | Storage for the **install-run.js** and **install-run-rush.js** scripts. See [Enabling CI builds]({% link pages/maintainer/enabling_ci_builds.md %}). |
 | common/temp/node_modules/...             | The installed packages.  This is a plain old `npm install` output, with no symlinks in this tree. |
 | common/temp/npm-cache/...                | A local NPM cache will be created here.  Rush does not use the global NPM cache due to its concurrency problems. |
 | common/temp/npm-local/...                | Based on the **npmVersion** setting, Rush will install NPM in your home directory and create a symlink to it for each repo that requests it. |
 | common/temp/npm-tmp/...                  | Temporary files created by NPM during installation. |
 | common/temp/projects/...                 | Synthetic projects referenced by **common/temp/package.json**. |
 | common/temp/rush-recycler/...            | Used to speed up recursive deletes. |
-| common/temp/last-install.flag            | Don't worry about this file.  It tracks the timestampe of the last successful `rush install`. |
+| common/temp/last-install.flag            | Don't worry about this file.  It tracks the timestamp of the last successful `rush install`. |
 | common/temp/package.json                      | The common package definition. |
 | common/temp/rush-link.json               | Don't worry about this file.  It is created whenever you run `rush link`, and read by later commands such as "rush build". |
 
