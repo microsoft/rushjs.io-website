@@ -18,19 +18,40 @@ If this variable is set to `true`, Rush will not fail the build when running a v
 of Node that does not match the criteria specified in the `nodeSupportedVersionRange`
 field from **rush.json**.
 
-## RUSH_BUILD_CACHE_WRITE_CREDENTIAL (EXPERIMENTAL)
+
+
+## RUSH_BUILD_CACHE_CREDENTIAL (EXPERIMENTAL)
 
 This environment variable is used by the experimental
 [build cache]({% link pages/maintainer/build_cache.md %})
 feature.
 
-It provides a credential for accessing the remote build cache, if configured.  Setting this environment variable
- overrides a `false` value for the `isCacheWriteAllowed` setting.  This credential also overrides any cached
- credentials.
+Provides a credential for accessing the remote build cache, if configured. This credential overrides
+any cached credentials.
 
 If Azure Blob Storage is used to store cache entries, this must be a SAS token serialized as query parameters.
 See [this article](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for details
 about SAS tokens.
+
+## RUSH_BUILD_CACHE_ENABLED (EXPERIMENTAL)
+
+This environment variable is used by the experimental
+[build cache]({% link pages/maintainer/build_cache.md %})
+feature.
+
+Overrides the value of `buildCacheEnabled` in the `build-cache.json` configuration file. The value of this
+environment variable must be `1` (for true) or `0` (for false). If there is no build cache configured, then
+this environment variable is ignored.
+
+## RUSH_BUILD_CACHE_WRITE_ALLOWED (EXPERIMENTAL)
+
+This environment variable is used by the experimental
+[build cache]({% link pages/maintainer/build_cache.md %})
+feature.
+
+Overrides the value of `isCacheWriteAllowed` in the `build-cache.json` configuration file. The value of this
+environment variable must be `1` (for true) or `0` (for false). If there is no build cache configured, then
+this environment variable is ignored.
 
 ## RUSH_DEPLOY_TARGET_FOLDER
 
