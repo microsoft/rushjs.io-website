@@ -199,7 +199,7 @@ For example, here's how we would configure an Azure blob container:
   . . .
 ```
 
-Not that we have set `"isCacheWriteAllowed": false` to prevent regular users from writing to the container.
+Note that we have set `"isCacheWriteAllowed": false` to prevent regular users from writing to the container.
 (Later, we will use an environment variable to override this for our CI job.)
 
 
