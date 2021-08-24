@@ -9,7 +9,7 @@ usage: rush rebuild [-h] [-p COUNT] [-t PROJECT] [-T PROJECT] [-f PROJECT]
                     [-o PROJECT] [-i PROJECT] [-I PROJECT]
                     [--to-version-policy VERSION_POLICY_NAME]
                     [--from-version-policy VERSION_POLICY_NAME] [-v]
-                    [--ignore-hooks] [--disable-build-cache]
+                    [--ignore-hooks]
 
 
 This command assumes that the package.json file for each project contains a
@@ -114,9 +114,6 @@ Optional arguments:
   --ignore-hooks        Skips execution of the "eventHooks" scripts defined
                         in rush.json. Make sure you know what you are
                         skipping.
-  --disable-build-cache
-                        (EXPERIMENTAL) Disables the build cache for this
-                        command invocation.
 ```
 
 ## See also

@@ -139,12 +139,8 @@ Successfully restored output from the build cache.
 example-project was restored from the build cache.
 ```
 
-Note that caching is applied even for `rush rebuild`.  To force rebuilding without the cache,
-you need to add `--disable-build-cache` like this:
-
-```
-$ rush rebuild --verbose --disable-build-cache
-```
+Note that `rush rebuild` will not read from cache. To disable writing from cache during `rush rebuild`, set the
+[`RUSH_BUILD_CACHE_WRITE_ALLOWED`]({% link pages/configs/environment_vars.md %}) environment variable to `0`.
 
 By default, the cached tar archives are stored under your **common/temp/build-cache** folder
 (and thus will be cleaned by `rush purge`).  It is safe to delete these files.
