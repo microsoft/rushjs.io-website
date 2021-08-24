@@ -105,9 +105,10 @@ These are defined in the config file **common/config/rush/command-line.json**.  
 
 You can also define your own command-line "parameters".  A parameter can be associated with one or more commands via its `associatedCommands` list.  You can even associate your custom parameters with Rush's own built-in `build` and `rebuild` commands.  In the above example, we associate the `--ship` parameter with `rush build`, `rush rebuild`, and our custom `rush import-strings`.
 
-Currently two kinds of `parameterKind` are supported:
+Currently three kinds of `parameterKind` are supported:
 - **flag parameter**: A "flag" is a simple switch such as `--ship`.
 - **choice parameter**:  An "choice" requires an additional argument which must come from a list of supported alternatives, for example `--locale fr-fr`.
+- **string parameter**: A "string" can take any string as a value, for example `--name my-new-package`.
 
 More parameter kinds may be supported in the future.  (They are parsed using the [ts-command-line](https://www.npmjs.com/package/@microsoft/ts-command-line) library which supports other parameter kinds that could be exposed.)
 
