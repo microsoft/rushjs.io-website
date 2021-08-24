@@ -14,7 +14,7 @@ by a [rig package](https://rushstack.io/pages/heft/rig_packages/).
  * in a Rush monorepo.  More documentation is available on the Rush website: https://rushjs.io
  */
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush-project.schema.json"
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush-project.schema.json",
 
   /**
    * Optionally specifies another JSON config file that this file extends from. This provides a way for standard
@@ -31,7 +31,7 @@ by a [rig package](https://rushstack.io/pages/heft/rig_packages/).
    */
   "projectOutputFolderNames": [
     // "lib", "dist"
-  ]
+  ],
 
   /**
    * Configuration for the build cache feature.
