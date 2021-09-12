@@ -14,7 +14,7 @@ Only changes to public packages need to be tracked. People can control which pac
 
 ### How to enforce developers to provide change files
 
-    rush change -v
+    rush change --verify
 
 This command fails if a developer modifies a public package without providing related change files. It is recommended to add this command as a step of CI builds so that build fails when change files are missing.
 
@@ -36,11 +36,11 @@ This command should have its own build definition. So people can just trigger it
 
 ### Dry run mode
 
-    rush publish -a
+    rush publish --apply
 
 It does the whole process in a dry run mode which means the changes are not committed and packages are not really published. It is useful if you want to check if the version increases and change log updates look right for you.
 
-    rush publish -a -b targetBranch
+    rush publish --apply --target-branch targetBranch
 
 The same dry run mode. The only difference between this one and the previous one is that the changes are committed to the provided target branch.
 
@@ -48,15 +48,15 @@ The same dry run mode. The only difference between this one and the previous one
 
 There are extra parameters for configuring the publishing process: which registry to publish to, what token to use, and whether to include commit details.
 
-    rush publish -a -b targetBranch -p
+    rush publish --apply --target-branch targetBranch --publish
 
 This command increases versions, commit changes to targetBranch, and publish packages to a registry based on environmental npm registry value.
 
-    rush publish -a -b targetBranch -p -r registryUrl -n npmToken
+    rush publish --apply --target-branch targetBranch --publish --registry registryUrl --npm-auth-token npmToken
 
 In addition to what previous command can do, this command allows packages to be published to the specified registry with a specified npm token.
 
-    rush publish -a -b targetBranch -p -r registryUrl -n npmToken --add-commit-details
+    rush publish --apply --target-branch targetBranch --publish --registry registryUrl --npm-auth-token npmToken --add-commit-details
 
 In addition to what previous command can do, This command will include commit details in the change logs.
 
