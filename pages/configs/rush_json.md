@@ -82,7 +82,7 @@ generates for **rush.json** (in the repo root folder):
      * option for PNPM.  Possible values are "fast" and "fewer-dependencies".  PNPM's default is "fast", but this may
      * be incompatible with certain packages, for example the "@types" packages from DefinitelyTyped.  Rush's default
      * is "fewer-dependencies", which causes PNPM to avoid installing a newer version if an already installed version
-     * can be reused; this is more similar to NPM's algorithm.
+     * can be reused; this is more similar to npm's algorithm.
      *
      * After modifying this field, it's recommended to run "rush update --full" so that the package manager
      * will recalculate all version selections.
@@ -230,7 +230,7 @@ generates for **rush.json** (in the repo root folder):
   //   ],
   //
   //   /**
-  //    * A list of NPM package scopes that will be excluded from review.
+  //    * A list of npm package scopes that will be excluded from review.
   //    * We recommend to exclude TypeScript typings (the "@types" scope), because
   //    * if the underlying package was already approved, this would imply that the typings
   //    * are also approved.
@@ -402,7 +402,7 @@ generates for **rush.json** (in the repo root folder):
   "projects": [
     // {
     //   /**
-    //    * The NPM package name of the project (must match package.json)
+    //    * The npm package name of the project (must match package.json)
     //    */
     //   "packageName": "my-app",
     //

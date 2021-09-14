@@ -30,7 +30,7 @@ The `rush add` command can also be used to update the version of an existing dep
 # Or if you want the version specifier "^1.2.3":
 ~/my-repo/apps/my-app$ rush add --package example-lib@1.2.3 --caret
 
-# A more advanced example, where we query the NPM registry to find latest version that is
+# A more advanced example, where we query the npm registry to find latest version that is
 # compatible with the SemVer specifier "^1.2.0" and then add it as a tilde dependency
 # such as "~1.5.3".
 #
@@ -49,12 +49,12 @@ The [command-line help]({% link pages/commands/rush_add.md %}) for `rush add` de
 
 > **Tip: A cool VS Code feature**
 >
-> By the way, if you use Visual Studio Code as your editor, another option is to simply edit the **package.json** file directly. If you start typing `"example-lib":`, VS Code will automatically query the NPM registry and show autocomplete suggestions for the latest published version.  For simple additions, this can be even quicker than `rush add`.
+> By the way, if you use Visual Studio Code as your editor, another option is to simply edit the **package.json** file directly. If you start typing `"example-lib":`, VS Code will automatically query the npm registry and show autocomplete suggestions for the latest published version.  For simple additions, this can be even quicker than `rush add`.
 >
 > If you modify **package.json** manually, don't forget to run `rush update` afterwards.
 
 
-## Upgrading to newer versions of your NPM packages
+## Upgrading to newer versions of your npm packages
 
 The `rush update --full` can install newer versions that satisfy your existing **package.json** files; however, if you want to upgrade the **package.json** files to specify newer version ranges, today Rush does not yet provide a command for doing that in bulk.
 

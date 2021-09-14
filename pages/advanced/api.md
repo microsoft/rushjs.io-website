@@ -44,7 +44,7 @@ const rushConfiguration = rushLib.RushConfiguration.loadFromDefaultLocation({
   startingFolder: process.cwd()
 });
 
-// This will find "@rushstack/ts-command-line" in rush.json, without needing to specify the NPM scope
+// This will find "@rushstack/ts-command-line" in rush.json, without needing to specify the npm scope
 const project = rushConfiguration.findProjectByShorthandName('ts-command-line');
 
 // Add lodash as an optional dependency

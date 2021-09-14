@@ -8,7 +8,7 @@ Rush's **incremental build** feature speeds things up by skipping projects that 
 In this context, "already up to date" means:
 
 1. the project has already been built locally, AND
-2. its source files and NPM dependencies have not changed since then, AND
+2. its source files and npm dependencies have not changed since then, AND
 3. if the project depends on any other Rush projects, those projects are up to date as well, AND
 4. the command line parameters haven't changed.  (For example, invoking `rush build --production`
    after `rush build` would require rebuilding.)
@@ -66,7 +66,7 @@ Suppose hypothetically that our monorepo has the following projects:
 
 <img src="/images/docs/selection-intro.svg" alt="a sample monorepo" style="height: 150px;" />
 
-In the above illustration, the circles represent local projects, not external NPM dependencies.
+In the above illustration, the circles represent local projects, not external npm dependencies.
 The arrow from `D` to `C` indicates that `D` depends on `C`; this means that `C` must be built before
 `D` can be built.
 

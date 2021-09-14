@@ -9,8 +9,8 @@ generates for the monorepo **.npmrc** file:
 
 **common/config/rush/.npmrc**
 ```shell
-# Rush uses this file to configure the NPM package registry during installation.  It is applicable
-# to PNPM, NPM, and Yarn package managers.  It is used by operations such as "rush install",
+# Rush uses this file to configure the npm package registry during installation.  It is applicable
+# to PNPM, npm, and Yarn package managers.  It is used by operations such as "rush install",
 # "rush update", and the "install-run.js" scripts.
 #
 # NOTE: The "rush publish" command uses .npmrc-publish instead.
@@ -37,10 +37,10 @@ always-auth=false
 
 Regular Rush operations perform the following lookup:
 
-1. To support unusual situations, NPM config environment variables take precedence over any **.npmrc** settings.
+1. To support unusual situations, npm config environment variables take precedence over any **.npmrc** settings.
    The environment variable name is prefixed by `npm_config_`.  For example, setting the `npm_config_registry`
    variable will override the `registry` setting in **.npmrc**.  Nonstandard name patterns like
-   `npm_config_@example:registry` are also accepted by NPM's design.
+   `npm_config_@example:registry` are also accepted by npm's design.
 2. Typically settings come from a temporary **.npmrc** file that Rush copies into the working directory
    for the operation.  The file is copied from **common/config/rush/.npmrc**, but omitting any lines that
    reference undefined environment variables (as explained above).  For most operations, the working directory
@@ -62,5 +62,5 @@ additional **.npmrc** files.
 
 ## See also
 
-- [NPM registry authentication]({% link pages/maintainer/npm_registry_auth.md %})
+- [npm registry authentication]({% link pages/maintainer/npm_registry_auth.md %})
 - [.npmrc-publish]({% link pages/configs/npmrc-publish.md %}) config file

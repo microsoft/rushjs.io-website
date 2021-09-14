@@ -27,7 +27,7 @@ generates for **version-policies.json**:
   //    * The "lockStepVersion" mode specifies that the projects will use "lock-step versioning".  This
   //    * strategy is appropriate for a set of packages that act as selectable components of a
   //    * unified product.  The entire set of packages are always published together, and always share
-  //    * the same NPM version number.  When the packages depend on other packages in the set, the
+  //    * the same npm version number.  When the packages depend on other packages in the set, the
   //    * SemVer range is usually restricted to a single version.
   //    */
   //   "definitionName": "lockStepVersion",
@@ -70,7 +70,7 @@ generates for **version-policies.json**:
   //    * (Required) Indicates the kind of version policy being defined ("lockStepVersion" or "individualVersion").
   //    *
   //    * The "individualVersion" mode specifies that the projects will use "individual versioning".
-  //    * This is the typical NPM model where each package has an independent version number
+  //    * This is the typical npm model where each package has an independent version number
   //    * and CHANGELOG.md file.  Although a single CI definition is responsible for publishing the
   //    * packages, they otherwise don't have any special relationship.  The version bumping will
   //    * depend on how developers answer the "rush change" questions for each package that

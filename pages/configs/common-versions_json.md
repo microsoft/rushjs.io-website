@@ -11,14 +11,14 @@ generates for **common-versions.json**:
 **common/config/rush/common-versions.json**
 ```js
 /**
- * This configuration file specifies NPM dependency version selections that affect all projects
+ * This configuration file specifies npm dependency version selections that affect all projects
  * in a Rush repo.  More documentation is available on the Rush website: https://rushjs.io
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/common-versions.schema.json",
 
   /**
-   * A table that specifies a "preferred version" for a given NPM package.  This feature is typically used
+   * A table that specifies a "preferred version" for a given npm package.  This feature is typically used
    * to hold back an indirect dependency to a specific older version, or to reduce duplication of indirect dependencies.
    *
    * The "preferredVersions" value can be any SemVer range specifier (e.g. "~1.2.3").  Rush injects these values into

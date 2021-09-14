@@ -80,9 +80,9 @@ To fix it, you can use commands like this:
 Aborting, so you can go fix your settings.  (Or use --bypass-policy to skip.)
 ```
 
-## approvedPackagesPolicy: Reviewing new NPM dependencies
+## approvedPackagesPolicy: Reviewing new npm dependencies
 
-Are there certain people on your team who constantly find exciting new libraries and add them to your package.json?  This can quickly get out of hand, especially in environments that require legal or security reviews for external code.  The **approvedPackagesPolicy** feature allows you to detect when new NPM dependencies are introduced.
+Are there certain people on your team who constantly find exciting new libraries and add them to your package.json?  This can quickly get out of hand, especially in environments that require legal or security reviews for external code.  The **approvedPackagesPolicy** feature allows you to detect when new npm dependencies are introduced.
 
 Since different levels of scrutiny are often required (e.g. for a shipping product, versus an intern project, versus an internal library), we distinguish "review categories".  This allows us to approve a package once for an entire category of projects, while still being alerted when the dependency is used somewhere else.
 
@@ -149,7 +149,7 @@ After running `rush install`, the **browser-approved-packages.json** file will l
 
 For example, this file is showing that the external dependency **@microsoft/gulp-core-build** was found in the package.json file for an "internal" project (let's say **~/demo/lib1**) but not any "public" project (such as **~/demo/application**).
 
-Rush has no way to detect whether an NPM package is for the browser or not.  Since these are all non-browser files, you must manually move them to the other file **browser-approved-packages.json**.
+Rush has no way to detect whether an npm package is for the browser or not.  Since these are all non-browser files, you must manually move them to the other file **browser-approved-packages.json**.
 
 #### How approvals work
 

@@ -17,7 +17,7 @@ an incremental build. In other words, it only builds projects whose source
 files have changed since the last successful build. The analysis requires a
 Git working tree, and only considers source files that are tracked by Git and
 whose path is under the project folder. (For more details about this
-algorithm, see the documentation for the "package-deps-hash" NPM package.)
+algorithm, see the documentation for the "package-deps-hash" npm package.)
 The incremental build state is tracked in a per-project folder called ".
 rush/temp" which should NOT be added to Git. The build command is tracked by
 the "arguments" field in the "package-deps_build.json" file contained

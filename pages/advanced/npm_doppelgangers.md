@@ -1,13 +1,13 @@
 ---
 layout: page
-title: NPM doppelgangers
+title: npm doppelgangers
 navigation_source: docs_nav
 ---
 
 *This article continues the discussion from the "[Phantom dependencies]({% link pages/advanced/phantom_deps.md %})" section.  It's recommended to read that first.*
 
-## How NPM doppelgangers arise
-<img src="/images/home/card-doppel.svg" style="float: right; padding-left: 30px" alt="NPM doppelganger" />
+## How npm doppelgangers arise
+<img src="/images/home/card-doppel.svg" style="float: right; padding-left: 30px" alt="npm doppelganger" />
 
 Sometimes the **node_modules** data structure is forced to install two copies
 of ***the same version of*** the same package.  Really?  How can that happen?
@@ -122,7 +122,7 @@ but then **F1** gets duplicated:
 Either way, we cannot arrange the tree without having two copies of the same version
 of **library-f**.  We call these "doppelgangers".  Traditional package managers from
 other programming languages don't encounter this issue; it's a peculiar aspect of
-NPM's **node_modules** tree.  It is inherent in the design and unavoidable.
+npm's **node_modules** tree.  It is inherent in the design and unavoidable.
 
 
 ## Consequences of doppelgangers
@@ -171,7 +171,7 @@ scale monorepo.  Here's some potential problems that can result:
   lead to highly confusing compiler errors.
 
 **How Rush helps:** Rush's symlinking strategy eliminates doppelgangers only for dependencies
-that are local projects in the monorepo.  If you're using NPM or Yarn as your package manager,
+that are local projects in the monorepo.  If you're using npm or Yarn as your package manager,
 unfortunately doppelgangers are still possible for any indirect dependencies.  Whereas if you
 use PNPM with Rush, the doppelganger problem is fully solved (because PNPM's installation model
 accurately simulates a true directed acyclic graph).

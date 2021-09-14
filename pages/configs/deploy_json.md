@@ -20,7 +20,7 @@ generates for **deploy.json** and **deploy-&lt;scenario name&gt;>.json**:
 
   /**
    * The "rush deploy" command prepares a deployment folder, starting from the main project and collecting
-   * all of its dependencies (both NPM packages and other Rush projects).  The main project is specified
+   * all of its dependencies (both npm packages and other Rush projects).  The main project is specified
    * using the "--project" parameter.  The "deploymentProjectNames" setting lists the allowable choices for
    * the "--project" parameter; this documents the intended deployments for your monorepo and helps validate
    * that "rush deploy" is invoked correctly.  If there is only one item in the "deploymentProjectNames" array,

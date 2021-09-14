@@ -141,7 +141,7 @@ Rush provides a lot of command-line switches for building projects.  See [rush b
 > **Phantom dependency errors**
 >
 > Rush and PNPM use symlinks to prevent projects from importing [phantom dependencies]({% link pages/advanced/phantom_deps.md %}).
-> If an NPM dependency is not declared in your **package.json** file, a runtime error may occur if your project tries to
+> If an npm dependency is not declared in your **package.json** file, a runtime error may occur if your project tries to
 > import it.  These phantom dependency errors are one of the most common issues when migrating an existing project into
 > a Rush monorepo.  Generally the fix is simply to add the missing dependency to your **package.json** file.
 >

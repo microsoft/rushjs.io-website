@@ -60,7 +60,7 @@
 *.yml             text eol=crlf
 *.xml             text eol=crlf
 
-# NPM "bin" scripts MUST have LF, or else the executable fails to run on Mac.
+# npm "bin" scripts MUST have LF, or else the executable fails to run on Mac.
 # This fnmatch expression only matches files in a "bin" folder and without
 # a period in the filename.
 /*/*/bin/+([!.]) -text

@@ -20,8 +20,8 @@ a "**diamond dependency**" between these four packages.  Conventionally the prog
 **module resolver** looks up imported packages by traversing edges of this graph, and
 (in other systems) the packages themselves are found in a central store that can be shared by many projects.
 
-For historical reasons, NodeJS and NPM took a different approach by representing this graph physically on disk:
-NPM models the graph vertexes using actual package folder copies, and the graph edges are implied by the
+For historical reasons, NodeJS and npm took a different approach by representing this graph physically on disk:
+npm models the graph vertexes using actual package folder copies, and the graph edges are implied by the
 subfolder relationships.  But a folder tree's branches cannot rejoin to make diamonds.
 To handle this, NodeJS added a [special resolution rule](https://nodejs.org/api/modules.html#modules_all_together)
 whose effect is to introduce extra graph edges (pointing to the immediate children of all parent folders).
@@ -31,13 +31,13 @@ From a computer science perspective, this rule relaxes the file system's
 extra edges that do not correspond to any declared package dependency.  These extra edges are called
 "**phantom dependencies**".
 
-NPM's approach has many unique characteristics that differ from traditional package managers:
+npm's approach has many unique characteristics that differ from traditional package managers:
 
 - Each (root-level) project gets its own **node_modules** tree containing lots of package folder copies.
   Even a very small NodeJS project is likely to have more than 10,000 files copied under its folder.
 
-- In NPM 2.x, the **node_modules** folder tree was very deep and duplicated, which minimized phantom dependencies.
-  NPM 3.x improved the installation algorithm to flatten the tree, which eliminated a lot of duplication, at the
+- In npm 2.x, the **node_modules** folder tree was very deep and duplicated, which minimized phantom dependencies.
+  npm 3.x improved the installation algorithm to flatten the tree, which eliminated a lot of duplication, at the
   expense of introducing even more phantom dependencies (extra graph edges).  In some cases the new algorithm will
   also choose a slightly older version of a package (while still satisfying SemVer) to further reduce duplication
   of package folders.
@@ -45,7 +45,7 @@ NPM's approach has many unique characteristics that differ from traditional pack
 - The installed **node_modules** tree is not unique.  There are many possible ways to arrange
   package folders into a tree to approximate the directed acyclic graph, and there is no
   unique "normalized" arrangement.  The tree you get depends on whatever heuristics your
-  package manager chose to follow.  NPM's own heuristics are even sensitive to
+  package manager chose to follow.  npm's own heuristics are even sensitive to
   [the order in which you add packages](http://npm.github.io/how-npm-works-docs/npm3/non-determinism.html).
 
 
@@ -56,7 +56,7 @@ things -- mitigating these problems was one of the original motivations for crea
 
 
 ## Phantom dependencies
-<img src="/images/home/card-phantom.svg" style="float: right; padding-left: 30px" alt="NPM phantom dependency" />
+<img src="/images/home/card-phantom.svg" style="float: right; padding-left: 30px" alt="npm phantom dependency" />
 
 A "phantom dependency" occurs when a project uses a package that is not defined
 in its **package.json** file.  Consider this example:
@@ -90,7 +90,7 @@ var glob = require("glob")  // ???
 Wait a sec -- two of these libraries are not declared as dependencies
 in the **package.json** file.  How is this working at all!?  It turns out that
 **brace-expansion** is a dependency of **minimatch**, and **glob** is a dependency
-of **rimraf**.  During installation, NPM has flattened their folders to be under
+of **rimraf**.  During installation, npm has flattened their folders to be under
 **my-library/node_modules**.  The NodeJS `require()` function finds them there
 because it probes for folders without considering the **package.json** files at all.
 This is perhaps counterintuitive, but it seems to work just fine.  Maybe it's a
@@ -179,4 +179,4 @@ potential parent folders and issues a warning if any phantom **node_modules** fo
 are found.
 
 
-#### Next up: [NPM doppelgangers]({% link pages/advanced/npm_doppelgangers.md %})
+#### Next up: [npm doppelgangers]({% link pages/advanced/npm_doppelgangers.md %})

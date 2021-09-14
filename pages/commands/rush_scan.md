@@ -7,7 +7,7 @@ navigation_source: docs_nav
 ```
 usage: rush scan [-h]
 
-The Node.js module system allows a project to import NPM packages without
+The Node.js module system allows a project to import npm packages without
 explicitly declaring them as dependencies in the package.json file. Such
 "phantom dependencies" can cause problems. Rush and PNPM use symlinks
 specifically to protect against phantom dependencies. These protections may

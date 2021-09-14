@@ -9,8 +9,8 @@ For example, let's say the Node.js service is a local Rush project called `app1`
 organized as follows:
 
 - **apps/app1**:
-  - depends on `ext-lib7` (from NPM) and `lib3` (a local project)
-  - dev dependencies on `ext-tool8` (from NPM) and `tool6` (a local project)
+  - depends on `ext-lib7` (from npm) and `lib3` (a local project)
+  - dev dependencies on `ext-tool8` (from npm) and `tool6` (a local project)
 - **apps/app2**: depends on `lib3` and `lib4`
 - **libraries/lib3**: depends on `lib5`
 - **libraries/lib4**: no dependencies
@@ -18,7 +18,7 @@ organized as follows:
 - **tools/tool6**: no dependencies
 
 One solution might be to run `rush install` and `rush build`, and then copy the entire monorepo to the server.
-However, this could potentially include many extraneous files and NPM packages. Instead we would like to copy
+However, this could potentially include many extraneous files and npm packages. Instead we would like to copy
 only `app1` and its regular dependencies (`ext-lib7`, `lib3`, `lib5`). We do not want to include dev dependencies such
 as `ext-tool8`.
 

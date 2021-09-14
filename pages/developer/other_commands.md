@@ -28,11 +28,11 @@ The full set of project selection parameters are described in the article [Selec
 
 ## A faster way to install
 
-If your repo is using PNPM with the new `useWorkspaces=true` mode enabled in your [rush.json]({% link pages/configs/rush_json.md %}) file, you can use a feature called "filtered installs".  This feature reduces installation times by only installing the subset of NPM packages required to build a specific project.
+If your repo is using PNPM with the new `useWorkspaces=true` mode enabled in your [rush.json]({% link pages/configs/rush_json.md %}) file, you can use a feature called "filtered installs".  This feature reduces installation times by only installing the subset of npm packages required to build a specific project.
 
 For example:
 ```sh
-# Only install the NPM packages needed to build "my-project" and the other
+# Only install the npm packages needed to build "my-project" and the other
 # Rush projects that it depends on:
 $ rush install --to my-project
 
@@ -55,7 +55,7 @@ After working with Rush, maybe you want to get back to a clean state, e.g. so yo
 $ rush unlink
 
 # Remove all the temporary files created by Rush, including deleting all
-# the NPM packages that were installed in your common folder:
+# the npm packages that were installed in your common folder:
 $ rush purge
 ```
 

@@ -4,13 +4,13 @@ title: Why one big repo⁈
 navigation_source: docs_nav
 ---
 
-_Open source NPM packages seem to be developed in lots of small GitHub repos.  Shouldn't I do that?_
+_Open source npm packages seem to be developed in lots of small GitHub repos.  Shouldn't I do that?_
 
 Sure, if you're building isolated components, and it's not too important how they fit together.  But business software doesn't seem to work that way.  It's more like this:
 
 Most people start out by building a single web application, not a bunch of libraries.  After your application ships, it keeps growing in size.  Then one day you need to share some code with a different project, and you realize you've got a big rat's nest.  Time to refactor!
 
-Clearly you must split this thing up into manageable components.  NPM packages are the way to do that in JavaScript.  Looking around, the convention seems to be "**one GitHub repo for each NPM package.**"  During a heroic week or two, you create 10 Git repos, split up your code, and give it a try...
+Clearly you must split this thing up into manageable components.  npm packages are the way to do that in JavaScript.  Looking around, the convention seems to be "**one GitHub repo for each npm package.**"  During a heroic week or two, you create 10 Git repos, split up your code, and give it a try...
 
 ...but working with 10 Git repos turns out to be a big pain!  There are just so many headaches:
 
@@ -20,7 +20,7 @@ Clearly you must split this thing up into manageable components.  NPM packages a
 
 - **Downstream victims**: When Bob publishes a change to **lib3**, it can take a while before all downstream projects get upgraded to use it.  If there's a regression, it might be a week before Alice tries to run "npm update" in **lib1** and discovers the problem.  By then, maybe Bob has left for his backpacking trip across Europe.  Why should Alice shoulder the burden of fixing someone else's regression?  Seems like every time she upgrades, something is broken!
 
-- **Linking madness**: The workaround is to use [npm link](https://docs.npmjs.com/cli/link) to symlink your **application** directly to **lib3** for testing.  But NPM creates symlinks via a global folder, which causes trouble if you need to work with multiple branches of **lib3** on the same laptop.  And with 10+ libraries, it's hard to remember what is symlinked to what.
+- **Linking madness**: The workaround is to use [npm link](https://docs.npmjs.com/cli/link) to symlink your **application** directly to **lib3** for testing.  But npm creates symlinks via a global folder, which causes trouble if you need to work with multiple branches of **lib3** on the same laptop.  And with 10+ libraries, it's hard to remember what is symlinked to what.
 
 The **"one repo per package"** model makes sense for isolated projects that are maintained by uncoordinated strangers.  (Also, most of those libraries get updated fairly infrequently, which makes the problem easier.)  Whereas in our example, everyone works at the same company, and the "libraries" act more like components of an integrated architecture.  Code gets churned a lot, and a change in one place can easily break another part of the system.  Building multiple projects together lets you run all the unit tests for every change, which moves responsibility for fixes where it belongs:  To the person who originally introduced the change.
 
