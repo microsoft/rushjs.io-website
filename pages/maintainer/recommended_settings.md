@@ -54,8 +54,8 @@ installed for your repo.  For those exceptions, you can add an entry to the
 
 ## strictPeerDependencies
 
-If you're using the PNPM package manager, we strongly recommend setting `strictPeerDependencies`
-to `true` in **rush.json**.  This causes Rush to use PNPM's `--strict-peer-dependencies` option
+If you're using the pnpm package manager, we strongly recommend setting `strictPeerDependencies`
+to `true` in **rush.json**.  This causes Rush to use pnpm's `--strict-peer-dependencies` option
 during installation.  With this protection, `rush install` will fail if there are unsatisfied
 peer dependencies, which is an invalid state that can cause build failures or incompatible
 dependency versions.  (For historical reasons, JavaScript package managers generally do not treat

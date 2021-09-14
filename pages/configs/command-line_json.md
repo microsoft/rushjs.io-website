@@ -158,10 +158,10 @@ generates for **command-line.json**:
     //   "shellCommand": "node common/scripts/my-global-command.js",
     //
     //   /**
-    //    * If your "shellCommand" script depends on NPM packages, the recommended best practice is
+    //    * If your "shellCommand" script depends on npm packages, the recommended best practice is
     //    * to make it into a regular Rush project that builds using your normal toolchain.  In cases where
     //    * the command needs to work without first having to run "rush build", the recommended practice
-    //    * is to publish the project to an NPM registry and use common/scripts/install-run.js to launch it.
+    //    * is to publish the project to an npm registry and use common/scripts/install-run.js to launch it.
     //    *
     //    * Autoinstallers offer another possibility: They are folders under "common/autoinstallers" with
     //    * a package.json file and shrinkwrap file. Rush will automatically invoke the package manager to
@@ -170,7 +170,7 @@ generates for **command-line.json**:
     //    * good solution for Git hook scripts.  But they have the disadvantages of not being buildable
     //    * projects, and of increasing the overall installation footprint for your monorepo.
     //    *
-    //    * The "autoinstallerName" setting must not contain a path and must be a valid NPM package name.
+    //    * The "autoinstallerName" setting must not contain a path and must be a valid npm package name.
     //    * For example, the name "my-task" would map to "common/autoinstallers/my-task/package.json", and
     //    * the "common/autoinstallers/my-task/node_modules/.bin" folder would be added to the shell PATH when
     //    * invoking the "shellCommand".

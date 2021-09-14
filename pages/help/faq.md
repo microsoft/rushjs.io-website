@@ -13,7 +13,7 @@ Open a [GitHub issue](https://github.com/microsoft/rushstack/issues) for the **r
 
 ### With many projects in one repo, will "npm install" take too long?
 
-You might be thinking: "Hmmm.. if my current install takes 3 minutes, and you want me to put 20 projects in one repo, won't that multiply my NPM install time to 60 minutes!?"  Nope.  Rush centralizes your dependencies in a "common" folder and runs "npm install" exactly once, with essentially the same install time as your original monolithic application.
+You might be thinking: "Hmmm.. if my current install takes 3 minutes, and you want me to put 20 projects in one repo, won't that multiply my npm install time to 60 minutes!?"  Nope.  Rush centralizes your dependencies in a "common" folder and runs "npm install" exactly once, with essentially the same install time as your original monolithic application.
 
 ### Will Rush make my tooling nonstandard?
 
@@ -44,16 +44,16 @@ $ rush
 Rush Multi-Package Build Tool 2.5.0 - http://aka.ms/rush
 ```
 
-NPM seems to say that it is installing version 3.0.1, but when we execute the command, it shows Rush version 2.5.0.  What's going on here?!
+npm seems to say that it is installing version 3.0.1, but when we execute the command, it shows Rush version 2.5.0.  What's going on here?!
 
-The problem is that when you type commands like "gulp" or "rush", they are found in your system PATH, which can be pointing to folders from previous installs of NodeJS or NPM.
+The problem is that when you type commands like "gulp" or "rush", they are found in your system PATH, which can be pointing to folders from previous installs of NodeJS or npm.
 
 The fix:
-1. Run `npm ls -g --depth 0` to figure out where your NPM packages are being installed.
+1. Run `npm ls -g --depth 0` to figure out where your npm packages are being installed.
 2. Run the `set` command, and examine your PATH environment variable.
-3. Make sure that no other NPM or NodeJS folders appear in your PATH before the folder from #1
-4. Delete any obsolete folders from your PATH, e.g. from an old install of NPM, NodeJS, nodist, nvm-windows, etc.
-5. If you previously used one of these alternative engines, most likely you have a bunch of deadwood NPM packages left behind on your disk somewhere.  It's a good idea to track them down and delete them.
+3. Make sure that no other npm or NodeJS folders appear in your PATH before the folder from #1
+4. Delete any obsolete folders from your PATH, e.g. from an old install of npm, NodeJS, nodist, nvm-windows, etc.
+5. If you previously used one of these alternative engines, most likely you have a bunch of deadwood npm packages left behind on your disk somewhere.  It's a good idea to track them down and delete them.
 
 Some places to look:
 ```
@@ -65,9 +65,9 @@ C:\Program Files (x86)\nodist
 
 ### The "npm install" step is reporting network errors -- what to do?
 
-If you install packages from a custom NPM registry (e.g. a private server for your company or a caching proxy), then your project maintainer will instruct you to add special configuration settings in your .npmrc file.  If these settings are incorrect, "npm install" may report confusing errors that seem to indicate a network failure.  It's important to understand that the NPM tool looks for ".npmrc" files multiple locations (and ignores other locations).
+If you install packages from a custom npm registry (e.g. a private server for your company or a caching proxy), then your project maintainer will instruct you to add special configuration settings in your .npmrc file.  If these settings are incorrect, "npm install" may report confusing errors that seem to indicate a network failure.  It's important to understand that the npm tool looks for ".npmrc" files multiple locations (and ignores other locations).
 
-Without Rush, NPM looks for "**.npmrc**" in these two places, *and merges their contents*:
+Without Rush, npm looks for "**.npmrc**" in these two places, *and merges their contents*:
 - in the same folder as your package.json (useful for storing project-specific settings in Git)
 - in your user home directory (your authentication token goes here)
 
@@ -104,8 +104,8 @@ caching issue):
 
 ### How to clean up Rush's installation to avoid interfering with other tools?
 
-Generally it's recommended to perform all monorepo management using Rush.  The symlinks that Rush creates under the project `node_modules` folders may confuse other tools such as NPM or Yarn, causing them to malfunction because they expect a different installation model.  Sometimes this is unavoidable, however.  For example, when migrating an existing repo to use Rush however, the CI system may need to reuse an existing working folder to build different branches that use different installation models.  To prevent interference, your CI job will first need to invoke a command that deletes the old files from the previous installation model.
+Generally it's recommended to perform all monorepo management using Rush.  The symlinks that Rush creates under the project `node_modules` folders may confuse other tools such as npm or Yarn, causing them to malfunction because they expect a different installation model.  Sometimes this is unavoidable, however.  For example, when migrating an existing repo to use Rush however, the CI system may need to reuse an existing working folder to build different branches that use different installation models.  To prevent interference, your CI job will first need to invoke a command that deletes the old files from the previous installation model.
 
-For Yarn or NPM, a command like `git clean -dfx` is generally sufficient. (THIS DELETES FILES -- [read the manual](https://git-scm.com/docs/git-clean) before invoking!)
+For Yarn or npm, a command like `git clean -dfx` is generally sufficient. (THIS DELETES FILES -- [read the manual](https://git-scm.com/docs/git-clean) before invoking!)
 
 For cleaning up a Rush installation, `git clean` is NOT recommended because it does not handle symlinks reliably.  Instead, use the [rush purge]({% link pages/commands/rush_purge.md %}) command to delete the `node_modules` folders created by Rush.

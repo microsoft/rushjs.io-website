@@ -17,7 +17,7 @@ $ git fetch origin master:refs/remotes/origin/master -a
 # a nonzero exit code.
 $ rush change -v
 
-# Install NPM packages in the common folder, but don't automatically do "rush link"
+# Install npm packages in the common folder, but don't automatically do "rush link"
 $ rush install --no-link
 
 # Run "rush link" explicitly, so your CI system can measure it as a separate step
@@ -64,7 +64,7 @@ Below we'll show how to incorporate this into a Travis build definition.
 ## install-run.js for other commands
 
 By the way, Rush provides a second script **install-run.js** that allows you to use this same
-technology with arbitrary NPM packages.  For example, here's a command that prints a QR code
+technology with arbitrary npm packages.  For example, here's a command that prints a QR code
 for the Rush web site:  :-)
 
 ```

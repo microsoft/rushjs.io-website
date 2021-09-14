@@ -35,7 +35,7 @@ Optional arguments:
                         Regenerates all changelog files based on the current
                         JSON content.
   -r REGISTRY, --registry REGISTRY
-                        Publishes to a specified NPM registry. If this is
+                        Publishes to a specified npm registry. If this is
                         specified, it will prevent the current commit will
                         not be tagged.
   -n TOKEN, --npm-auth-token TOKEN
@@ -46,7 +46,7 @@ Optional arguments:
                         safer practice is to pass the token via an
                         environment variable and reference it from your
                         common/config/rush/.npmrc-publish file.
-  -t TAG, --tag TAG     The tag option to pass to npm publish. By default NPM
+  -t TAG, --tag TAG     The tag option to pass to npm publish. By default npm
                         will publish using the 'latest' tag, even if the
                         package is older than the current latest, so in
                         publishing workflows for older releases, providing a
@@ -57,15 +57,15 @@ Optional arguments:
                         publish scoped packages with an access level of
                         "restricted". Scoped packages can be published with
                         an access level of "public" by specifying that value
-                        for this flag with the initial publication. NPM
+                        for this flag with the initial publication. npm
                         always publishes unscoped packages with an access
-                        level of "public". For more information, see the NPM
+                        level of "public". For more information, see the npm
                         documentation for the "--access" option of "npm
                         publish".
   --pack                Packs projects into tarballs instead of publishing to
                         npm repository. It can only be used when
                         --include-all is specified. If this flag is specified,
-                         NPM registry related parameters will be ignored.
+                         npm registry related parameters will be ignored.
   --release-folder FOLDER
                         This parameter is used with --pack parameter to
                         provide customized location for the tarballs instead

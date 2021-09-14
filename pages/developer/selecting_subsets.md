@@ -13,7 +13,7 @@ Suppose we're working with the following collection of Rush projects:
 
 <img src="/images/docs/selection-intro.svg" alt="a sample monorepo" style="height: 150px;" />
 
-In the above illustration, the circles represent local projects, not external NPM dependencies.
+In the above illustration, the circles represent local projects, not external npm dependencies.
 The arrow from `D` to `C` indicates that `D` depends on `C`; this means that `C` must be built before
 `D` can be built.  We'll use the `rush build` command in the examples given below, but these same parameters
 work for any bulk command.

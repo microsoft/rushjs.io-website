@@ -92,8 +92,8 @@ For more information, see the command-line help for the `--parallelism` paramete
 
 ## RUSH_PNPM_STORE_PATH
 
-When using PNPM as the package manager, this variable can be used to configure the path that
-PNPM will use as the store directory.
+When using pnpm as the package manager, this variable can be used to configure the path that
+pnpm will use as the store directory.
 
 If a relative path is used, then the store path will be resolved relative to the process's
 current working directory. An absolute path is recommended.

@@ -22,7 +22,7 @@ Rush performs a single install for all your projects by creating a fake **rush-c
 }
 ```
 
-The package manager considers each of these "**@rush-temp**" scoped projects to be a direct dependency for the **rush-common** project. In general NPM installs a project's direct dependencies first (at the root of the **node_modules** tree), and only then proceed to download the indirect dependencies.  But since your real project's direct dependencies are now indirect dependencies for the **rush-common** project, the `npm install` behavior could be different.
+The package manager considers each of these "**@rush-temp**" scoped projects to be a direct dependency for the **rush-common** project. In general npm installs a project's direct dependencies first (at the root of the **node_modules** tree), and only then proceed to download the indirect dependencies.  But since your real project's direct dependencies are now indirect dependencies for the **rush-common** project, the `npm install` behavior could be different.
 
 Suppose **project-1/package.json** looks like this:
 
@@ -49,7 +49,7 @@ And let's say **library-a** (from the internet) looks like this:
 }
 ```
 
-If you ran a normal `npm install` in for **project-1**, you would expect to have a **node_modules** folder which looks like this, even if **library-b@1.4.4** exists in the NPM registry:
+If you ran a normal `npm install` in for **project-1**, you would expect to have a **node_modules** folder which looks like this, even if **library-b@1.4.4** exists in the npm registry:
 
 ```
 node_modules/
@@ -57,7 +57,7 @@ node_modules/
   library-b/ (1.1.3)
 ```
 
-Even though **library-b@1.4.4** matches the `"^1.0.0"` SemVer pattern, NPM doesn't install it because 1.1.3 (installed by `project-1`) already satisfies it.
+Even though **library-b@1.4.4** matches the `"^1.0.0"` SemVer pattern, npm doesn't install it because 1.1.3 (installed by `project-1`) already satisfies it.
 
 But the **common/temp/package.json** described above would not guarantee this. Instead, depending on the dependencies of **project-2**, you could end up with this:
 
@@ -69,7 +69,7 @@ node_modules/
   library-b/ (1.4.4)
 ```
 
-... which is also a valid solution to the SemVer equation.  Similar problems can arise when using Rush with NPM's [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/).
+... which is also a valid solution to the SemVer equation.  Similar problems can arise when using Rush with npm's [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/).
 
 ## Preferred Versions
 
@@ -103,7 +103,7 @@ This will cause **css-loader** to be added to the **common/temp/package.json** f
 }
 ```
 
-*Note: If you are publishing packages, you should be careful about adding preferred versions in a way that would produce a different result than a person who installs your library normally using NPM.*
+*Note: If you are publishing packages, you should be careful about adding preferred versions in a way that would produce a different result than a person who installs your library normally using npm.*
 
 ## Implicitly Preferred Versions
 

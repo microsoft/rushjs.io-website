@@ -14,7 +14,7 @@ You also need to install the Rush tool itself.  It's pretty easy.  From your she
 $ npm install -g @microsoft/rush
 ```
 
-*NOTE: If this command fails because your user account does not have permissions to access NPM's global folder, you may need to [fix your NPM configuration](https://docs.npmjs.com/getting-started/fixing-npm-permissions).*
+*NOTE: If this command fails because your user account does not have permissions to access npm's global folder, you may need to [fix your npm configuration](https://docs.npmjs.com/getting-started/fixing-npm-permissions).*
 
 To see Rush's command line help, you can type:
 
@@ -41,7 +41,7 @@ Afterwards you can run `rush update` to recreate the symlinks.  (There is a stan
 
 #### 2. If you suspect your install is corrupted...
 
-Rush's package management commands are "incremental", which means they save time by skipping steps that appear to be unnecessary.  Since Rush runs in automated build environments, we have many safeguards to ensure these checks are accurate.  However when debugging or tinkering with packages on your local machine, sometimes your NPM "node_modules" folder can get into a bad state, causing strange errors.
+Rush's package management commands are "incremental", which means they save time by skipping steps that appear to be unnecessary.  Since Rush runs in automated build environments, we have many safeguards to ensure these checks are accurate.  However when debugging or tinkering with packages on your local machine, sometimes your npm "node_modules" folder can get into a bad state, causing strange errors.
 
 If you suspect your install is corrupted, try running `rush update --purge`.  This will force a full reinstall of your packages, and usually get you back into a good state.
 

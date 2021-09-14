@@ -25,7 +25,7 @@ $ rush -h
 $ git clone https://github.com/microsoft/rushstack
 $ cd rushstack
 
-# Install the NPM packages:
+# Install the npm packages:
 # (If you don't have a GitHub email configured, add the "--bypass-policy" option.)
 $ rush update
 

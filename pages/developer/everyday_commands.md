@@ -46,7 +46,7 @@ After editing a **package.json** file, you can run `rush check` to see if multip
 
 ## rush change
 
-If you work on libraries that get published as NPM packages, your repo probably requires you to include change log entries as part of your PR.  You will know because your PR build will fail on the `rush change --verify` step.
+If you work on libraries that get published as npm packages, your repo probably requires you to include change log entries as part of your PR.  You will know because your PR build will fail on the `rush change --verify` step.
 
 To write change logs, first commit any pending work to Git.  Then type `rush change` from anywhere under your repo working folder.  This command will examine your Git history to determine which project folders have diffs.  Based on that, it will prompt you to write a change log entry for each one.  Each change log entry gets stored in a separate file under **common/changes**.  You should add and commit these files to Git.
 
@@ -65,7 +65,7 @@ Combining everything, a typical daily incantation might look like this:
 # Pull the latest changes from Git
 $ git pull
 
-# Install NPM packages as needed
+# Install npm packages as needed
 $ rush update
 
 # Do a clean rebuild of everything

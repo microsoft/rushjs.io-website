@@ -18,7 +18,7 @@ generates for **artifactory.json**:
 
   "packageRegistry": {
     /**
-     * (Required) Set this to "true" to enable Rush to manage tokens for an Artifactory NPM registry.
+     * (Required) Set this to "true" to enable Rush to manage tokens for an Artifactory npm registry.
      * When enabled, "rush install" will automatically detect when the user's ~/.npmrc
      * authentication token is missing or expired.  And "rush setup" will prompt the user to
      * renew their token.
@@ -28,7 +28,7 @@ generates for **artifactory.json**:
     "enabled": false,
 
     /**
-     * (Required) Specify the URL of your NPM registry.  This is the same URL that appears in
+     * (Required) Specify the URL of your npm registry.  This is the same URL that appears in
      * your .npmrc file.  It should look something like this example:
      *
      *   https://your-company.jfrog.io/your-project/api/npm/npm-private/
@@ -38,7 +38,7 @@ generates for **artifactory.json**:
     /**
      * A list of custom strings that "rush setup" should add to the user's ~/.npmrc file at the time
      * when the token is updated.  This could be used for example to configure the company registry
-     * to be used whenever NPM is invoked as a standalone command (but it's not needed for Rush
+     * to be used whenever npm is invoked as a standalone command (but it's not needed for Rush
      * operations like "rush add" and "rush install", which get their mappings from the monorepo's
      * common/config/rush/.npmrc file).
      *
@@ -65,7 +65,7 @@ generates for **artifactory.json**:
     "messageOverrides": {
       /**
        * Overrides the message that normally says:
-       * "This monorepo consumes packages from an Artifactory private NPM registry."
+       * "This monorepo consumes packages from an Artifactory private npm registry."
        */
       // "introduction": "",
 
@@ -102,4 +102,4 @@ generates for **artifactory.json**:
 
 ## See also
 
-- [NPM registry authentication]({% link pages/maintainer/npm_registry_auth.md %})
+- [npm registry authentication]({% link pages/maintainer/npm_registry_auth.md %})

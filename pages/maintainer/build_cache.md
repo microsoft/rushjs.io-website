@@ -12,7 +12,7 @@ the build output is not saved anywhere, so generally a full rebuild is still req
 Rush's experimental new **build cache** improves on this by creating a tar archive of each project's build outputs.
 The archive is cached so that later, if `rush build` can find a match in the cache, it can extract the archive
 instead of building that project.  This can provide dramatic speedups, for example reducing a 30 minute build time
-to 30 seconds.  The cache key is a hash of the source files and NPM dependencies, following the
+to 30 seconds.  The cache key is a hash of the source files and npm dependencies, following the
 [same basic rules]({% link pages/advanced/incremental_builds.md %}) as the incremental analyzer.
 
 The build cache archives are stored in two places:

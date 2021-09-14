@@ -1,25 +1,25 @@
 ---
 layout: page
-title: NPM registry authentication
+title: npm registry authentication
 navigation_source: docs_nav
 ---
 
-A **private NPM registry** enables your monorepo to publish NPM packages for internal usage.  It works the same as
+A **private npm registry** enables your monorepo to publish npm packages for internal usage.  It works the same as
 the public [https://www.npmjs.com/](https://www.npmjs.com/) registry, except that accessing the private registry
 requires authorization.  Each user will need to obtain an access token that typically gets stored in the
 [~/.npmrc file](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc)
 on their computer.
 
-Most large monorepos eventually require a private NPM registry.  It's useful for:
+Most large monorepos eventually require a private npm registry.  It's useful for:
 
 - sharing code privately between teams
 - proxying access to the public registry, to improve reliability, audit package usage, and apply security screening
 - speeding up CI operations by installing prebuilt tooling packages, instead of performing `rush install && rush build`
   before a tool can be invoked
-- testing installation behaviors before publishing a package to public NPM registry
+- testing installation behaviors before publishing a package to public npm registry
 - publishing wrappers or temporary forks of third-party packages<br/>
   (Compared to [GitHub URL dependencies](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#github-urls),
-  NPM packages give you proper SemVer versioning and better caching semantics.)
+  npm packages give you proper SemVer versioning and better caching semantics.)
 
 Some popular providers are:
 
@@ -28,7 +28,7 @@ Some popular providers are:
 - [GitHub Packages](https://github.com/features/packages)
 - [GitLab Package Registry](https://docs.gitlab.com/ee/user/packages/npm_registry/)
 - [JFrog Artifactory](https://jfrog.com/artifactory/)
-- [NPM private packages](https://docs.npmjs.com/about-private-packages)
+- [npm private packages](https://docs.npmjs.com/about-private-packages)
 
 And for testing purposes, [Verdaccio](https://verdaccio.org/) is a lightweight Node.js server that can run
 on `http://localhost` and implements a complete private registry with proxy capabilities.
@@ -41,14 +41,14 @@ The mappings for your private registry are specified in
 
 Below is an example configuration that installs company packages from the private
 registry, but gets all other packages from the public registry.  The company packages are
-identified by their `@example` NPM scope.
+identified by their `@example` npm scope.
 
 **common/config/rush/.npmrc**
 ```shell
-# Map your company's NPM scope ("@example") to the private registry URL:
+# Map your company's npm scope ("@example") to the private registry URL:
 @example:registry=https://my-registry.example.com/npm-private/
 
-# Otherwise, all other packages come from the public NPM registry:
+# Otherwise, all other packages come from the public npm registry:
 registry=https://registry.npmjs.org/
 always-auth=false
 
@@ -63,7 +63,7 @@ always-auth=false
 ```
 
 More commonly, your private registry will act as a **caching proxy** so that it can provide
-packages from the public NPM registry as well.  In this case, NPM scopes don't need to be mapped.
+packages from the public npm registry as well.  In this case, npm scopes don't need to be mapped.
 Your setup might look like this:
 
 **common/config/rush/.npmrc**
@@ -94,11 +94,11 @@ any existing contents of that file.
 
 A sample `rush setup` interaction looks like this:
 ```
-NPM credentials are missing or expired
+npm credentials are missing or expired
 
 ==> Fix this problem now? (y/N) Yes
 
-This monorepo consumes packages from an Artifactory private NPM registry.
+This monorepo consumes packages from an Artifactory private npm registry.
 
 ==> Do you already have an Artifactory user account? (y/n) Yes
 
@@ -115,7 +115,7 @@ previously.
 
 ==> What is your Artifactory API key? ***************
 
-Fetching an NPM token from the Artifactory service...
+Fetching an npm token from the Artifactory service...
 
 Adding Artifactory token to: /home/example-user/.npmrc
 ```

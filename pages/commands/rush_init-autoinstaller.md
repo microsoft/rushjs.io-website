@@ -16,7 +16,7 @@ Optional arguments:
   -h, --help            Show this help message and exit.
   --name AUTOINSTALLER_NAME
                         Specifies the name of the autoinstaller folder, which
-                        must conform to the naming rules for NPM packages.
+                        must conform to the naming rules for npm packages.
 ```
 
 ## See also

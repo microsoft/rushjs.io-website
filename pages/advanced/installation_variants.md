@@ -86,7 +86,7 @@ to your variant folder **common/config/rush/variants/old-widget-sdk**.   Three c
 
 - **shrinkwrap.yaml**, **npm-shrinkwrap.json**, or **yarn.lock** depending on your package manager
 - **common-versions.json**
-- **pnpmfile.js** if you are using PNPM as your package manager
+- **pnpmfile.js** if you are using pnpm as your package manager
 
 Be sure to add the copied files to Git:
 ```shell
