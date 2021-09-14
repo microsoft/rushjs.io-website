@@ -58,10 +58,10 @@ It will generate these files (see [Config file reference]({% link pages/advanced
 | **.gitattributes** | *(Delete this file if you're not using Git.)* <br/>Tells Git not to perform merging operations for shrinkwrap files, because it is unsafe. |
 | **.gitignore** | *(Delete this file if you're not using Git.)* <br/>Tells Git not to track temporary files created by Rush. |
 | **.travis.yml** | *(Delete this file if you're not using Travis.)* <br/>Configures the [Travis CI](https://travis-ci.com/) service to perform PR builds using Rush. |
-| **common/config/rush/.npmrc** | Rush uses this file to configure the package registry, regardless of whether the package manager is PNPM, npm, or Yarn. |
+| **common/config/rush/.npmrc** | Rush uses this file to configure the package registry, regardless of whether the package manager is pnpm, npm, or Yarn. |
 | **common/config/rush/command-line.json** | You can use this to define custom commands/parameters that will become part of the Rush command-line. |
 | **common/config/rush/common-versions.json** | Used to specify npm dependency version selections that affect all projects in a Rush repo. |
-| **common/config/rush/pnpmfile.js** | *(Delete this file if you've chosen to use npm or Yarn instead of PNPM.)* <br/>Used to workaround problems with dependencies that have mistakes in their package.json file. |
+| **common/config/rush/pnpmfile.js** | *(Delete this file if you've chosen to use npm or Yarn instead of pnpm.)* <br/>Used to workaround problems with dependencies that have mistakes in their package.json file. |
 | **common/config/rush/version-policies.json** | Used to define advanced publishing configurations. |
 
 **NOTE: If any of these files already exists in your branch, `rush init` will issue a warning and will NOT overwrite the existing files.**
@@ -79,7 +79,7 @@ The template files have lots of documentation and commented example snippets.  W
 
 You can change your options at any time, but there are a few settings in **rush.json** that you should think about in advance:
 
-- **Choose a package manager**: The template defaults to using PNPM, but you can also use npm or Yarn.  See [npm vs PNPM vs Yarn]({% link pages/maintainer/package_managers.md %}) for guidance.
+- **Choose a package manager**: The template defaults to using pnpm, but you can also use npm or Yarn.  See [npm vs pnpm vs Yarn]({% link pages/maintainer/package_managers.md %}) for guidance.
 
 - **Check your Rush version**: Make sure your `rushVersion` setting is the latest version, which is shown in the [npm registry](https://www.npmjs.com/package/@microsoft/rush).
 

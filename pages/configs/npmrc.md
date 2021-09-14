@@ -10,7 +10,7 @@ generates for the monorepo **.npmrc** file:
 **common/config/rush/.npmrc**
 ```shell
 # Rush uses this file to configure the npm package registry during installation.  It is applicable
-# to PNPM, npm, and Yarn package managers.  It is used by operations such as "rush install",
+# to pnpm, npm, and Yarn package managers.  It is used by operations such as "rush install",
 # "rush update", and the "install-run.js" scripts.
 #
 # NOTE: The "rush publish" command uses .npmrc-publish instead.

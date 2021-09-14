@@ -81,7 +81,7 @@ is to upload the **common/deploy** subtree to your server machine.
 ## Handling links
 
 The **common/deploy** subtree will have symbolic links created by `rush install`. For example, if you are using the
-PNPM package manager, then **common/deploy/apps/app1/node_modules/ext-lib7** may be a symlink to a folder under the
+pnpm package manager, then **common/deploy/apps/app1/node_modules/ext-lib7** may be a symlink to a folder under the
 **common/deploy/common/temp/node_modules/.pnpm/...** path. Correctly replicating these links can be problematic for
 upload tools such as `tar` or `ftp`.
 

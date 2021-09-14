@@ -60,6 +60,6 @@ The `rush update --full` can install newer versions that satisfy your existing *
 
 The [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) tool will work to upgrade individual projects in a Rush repo, as long as you remember to run `rush update` afterwards (instead of `npm install`).
 
-*NOTE: Support for PNPM workspaces is [coming very soon](https://github.com/microsoft/rushstack/pull/1938); with this feature enabled, the [pnpm update](https://pnpm.js.org/en/cli/update) command can be used for bulk upgrades.*
+*NOTE: Support for pnpm workspaces is [coming very soon](https://github.com/microsoft/rushstack/pull/1938); with this feature enabled, the [pnpm update](https://pnpm.js.org/en/cli/update) command can be used for bulk upgrades.*
 
 #### Next up: [Other helpful commands]({% link pages/developer/other_commands.md %})

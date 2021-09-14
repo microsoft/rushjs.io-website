@@ -9,7 +9,7 @@ usage: rush scan [-h]
 
 The Node.js module system allows a project to import npm packages without
 explicitly declaring them as dependencies in the package.json file. Such
-"phantom dependencies" can cause problems. Rush and PNPM use symlinks
+"phantom dependencies" can cause problems. Rush and pnpm use symlinks
 specifically to protect against phantom dependencies. These protections may
 cause runtime errors for existing projects when they are first migrated into
 a Rush monorepo. The "rush scan" command is a handy tool for fixing these

@@ -14,7 +14,7 @@ navigation_source: docs_nav
 | common/changes/...                       | Storage for the `rush change` command |
 | common/config/rush/.npmrc                | If you need custom settings for "npm install" (e.g. npm registry mappings), put them in this file.  Rush will copy this file into the **common/temp/** folder. |
 | common/config/rush/npm-shrinkwrap.json  | The shrinkwrap file when your package manager is npm.  This is the common shrinkwrap file that applies to all projects in the Rush repo. For more information, see **"What is this "shrinkwrap file"** in the [Everyday commands]({% link pages/developer/everyday_commands.md %}) section. |
-| common/config/rush/shrinkwrap.yaml | The shrinkwrap file when your package manager is PNPM. |
+| common/config/rush/shrinkwrap.yaml | The shrinkwrap file when your package manager is pnpm. |
 | common/config/rush/yarn.lock   | The shrinkwrap file when your package manager is Yarn. |
 | common/config/rush/command-line.json  | Used to define [custom commands]({% link pages/maintainer/custom_commands.md %}). |
 | common/config/rush/browser-approved-packages.json   | Used by the **approvedPackagesPolicy** setting from rush.json |

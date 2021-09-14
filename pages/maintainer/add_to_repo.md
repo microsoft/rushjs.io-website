@@ -88,7 +88,7 @@ any subfolder of the repo folder that contains rush.json:
 ```
 Since this is the first project for the repo, you'll notice that `rush update` creates several new files:
 
-- **common/config/rush/shrinkwrap.yaml**: The common shrinkwrap file (here we're assuming PNPM package manager)
+- **common/config/rush/shrinkwrap.yaml**: The common shrinkwrap file (here we're assuming pnpm package manager)
 - **common/scripts/install-run-rush.js**: Used by CI jobs to bootstrap the Rush tool in a reliable way
 - **common/scripts/install-run.js**: Used by CI jobs to bootstrap arbitrary tools in a reliable way
 
@@ -140,7 +140,7 @@ Rush provides a lot of command-line switches for building projects.  See [rush b
 
 > **Phantom dependency errors**
 >
-> Rush and PNPM use symlinks to prevent projects from importing [phantom dependencies]({% link pages/advanced/phantom_deps.md %}).
+> Rush and pnpm use symlinks to prevent projects from importing [phantom dependencies]({% link pages/advanced/phantom_deps.md %}).
 > If an npm dependency is not declared in your **package.json** file, a runtime error may occur if your project tries to
 > import it.  These phantom dependency errors are one of the most common issues when migrating an existing project into
 > a Rush monorepo.  Generally the fix is simply to add the missing dependency to your **package.json** file.

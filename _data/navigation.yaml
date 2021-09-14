@@ -53,7 +53,7 @@ docs_nav:
         url: /pages/maintainer/enabling_ci_builds
       - title: Recommended Settings
         url: /pages/maintainer/recommended_settings
-      - title: npm vs PNPM vs Yarn
+      - title: npm vs pnpm vs Yarn
         url: /pages/maintainer/package_managers
       - title: Enabling policies
         url: /pages/maintainer/setup_policies

@@ -120,7 +120,7 @@ It can lead to unexpected malfunctions or errors:
 
 **How Rush helps:** Rush's symlinking strategy ensures that each project's **node_modules**
 contains only its declared direct dependencies.  This catches phantom dependencies
-immediately at build time.  If you're using the PNPM package manager, the same protections
+immediately at build time.  If you're using the pnpm package manager, the same protections
 are also applied to all indirect dependencies (with the ability to workaround any "bad" packages
 by using **pnpmfile.js**).
 

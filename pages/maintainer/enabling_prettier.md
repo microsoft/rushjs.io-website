@@ -201,7 +201,7 @@ For this situation, Rush's "autoinstaller" feature provides a convenient alterna
 
 5.  After saving these changes, let's test our custom command by running `rush prettier`.  The first time you should
     see Rush automatically performing a number of steps:  (1) install the correct version of the Rush engine,
-    (2) install the correct version of the PNPM package manager, (3) installing **rush-prettier/package.json**
+    (2) install the correct version of the pnpm package manager, (3) installing **rush-prettier/package.json**
     and its dependencies, (4) invoking `pretty-quick --staged`.  However the second time you invoke it, the first
     3 steps are up to date, so step (4) runs without any delay.  Nice!
 

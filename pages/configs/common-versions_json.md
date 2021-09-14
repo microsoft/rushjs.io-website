@@ -24,7 +24,7 @@ generates for **common-versions.json**:
    * The "preferredVersions" value can be any SemVer range specifier (e.g. "~1.2.3").  Rush injects these values into
    * the "dependencies" field of the top-level common/temp/package.json, which influences how the package manager
    * will calculate versions.  The specific effect depends on your package manager.  Generally it will have no
-   * effect on an incompatible or already constrained SemVer range.  If you are using PNPM, similar effects can be
+   * effect on an incompatible or already constrained SemVer range.  If you are using pnpm, similar effects can be
    * achieved using the pnpmfile.js hook.  See the Rush documentation for more details.
    *
    * After modifying this field, it's recommended to run "rush update --full" so that the package manager

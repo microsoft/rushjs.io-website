@@ -49,7 +49,7 @@ generates for **deploy.json** and **deploy-&lt;scenario name&gt;>.json**:
   // "includeNpmIgnoreFiles": true,
 
   /**
-   * To improve backwards compatibility with legacy packages, the PNPM package manager installs extra links in the
+   * To improve backwards compatibility with legacy packages, the pnpm package manager installs extra links in the
    * node_modules folder that enable packages to import undeclared dependencies.  In some cases this workaround may
    * double the number of links created.  If your deployment does not require this workaround, you can set
    * "omitPnpmWorkaroundLinks" to true to avoid creating the extra links.

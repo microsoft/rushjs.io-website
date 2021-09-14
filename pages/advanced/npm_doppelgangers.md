@@ -173,5 +173,5 @@ scale monorepo.  Here's some potential problems that can result:
 **How Rush helps:** Rush's symlinking strategy eliminates doppelgangers only for dependencies
 that are local projects in the monorepo.  If you're using npm or Yarn as your package manager,
 unfortunately doppelgangers are still possible for any indirect dependencies.  Whereas if you
-use PNPM with Rush, the doppelganger problem is fully solved (because PNPM's installation model
+use pnpm with Rush, the doppelganger problem is fully solved (because pnpm's installation model
 accurately simulates a true directed acyclic graph).

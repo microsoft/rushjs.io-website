@@ -43,17 +43,17 @@ generates for **rush.json** (in the repo root folder):
   // "yarnVersion": "1.9.4",
 
   /**
-   * Options that are only used when the PNPM package manager is selected
+   * Options that are only used when the pnpm package manager is selected
    */
   "pnpmOptions": {
     /**
-     * Specifies the location of the PNPM store.  There are two possible values:
+     * Specifies the location of the pnpm store.  There are two possible values:
      *
      * - "local" - use the "pnpm-store" folder in the current configured temp folder:
      *   "common/temp/pnpm-store" by default.
-     * - "global" - use PNPM's global store, which has the benefit of being shared
+     * - "global" - use pnpm's global store, which has the benefit of being shared
      *    across multiple repo folders, but the disadvantage of less isolation for builds
-     *    (e.g. bugs or incompatibilities when two repos use different releases of PNPM)
+     *    (e.g. bugs or incompatibilities when two repos use different releases of pnpm)
      *
      * RUSH_PNPM_STORE_PATH will override the directory that will be used as the store
      *
@@ -64,7 +64,7 @@ generates for **rush.json** (in the repo root folder):
     // "pnpmStore": "local",
 
     /**
-     * If true, then Rush will add the "--strict-peer-dependencies" option when invoking PNPM.
+     * If true, then Rush will add the "--strict-peer-dependencies" option when invoking pnpm.
      * This causes "rush install" to fail if there are unsatisfied peer dependencies, which is
      * an invalid state that can cause build failures or incompatible dependency versions.
      * (For historical reasons, JavaScript package managers generally do not treat this invalid
@@ -78,10 +78,10 @@ generates for **rush.json** (in the repo root folder):
     /**
      * Configures the strategy used to select versions during installation.
      *
-     * This feature requires PNPM version 3.1 or newer.  It corresponds to the "--resolution-strategy" command-line
-     * option for PNPM.  Possible values are "fast" and "fewer-dependencies".  PNPM's default is "fast", but this may
+     * This feature requires pnpm version 3.1 or newer.  It corresponds to the "--resolution-strategy" command-line
+     * option for pnpm.  Possible values are "fast" and "fewer-dependencies".  pnpm's default is "fast", but this may
      * be incompatible with certain packages, for example the "@types" packages from DefinitelyTyped.  Rush's default
-     * is "fewer-dependencies", which causes PNPM to avoid installing a newer version if an already installed version
+     * is "fewer-dependencies", which causes pnpm to avoid installing a newer version if an already installed version
      * can be reused; this is more similar to npm's algorithm.
      *
      * After modifying this field, it's recommended to run "rush update --full" so that the package manager
@@ -91,14 +91,14 @@ generates for **rush.json** (in the repo root folder):
 
     /**
      * If true, then `rush install` will report an error if manual modifications
-     * were made to the PNPM shrinkwrap file without running "rush update" afterwards.
+     * were made to the pnpm shrinkwrap file without running "rush update" afterwards.
      *
      * This feature protects against accidental inconsistencies that may be introduced
-     * if the PNPM shrinkwrap file ("pnpm-lock.yaml") is manually edited.  When this
+     * if the pnpm shrinkwrap file ("pnpm-lock.yaml") is manually edited.  When this
      * feature is enabled, "rush update" will append a hash to the file as a YAML comment,
      * and then "rush update" and "rush install" will validate the hash.  Note that this does not prohibit
      * manual modifications, but merely requires "rush update" be run
-     * afterwards, ensuring that PNPM can report or repair any potential inconsistencies.
+     * afterwards, ensuring that pnpm can report or repair any potential inconsistencies.
      *
      * To temporarily disable this validation when invoking "rush install", use the
      * "--bypass-policy" command-line parameter.
@@ -108,10 +108,10 @@ generates for **rush.json** (in the repo root folder):
     // "preventManualShrinkwrapChanges": true,
 
     /**
-     * If true, then `rush install` will use the PNPM workspaces feature to perform the
+     * If true, then `rush install` will use the pnpm workspaces feature to perform the
      * install.
      *
-     * This feature uses PNPM to perform the entire monorepo install. When using workspaces, Rush will
+     * This feature uses pnpm to perform the entire monorepo install. When using workspaces, Rush will
      * generate a "pnpm-workspace.yaml" file referencing all local projects to install. Rush will
      * also generate a "pnpmfile.js" which is used to provide preferred versions support. When install
      * is run, this pnpmfile will be used to replace dependency version ranges with a smaller subset
