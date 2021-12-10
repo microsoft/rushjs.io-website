@@ -253,6 +253,9 @@ about SAS tokens.  You can obtain a SAS token via the [Settings > Access keys](
 https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)
 page for your storage account.
 
+For Amazon S3, this will be your AWS Access Key ID and AWS Secret Access Key separated by a colon,
+like this: `<AccessKeyID>:<SecretAccessKey>`.
+
 If your CI system uses a custom build orchestrator with Rush
 (for example [BuildXL](https://github.com/Microsoft/BuildXL)),
 the [rush write-build-cache]({% link pages/commands/rush_write-build-cache.md %}) command enables you to
