@@ -6,7 +6,7 @@ navigation_source: docs_nav
 
 ## Installing the latest SemVer-compatible version of everything
 
-Normally `rush update` only makes the minimal incremental changes necessary to satisfy the the project **package.json** files.  If you want to update everything to the latest version, you would do this:
+Normally `rush update` only makes the minimal incremental changes necessary to satisfy the project **package.json** files.  If you want to update everything to the latest version, you would do this:
 
 ```sh
 # This effectively deletes the old shrinkwrap file and re-solves everything
