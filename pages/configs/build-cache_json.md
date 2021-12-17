@@ -78,9 +78,9 @@ generates for **build-cache.json**:
     // "s3Region": "us-east-1",
 
     /**
-     * The name of the bucket in Amazon S3 to use for build cache.
+     * (Required) The name of the bucket in Amazon S3 to use for build cache.
      */
-    // (Required) "s3Bucket": "my-bucket",
+    // "s3Bucket": "my-bucket",
 
     /**
      * An optional prefix ("folder") for cache items.
