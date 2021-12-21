@@ -49,8 +49,6 @@ In some workflows, a human editor will review the change logs before they are pu
 
 - Don't add a trailing period unless you have two or more sentences.
 
-- Use the word "function" instead of "method".
-
 ## Example Change Log Messages
 
 Here are some hypothetical change log messages that might be provided to `rush change`:
