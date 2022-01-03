@@ -139,7 +139,7 @@ $ rush rebuild
 ```
 
 ⏵ If you get tired of typing `--variant`, you can also use the
-[RUSH_PREVIEW_VERSION]({% link pages/configs/environment_vars.md %})
+[RUSH_VARIANT]({% link pages/configs/environment_vars.md %})
 environment variable to specify the variant name.
 
 **5<!-- -->. Restoring the original state.**  When you're done testing your variant, you can return to the original
