@@ -165,8 +165,8 @@ docs_nav:
         url: /pages/configs/deploy_json
       - title: experiments.json
         url: /pages/configs/experiments_json
-      - title: pnpmfile.js
-        url: /pages/configs/pnpmfile_js
+      - title: .pnpmfile.cjs
+        url: /pages/configs/pnpmfile_cjs
       - title: rush.json
         url: /pages/configs/rush_json
       - title: rush-project.json
