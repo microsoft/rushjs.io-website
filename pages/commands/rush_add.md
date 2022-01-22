@@ -17,16 +17,18 @@ be automatically prepended with a tilde, unless the "--exact" or "--caret"
 flags are used. The "--make-consistent" flag can be used to update all
 packages with the dependency.
 
+Required arguments:
+  -p PACKAGE, --package PACKAGE
+                        The name of the package which should be added as a 
+                        dependency. A SemVer version specifier can be appended 
+                        after an "@" sign. WARNING: Symbol characters are 
+                        usually interpreted by your shell, so it's recommended 
+                        to use quotes. For example, write 
+                        "rush add --package "example@^1.2.3"" instead of 
+                        "rush add --package example@^1.2.3".
+                        
 Optional arguments:
   -h, --help            Show this help message and exit.
-  -p PACKAGE, --package PACKAGE
-                        (Required) The name of the package which should be
-                        added as a dependency. A SemVer version specifier can
-                        be appended after an "@" sign. WARNING: Symbol
-                        characters are usually interpreted by your shell, so
-                        it's recommended to use quotes. For example, write
-                        "rush add --package "example@^1.2.3"" instead of
-                        "rush add --package example@^1.2.3".
   --exact               If specified, the SemVer specifier added to the
                         package.json will be an exact version (e.g. without
                         tilde or caret).
