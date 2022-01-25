@@ -226,6 +226,7 @@ For this situation, Rush's "autoinstaller" feature provides a convenient alterna
     # and uses the "rush-prettier" autoinstaller.
     node common/scripts/install-run-rush.js prettier || exit $?
     ```
+    Make it executable `chmod +x pre-commit` 
 
 7.  To actually install the hook, run `rush install`.
 
