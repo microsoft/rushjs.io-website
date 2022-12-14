@@ -112,7 +112,7 @@ script:
   - echo -en 'travis_fold:end:build\\r'
 ```
 
-For an example of an equivalent setup using an Azuze DevOps build pipeline, take a look at the
+For an example of an equivalent setup using an Azure DevOps build pipeline, take a look at the
 [build.yaml file](https://github.com/microsoft/rushstack/blob/master/common/config/azure-pipelines/templates/build.yaml),
 in the monorepo where Rush is developed.
 
